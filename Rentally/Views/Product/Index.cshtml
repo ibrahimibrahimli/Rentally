@@ -1,0 +1,26 @@
+﻿
+
+@model List<Car>
+
+
+<h1>Ibrahimli</h1>
+    
+<table border="1">
+    <thead>
+        <tr>
+            <th>Id:</th>
+            <th>Name:</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.Id</td>
+                <td>@car.Name</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
