@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Core.Entities.Abstract
 {
-    internal class BaseEntity
+    public abstract class BaseEntity
     {
+        public int Id { get; set; }
+        public int Deleted {  get; set; }
+        public DateTime CreatedDate {  get; set; } = DateTime.Now;
+        public DateTime? UpdatedDate { get; set;}
     }
 }
