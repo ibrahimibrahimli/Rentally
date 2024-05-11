@@ -2,7 +2,6 @@
 
 namespace Entities.Concrete.TableModels
 {
-    //-------------
     public class Testimonial : BaseEntity
     {
         public string Title { get; set; }

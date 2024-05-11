@@ -2,7 +2,6 @@
 
 namespace Entities.Concrete.TableModels
 {
-    //-----------------------------------
     public class Social : BaseEntity
     {
         public int TeamBoardId { get; set; }

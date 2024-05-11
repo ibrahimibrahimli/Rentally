@@ -2,7 +2,6 @@
 
 namespace Entities.Concrete.TableModels
 {
-    //------------------------
     public class Booking : BaseEntity
     {
         public int UserId { get; set; }
@@ -13,6 +12,7 @@ namespace Entities.Concrete.TableModels
         public DateTime DropOffDateTime { get; set; }
         public virtual Car Car { get; set; }
         public virtual User User { get; set; }
+        public byte Status { get; set; } //  0-Scheduled, 1-Completed, 2-Cancelled
     }
 
 }

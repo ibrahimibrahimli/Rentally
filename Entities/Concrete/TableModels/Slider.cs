@@ -13,5 +13,4 @@ namespace Entities.Concrete.TableModels
         public string Description { get; set; }
         public string ImageUrl { get; set; }
     }
-
 }

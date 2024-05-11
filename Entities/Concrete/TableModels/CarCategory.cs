@@ -2,7 +2,6 @@
 
 namespace Entities.Concrete.TableModels
 {
-    //----------------------
     public class CarCategory : BaseEntity
     {
         public string Title { get; set; }
