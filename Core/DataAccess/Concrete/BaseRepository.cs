@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace Core.DataAccess.Concrete
     {
         public void Add(TEntity entity)
         {
-            using(TContext context = new TContext())
+            using (TContext context = new TContext())
             {
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
@@ -28,7 +29,7 @@ namespace Core.DataAccess.Concrete
 
         public void Update(TEntity entity)
         {
-            using(TContext context = new TContext())
+            using (TContext context = new TContext())
             {
                 var updatedEntity = context.Entry(entity);
                 updatedEntity.State = EntityState.Modified;
@@ -48,17 +49,30 @@ namespace Core.DataAccess.Concrete
             }
         }
 
-        public List<TEntity> GetAll()
+        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
         {
-            using(TContext context = new TContext())
+            using (TContext context = new TContext())
             {
-                return context.Set<TEntity>().ToList();
+                if (filter == null)
+                {
+                    return context.Set<TEntity>().ToList();
+                }
+                else
+                {
+                    return context.Set<TEntity>().Where(filter).ToList();
+                }
+
             }
         }
 
+        //public List<TEntity> GetAll()
+        //{
+
+        //}
+
         public TEntity GetById(int id)
         {
-            using(TContext context = new TContext())
+            using (TContext context = new TContext())
             {
                 return context.Set<TEntity>().FirstOrDefault(x => x.Id == id);
             }

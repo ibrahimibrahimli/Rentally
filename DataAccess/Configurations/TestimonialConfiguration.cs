@@ -13,7 +13,7 @@ namespace DataAccess.Configurations
             builder.ToTable("Testimonials");
 
             builder.Property(x => x.Id)
-                .UseIdentityColumn(seed: DefaultConstantValue.DEFAULT_PRIMARY_INCREMENT_VALUE, increment: 1);
+                .UseIdentityColumn(seed: DefaultConstantValue.DEFAULT_PRIMARY_SEED_VALUE, increment: 1);
 
             builder.Property(x => x.Title)
                 .HasMaxLength(100)

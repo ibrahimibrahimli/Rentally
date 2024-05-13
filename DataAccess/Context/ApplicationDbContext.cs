@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,9 +13,14 @@ namespace DataAccess.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source = IBRAHIMS\MSSQLSERVER01;
-                                         Initial Catalog = RentallyDb: Integrated Security = true; Encrypt = false");
+            optionsBuilder.UseSqlServer(@"Data Source = IBRAHIMS\MSSQLSERVER01; Initial Catalog = RentallyDataBase; Integrated Security= true;Encrypt = false;");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        }
+
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<CarCategory> CarCategories { get; set; }
         public DbSet<Car> Cars { get; set; }
@@ -23,13 +29,12 @@ namespace DataAccess.Context
         public DbSet<Feature> Features {  get; set; }
         public DbSet<QA> QAs {  get; set; }
         public DbSet<New> News {  get; set; }
-        public DbSet<Order> Orders { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Social> Socials { get; set; }
         public DbSet<TeamBoard> TeamBoards { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }    
         public DbSet<User> Users { get; set; }
-        public DbSet<WeExperience> WeExperiences { get; set; }
+        public DbSet<About> WeExperiences { get; set; }
     }
 }

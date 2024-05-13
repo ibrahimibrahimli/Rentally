@@ -4,5 +4,5 @@ using Entities.Concrete.TableModels;
 
 namespace DataAccess.Concrete
 {
-    public class WeExperienceDal : BaseRepository<WeExperience, ApplicationDbContext> { }
+    public class About : BaseRepository<Entities.Concrete.TableModels.About, ApplicationDbContext> { }
 }

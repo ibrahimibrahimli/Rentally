@@ -2,7 +2,7 @@
 
 namespace Entities.Concrete.TableModels
 {
-    public class WeExperience : BaseEntity
+    public class About : BaseEntity
     {
         public string Title { get; set; }
         public string Description { get; set; }

@@ -37,7 +37,7 @@ namespace DataAccess.Configurations
                 .HasDefaultValue(0);
 
             builder.Property(x => x.Id)
-                .UseIdentityColumn(seed: DefaultConstantValue.DEFAULT_PRIMARY_INCREMENT_VALUE, increment:1);
+                .UseIdentityColumn(seed: DefaultConstantValue.DEFAULT_PRIMARY_SEED_VALUE, increment:1);
 
             builder.HasOne(x => x.User)
                 .WithMany(x => x.Bookings)

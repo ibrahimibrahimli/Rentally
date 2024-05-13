@@ -8,12 +8,14 @@ namespace Core.Results.Concrete
 {
     public class SuccessDataResult<T> : DataResult<T>
     {
-        public SuccessDataResult(T Data) : base(Data, true)
-        {
-        }
+            public SuccessDataResult(T data) : base(data, true)
+            {
 
-        public SuccessDataResult(T Data, string Message) : base(Data, Message, true)
-        {
-        }
+            }
+
+            public SuccessDataResult(T data, string message) : base(data, message, true)
+            {
+
+            }
     }
 }
