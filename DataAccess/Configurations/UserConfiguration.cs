@@ -30,7 +30,7 @@ namespace DataAccess.Configurations
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder.Property(x => x.PhoneNUmber)
+            builder.Property(x => x.PhoneNumber)
                 .HasMaxLength(13)
                 .IsRequired();
 

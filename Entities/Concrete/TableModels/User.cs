@@ -12,7 +12,7 @@ namespace Entities.Concrete.TableModels
         public string Surname { get; set; }
         public string Email { get; set; }
         public string UserName { get; set; }
-        public char PhoneNUmber { get; set; }
+        public char PhoneNumber { get; set; }
         public string Password { get; set; }
         public ICollection<Booking> Bookings { get; set; }
         //public int FavouriteId { get; set; }

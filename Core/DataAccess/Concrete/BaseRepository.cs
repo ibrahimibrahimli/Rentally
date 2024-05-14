@@ -65,11 +65,6 @@ namespace Core.DataAccess.Concrete
             }
         }
 
-        //public List<TEntity> GetAll()
-        //{
-
-        //}
-
         public TEntity GetById(int id)
         {
             using (TContext context = new TContext())

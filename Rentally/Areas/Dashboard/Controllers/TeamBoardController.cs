@@ -1,17 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Business.Abstract;
-using Business.Concrete;
+﻿using Business.Concrete;
 using Entities.Concrete.TableModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
-    public class CarCategoryController : Controller
+    public class TeamBoardController : Controller
     {
-        CarCategoryManager _carCategoryManager = new();
+        TeamBoardManager _teamBoardManager = new();
         public IActionResult Index()
         {
-            var data = _carCategoryManager.GetAll().Data;
+            var data = _teamBoardManager.GetAll().Data;
             return View(data);
         }
 
@@ -22,38 +21,38 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CarCategory carCategory)
+        public IActionResult Create(TeamBoard teamBoard)
         {
-            var result = _carCategoryManager.Add(carCategory);
+            var result = _teamBoardManager.Add(teamBoard);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
-            return View(carCategory);
+            return View(teamBoard);
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var data = _carCategoryManager.GetById(id).Data;
+            var data = _teamBoardManager.GetById(id).Data;
             return View(data);
         }
 
         [HttpPost]
 
-        public IActionResult Edit(CarCategory carCategory)
+        public IActionResult Edit(TeamBoard teamBoard)
         {
-            var result = _carCategoryManager.Update(carCategory);
+            var result = _teamBoardManager.Update(teamBoard);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
-            return View(carCategory);
+            return View(teamBoard);
         }
 
         [HttpPost]
 
         public IActionResult Delete(int id)
         {
-            var result = _carCategoryManager.Delete(id);
+            var result = _teamBoardManager.Delete(id);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 

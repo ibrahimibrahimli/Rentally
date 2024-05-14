@@ -1,17 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Business.Abstract;
-using Business.Concrete;
+﻿using Business.Concrete;
 using Entities.Concrete.TableModels;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
-    public class CarCategoryController : Controller
+    public class UserController : Controller
     {
-        CarCategoryManager _carCategoryManager = new();
+        UserManager _userManager = new();
         public IActionResult Index()
         {
-            var data = _carCategoryManager.GetAll().Data;
+            var data = _userManager.GetAll().Data;
             return View(data);
         }
 
@@ -22,38 +21,38 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CarCategory carCategory)
+        public IActionResult Create(User user)
         {
-            var result = _carCategoryManager.Add(carCategory);
+            var result = _userManager.Add(user);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
-            return View(carCategory);
+            return View(user);
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var data = _carCategoryManager.GetById(id).Data;
+            var data = _userManager.GetById(id).Data;
             return View(data);
         }
 
         [HttpPost]
 
-        public IActionResult Edit(CarCategory carCategory)
+        public IActionResult Edit(User user)
         {
-            var result = _carCategoryManager.Update(carCategory);
+            var result = _userManager.Update(user);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
-            return View(carCategory);
+            return View(user);
         }
 
         [HttpPost]
 
         public IActionResult Delete(int id)
         {
-            var result = _carCategoryManager.Delete(id);
+            var result = _userManager.Delete(id);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
