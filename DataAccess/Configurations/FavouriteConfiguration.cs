@@ -14,6 +14,8 @@ namespace DataAccess.Configurations
             builder.Property(x => x.Id)
                 .UseIdentityColumn(seed: DefaultConstantValue.DEFAULT_PRIMARY_SEED_VALUE, increment: 1);
 
+            builder.HasOne(x => x.User).WithOne().HasForeignKey<Favourite>(x=>x.UserId);
+
             builder.Property(x => x.UserId)
                 .IsRequired();
         }

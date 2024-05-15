@@ -651,8 +651,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -664,7 +663,7 @@ namespace DataAccess.Migrations
                         .HasMaxLength(16)
                         .HasColumnType("nvarchar(16)");
 
-                    b.Property<string>("PhoneNUmber")
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasMaxLength(13)
                         .HasColumnType("nvarchar(13)");
@@ -684,11 +683,12 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Email");
+                    b.HasIndex("Email")
+                        .IsUnique();
 
-                    b.HasIndex("Email", "Deleted")
+                    b.HasIndex("Email", "Deleted", "PhoneNumber")
                         .IsUnique()
-                        .HasDatabaseName("idx_Email_Deleted");
+                        .HasDatabaseName("idx_Email_PhoneNumber_Deleted");
 
                     b.ToTable("Users", (string)null);
                 });

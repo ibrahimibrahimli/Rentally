@@ -22,9 +22,7 @@ namespace DataAccess.Configurations
                 .HasMaxLength(50)
                 .IsRequired();
 
-            builder.Property(x => x.Email)
-                .HasMaxLength(100)
-                .IsRequired();
+            builder.HasIndex(x => x.Email).IsUnique();
 
             builder.Property(x => x.UserName)
                 .HasMaxLength(100)
@@ -40,9 +38,9 @@ namespace DataAccess.Configurations
 
             builder.HasIndex(x => x.Email);
 
-            builder.HasIndex(x => new { x.Email, x.Deleted })
+            builder.HasIndex(x => new { x.Email, x.Deleted, x.PhoneNumber })
                 .IsUnique()
-                .HasDatabaseName("idx_Email_Deleted");
+                .HasDatabaseName("idx_Email_PhoneNumber_Deleted");
         }
     }
 }

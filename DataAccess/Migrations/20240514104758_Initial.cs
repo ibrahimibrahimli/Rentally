@@ -143,9 +143,9 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "10000, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    PhoneNUmber = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
                     Deleted = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -471,12 +471,13 @@ namespace DataAccess.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Email",
                 table: "Users",
-                column: "Email");
+                column: "Email",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "idx_Email_Deleted",
+                name: "idx_Email_PhoneNumber_Deleted",
                 table: "Users",
-                columns: new[] { "Email", "Deleted" },
+                columns: new[] { "Email", "Deleted", "PhoneNumber" },
                 unique: true);
         }
 

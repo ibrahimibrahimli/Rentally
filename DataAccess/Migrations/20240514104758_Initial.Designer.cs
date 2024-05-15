@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240512191637_Initial")]
+    [Migration("20240514104758_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -654,8 +654,7 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -667,7 +666,7 @@ namespace DataAccess.Migrations
                         .HasMaxLength(16)
                         .HasColumnType("nvarchar(16)");
 
-                    b.Property<string>("PhoneNUmber")
+                    b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasMaxLength(13)
                         .HasColumnType("nvarchar(13)");
@@ -687,11 +686,12 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Email");
+                    b.HasIndex("Email")
+                        .IsUnique();
 
-                    b.HasIndex("Email", "Deleted")
+                    b.HasIndex("Email", "Deleted", "PhoneNumber")
                         .IsUnique()
-                        .HasDatabaseName("idx_Email_Deleted");
+                        .HasDatabaseName("idx_Email_PhoneNumber_Deleted");
 
                     b.ToTable("Users", (string)null);
                 });
