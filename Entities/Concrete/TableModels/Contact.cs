@@ -6,8 +6,8 @@ namespace Entities.Concrete.TableModels
     {
         public string Name { get; set; }
         public string Email { get; set; }
-        public char PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public string Message { get; set; }
-        public virtual User User { get; set; }
+        public bool IsAnswered { get; set; } = false;
     }
 }

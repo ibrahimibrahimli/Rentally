@@ -12,6 +12,7 @@ namespace Entities.Concrete.TableModels
         public string Model { get; set; }
         public string CarCategoryId { get; set; }
         public int DoorCount { get; set; }
+        public int Count { get; set; }
         public decimal PricePerDay { get; set; }
         public string ImageUrl { get; set; }
         public ICollection<Favourite> Favourites { get; set; }

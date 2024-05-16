@@ -153,6 +153,9 @@ namespace DataAccess.Migrations
                     b.Property<int>("CarCategoryId1")
                         .HasColumnType("int");
 
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -248,6 +251,9 @@ namespace DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("IsAnswered")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Message")
                         .IsRequired()
                         .HasMaxLength(2000)
@@ -266,14 +272,9 @@ namespace DataAccess.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Email");
-
-                    b.HasIndex("UserId");
 
                     b.HasIndex("Email", "Deleted")
                         .IsUnique()
@@ -304,7 +305,8 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Favourites", (string)null);
                 });
@@ -738,22 +740,11 @@ namespace DataAccess.Migrations
                     b.Navigation("CarCategory");
                 });
 
-            modelBuilder.Entity("Entities.Concrete.TableModels.Contact", b =>
-                {
-                    b.HasOne("Entities.Concrete.TableModels.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Entities.Concrete.TableModels.Favourite", b =>
                 {
                     b.HasOne("Entities.Concrete.TableModels.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                        .WithOne()
+                        .HasForeignKey("Entities.Concrete.TableModels.Favourite", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
