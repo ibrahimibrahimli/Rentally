@@ -13,7 +13,7 @@ namespace Business.Abstract
         IResult Add(Social entity);
         IResult Update(Social entity);
         IResult Delete(int id);
-        IDataResult<List<Social>> GetAll();
+        IDataResult<List<Social>> GetSocialWithTeamBoardId();
         IDataResult<Social> GetById(int id);
     }
 }

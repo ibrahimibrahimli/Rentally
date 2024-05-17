@@ -416,6 +416,9 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name", "Deleted")
+                        .IsUnique();
+
                     b.ToTable("Positions", (string)null);
                 });
 

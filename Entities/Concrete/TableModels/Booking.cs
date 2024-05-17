@@ -10,9 +10,9 @@ namespace Entities.Concrete.TableModels
         public string DropOffLocation { get; set; }
         public DateTime PickUpDateTime { get; set; }
         public DateTime DropOffDateTime { get; set; }
+        public byte Status { get; set; } //  0-Scheduled, 1-Completed, 2-Cancelled
         public virtual Car Car { get; set; }
         public virtual User User { get; set; }
-        public byte Status { get; set; } //  0-Scheduled, 1-Completed, 2-Cancelled
     }
 
 }

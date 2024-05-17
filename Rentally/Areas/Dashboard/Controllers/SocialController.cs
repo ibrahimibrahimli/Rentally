@@ -8,15 +8,17 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     public class SocialController : Controller
     {
         SocialManager _socialManager = new();
+        TeamBoardManager _teamboardManager = new();
         public IActionResult Index()
         {
-            var data = _socialManager.GetAll().Data;
+            var data = _socialManager.GetSocialWithTeamBoardId().Data;
             return View(data);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
+            ViewData["TeamBoards"] = _teamboardManager.GetTeamBoardWithPosition();
             return View();
         }
 
@@ -33,6 +35,8 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewData["TeamBoards"] = _teamboardManager.GetTeamBoardWithPosition();
+
             var data = _socialManager.GetById(id).Data;
             return View(data);
         }
@@ -43,7 +47,10 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         {
             var result = _socialManager.Update(social);
 
-            if (result.IsSuccess) return RedirectToAction("Index");
+            if (result.IsSuccess)
+            {
+                return RedirectToAction("Index");
+            }
 
             return View(social);
         }

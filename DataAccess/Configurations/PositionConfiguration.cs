@@ -19,6 +19,8 @@ namespace DataAccess.Configurations
             builder.Property(x => x.Id)
                 .UseIdentityColumn(seed: DefaultConstantValue.DEFAULT_PRIMARY_SEED_VALUE, increment: 1);
 
+            builder.HasIndex(x => new { x.Name, x.Deleted }).IsUnique();
+
             builder.Property(x => x.Name)
                 .HasMaxLength(50)
                 .IsRequired();

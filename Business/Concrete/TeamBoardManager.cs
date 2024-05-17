@@ -28,14 +28,14 @@ namespace Business.Concrete
             return new SuccessResult(UIMessages.SUCCESS_DELETED_MESSAGE);
         }
 
-        public IDataResult<List<TeamBoard>> GetAll()
-        {
-            return new SuccessDataResult<List<TeamBoard>>(teamBoardDal.GetAll(x => x.Deleted == 0));
-        }
-
         public IDataResult<TeamBoard> GetById(int id)
         {
             return new SuccessDataResult<TeamBoard>(teamBoardDal.GetById(id));
+        }
+
+        public IDataResult<List<TeamBoard>> GetTeamBoardWithPosition()
+        {
+            return new SuccessDataResult<List<TeamBoard>>(teamBoardDal.GetTeamBoardWithPosition());
         }
 
         public IResult Update(TeamBoard entity)

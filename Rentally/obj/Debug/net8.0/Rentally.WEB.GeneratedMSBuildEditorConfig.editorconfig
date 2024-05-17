@@ -18,6 +18,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\ibrah\Desktop\FinalProject\Rentally
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/ibrah/Desktop/FinalProject/Rentally/Areas/Dashboard/Views/Booking/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXEJvb2tpbmdcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ibrah/Desktop/FinalProject/Rentally/Areas/Dashboard/Views/CarCategory/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXENhckNhdGVnb3J5XENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -120,6 +124,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ibrah/Desktop/FinalProject/Rentally/Areas/Dashboard/Views/Slider/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXFNsaWRlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ibrah/Desktop/FinalProject/Rentally/Areas/Dashboard/Views/Social/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXFNvY2lhbFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ibrah/Desktop/FinalProject/Rentally/Areas/Dashboard/Views/Social/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXFNvY2lhbFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ibrah/Desktop/FinalProject/Rentally/Areas/Dashboard/Views/Social/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXFNvY2lhbFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ibrah/Desktop/FinalProject/Rentally/Areas/Dashboard/Views/TeamBoard/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXFRlYW1Cb2FyZFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ibrah/Desktop/FinalProject/Rentally/Areas/Dashboard/Views/TeamBoard/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRGFzaGJvYXJkXFZpZXdzXFRlYW1Cb2FyZFxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ibrah/Desktop/FinalProject/Rentally/Areas/Dashboard/Views/TeamBoard/Index.cshtml]

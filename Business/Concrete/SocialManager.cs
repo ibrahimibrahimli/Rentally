@@ -33,14 +33,14 @@ namespace Business.Concrete
             return new SuccessResult(UIMessages.SUCCESS_DELETED_MESSAGE);
         }
 
-        public IDataResult<List<Social>> GetAll()
-        {
-            return new SuccessDataResult<List<Social>>(socialDal.GetAll(x => x.Deleted == 0));
-        }
-
         public IDataResult<Social> GetById(int id)
         {
             return new SuccessDataResult<Social>(socialDal.GetById(id));
+        }
+
+        public IDataResult<List<Social>> GetSocialWithTeamBoardId()
+        {
+            return new SuccessDataResult<List<Social>>(socialDal.GetSocialWithTeamBoardId());
         }
 
         public IResult Update(Social entity)

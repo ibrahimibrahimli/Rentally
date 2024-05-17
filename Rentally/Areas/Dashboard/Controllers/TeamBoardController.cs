@@ -8,15 +8,17 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     public class TeamBoardController : Controller
     {
         TeamBoardManager _teamBoardManager = new();
+        PositionManager _positionManager = new();
         public IActionResult Index()
         {
-            var data = _teamBoardManager.GetAll().Data;
+            var data = _teamBoardManager.GetTeamBoardWithPosition().Data;
             return View(data);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
+            ViewData["Positions"] = _positionManager.GetAll().Data;
             return View();
         }
 
@@ -33,6 +35,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            ViewData["Positions"] = _positionManager.GetAll().Data;
             var data = _teamBoardManager.GetById(id).Data;
             return View(data);
         }

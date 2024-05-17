@@ -3,5 +3,7 @@ using Entities.Concrete.TableModels;
 
 namespace DataAccess.Abstract
 {
-    public interface IAboutDal : IBaseRepository<About> { }
+    public interface IAboutDal : IBaseRepository<About> 
+    {
+    }
 }

@@ -13,7 +13,7 @@ namespace Business.Abstract
         IResult Add(TeamBoard entity);
         IResult Update(TeamBoard entity);
         IResult Delete(int id);
-        IDataResult<List<TeamBoard>> GetAll();
+        IDataResult<List<TeamBoard>> GetTeamBoardWithPosition();
         IDataResult<TeamBoard> GetById(int id);
     }
 }

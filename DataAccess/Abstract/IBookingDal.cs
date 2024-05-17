@@ -10,5 +10,6 @@ namespace DataAccess.Abstract
 {
     public interface IBookingDal : IBaseRepository<Booking>
     {
+        List<Booking> GetBookingWithUserIdAndCarId();
     }
 }
