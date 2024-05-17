@@ -204,12 +204,12 @@ namespace DataAccess.Migrations
                         .Annotation("SqlServer:Identity", "10000, 1"),
                     Brand = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Model = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    CarCategoryId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CarCategoryId = table.Column<int>(type: "int", nullable: false),
                     DoorCount = table.Column<int>(type: "int", nullable: false),
                     Count = table.Column<int>(type: "int", nullable: false),
+                    Year = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PricePerDay = table.Column<decimal>(type: "decimal(7,2)", precision: 7, scale: 2, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CarCategoryId1 = table.Column<int>(type: "int", nullable: false),
                     Deleted = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -218,8 +218,8 @@ namespace DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_Cars", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Cars_CarCategories_CarCategoryId1",
-                        column: x => x.CarCategoryId1,
+                        name: "FK_Cars_CarCategories_CarCategoryId",
+                        column: x => x.CarCategoryId,
                         principalTable: "CarCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -367,11 +367,6 @@ namespace DataAccess.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CarCategories_Title",
-                table: "CarCategories",
-                column: "Title");
-
-            migrationBuilder.CreateIndex(
                 name: "idx_Title_Deleted",
                 table: "CarCategories",
                 columns: new[] { "Title", "Deleted" },
@@ -383,14 +378,14 @@ namespace DataAccess.Migrations
                 column: "Brand");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cars_CarCategoryId1",
+                name: "IX_Cars_CarCategoryId",
                 table: "Cars",
-                column: "CarCategoryId1");
+                column: "CarCategoryId");
 
             migrationBuilder.CreateIndex(
                 name: "idx_Brand_Deleted",
                 table: "Cars",
-                columns: new[] { "Brand", "Deleted" },
+                columns: new[] { "Brand", "Model", "Year", "Deleted" },
                 unique: true);
 
             migrationBuilder.CreateIndex(

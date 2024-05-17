@@ -146,11 +146,7 @@ namespace DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("CarCategoryId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("CarCategoryId1")
+                    b.Property<int>("CarCategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("Count")
@@ -181,13 +177,16 @@ namespace DataAccess.Migrations
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("Year")
+                        .HasColumnType("datetime2");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Brand");
 
-                    b.HasIndex("CarCategoryId1");
+                    b.HasIndex("CarCategoryId");
 
-                    b.HasIndex("Brand", "Deleted")
+                    b.HasIndex("Brand", "Model", "Year", "Deleted")
                         .IsUnique()
                         .HasDatabaseName("idx_Brand_Deleted");
 
@@ -222,8 +221,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Title");
 
                     b.HasIndex("Title", "Deleted")
                         .IsUnique()
@@ -733,7 +730,7 @@ namespace DataAccess.Migrations
                 {
                     b.HasOne("Entities.Concrete.TableModels.CarCategory", "CarCategory")
                         .WithMany("Cars")
-                        .HasForeignKey("CarCategoryId1")
+                        .HasForeignKey("CarCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

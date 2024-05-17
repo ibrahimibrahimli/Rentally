@@ -29,9 +29,6 @@ namespace DataAccess.Configurations
             builder.Property(x => x.Customers)
                 .IsRequired();
 
-            builder.Property(x => x.Customers)
-                .IsRequired();
-
         }
     }
 }

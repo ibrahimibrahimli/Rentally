@@ -4,6 +4,6 @@ using Entities.Concrete.TableModels;
 
 namespace DataAccess.Concrete
 {
-    public class SocialDAl : BaseRepository<Social, ApplicationDbContext> { }
+    public class SocialDal : BaseRepository<Social, ApplicationDbContext> { }
 
 }

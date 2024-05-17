@@ -22,7 +22,7 @@ namespace DataAccess.Configurations
                 .HasMaxLength(100)
                 .IsRequired();
 
-            builder.HasIndex(x => x.Title);
+            
 
             builder.HasIndex(x => new { x.Title, x.Deleted }).IsUnique().HasDatabaseName("idx_Title_Deleted");
         }

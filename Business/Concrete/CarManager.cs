@@ -13,14 +13,23 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class SocialManager : ISocialService
+    public class CarManager : ICarService
     {
-        SocialDal socialDal = new();
-        public IResult Add(Social entity)
+        CarDal carDal = new();
+
+        public IResult Add(Car entity)
         {
-            socialDal.Add(entity);
+            carDal.Add(entity);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
+        }
+
+        public IResult Update(Car entity)
+        {
+            entity.UpdatedDate = DateTime.Now;
+            carDal.Update(entity);
+
+            return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }
 
         public IResult Delete(int id)
@@ -28,27 +37,21 @@ namespace Business.Concrete
             var data = GetById(id).Data;
             data.Deleted = id;
 
-            socialDal.Update(data);
+            carDal.Update(data);
 
             return new SuccessResult(UIMessages.SUCCESS_DELETED_MESSAGE);
         }
 
-        public IDataResult<List<Social>> GetAll()
+        
+
+        public IDataResult<Car> GetById(int id)
         {
-            return new SuccessDataResult<List<Social>>(socialDal.GetAll(x => x.Deleted == 0));
+            return new SuccessDataResult<Car>(carDal.GetById(id));
         }
 
-        public IDataResult<Social> GetById(int id)
+        public IDataResult<List<Car>> GetCarWithCategory()
         {
-            return new SuccessDataResult<Social>(socialDal.GetById(id));
-        }
-
-        public IResult Update(Social entity)
-        {
-            entity.UpdatedDate = DateTime.Now;
-            socialDal.Update(entity);
-
-            return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
+            return new SuccessDataResult<List<Car>>(carDal.GetCarWithCategory());
         }
     }
 }

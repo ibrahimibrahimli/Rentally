@@ -3,5 +3,7 @@ using Entities.Concrete.TableModels;
 
 namespace DataAccess.Abstract
 {
-    public interface ICarDal : IBaseRepository<Car> { }
+    public interface ICarDal : IBaseRepository<Car> {
+       List<Car> GetCarWithCategory();
+    }
 }
