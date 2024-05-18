@@ -2,6 +2,7 @@
 using Business.Abstract;
 using Business.Concrete;
 using Entities.Concrete.TableModels;
+using Entities.Concrete.Dtos;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
@@ -22,13 +23,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CarCategory carCategory)
+        public IActionResult Create(CarCategoryCreateDto dto)
         {
-            var result = _carCategoryManager.Add(carCategory);
+            var result = _carCategoryManager.Add(dto);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
-            return View(carCategory);
+            return View(dto);
         }
 
         [HttpGet]
@@ -40,13 +41,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         [HttpPost]
 
-        public IActionResult Edit(CarCategory carCategory)
+        public IActionResult Edit(CarCategoryUpdateDto dto)
         {
-            var result = _carCategoryManager.Update(carCategory);
+            var result = _carCategoryManager.Update(dto);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
-            return View(carCategory);
+            return View(dto);
         }
 
         [HttpPost]

@@ -1,9 +1,10 @@
 ﻿using Core.DataAccess.Abstract;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 
 namespace DataAccess.Abstract
 {
     public interface ICarDal : IBaseRepository<Car> {
-       List<Car> GetCarWithCategory();
+       List<CarDto> GetCarWithCategory();
     }
 }

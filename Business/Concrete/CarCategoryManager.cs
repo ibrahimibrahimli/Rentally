@@ -3,6 +3,7 @@ using Business.BaseMessages;
 using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 
 namespace Business.Concrete
@@ -10,16 +11,19 @@ namespace Business.Concrete
     public class CarCategoryManager : ICarCategoryService
     {
         CarCategoryDal carCategoryDal = new();
-        public IResult Add(CarCategory entity)
+        public IResult Add(CarCategoryCreateDto dto)
         {
-            carCategoryDal.Add(entity);
+            var model = CarCategoryCreateDto.ToCarCategory(dto);
+
+            carCategoryDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
-        public IResult Update(CarCategory entity)
+        public IResult Update(CarCategoryUpdateDto dto)
         {
-            entity.UpdatedDate = DateTime.Now;
-            carCategoryDal.Update(entity);
+            var model = CarCategoryUpdateDto.ToCarCategory(dto);
+            model.UpdatedDate = DateTime.Now;
+            carCategoryDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }

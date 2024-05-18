@@ -1,4 +1,4 @@
-﻿@model List<Car>
+﻿@model List<CarDto>
 
 <div class="container-fluid">
     <div class="card shadow mb-4">
@@ -27,7 +27,7 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.CarCategory.Title</td>
+                                <td>@item.CarCategoryName</td>
                                 <td>@item.Brand</td>
                                 <td>@item.Model</td>
                                 <td>@item.Year</td>

@@ -4,6 +4,7 @@ using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using System;
 using System.Collections.Generic;
@@ -49,9 +50,9 @@ namespace Business.Concrete
             return new SuccessDataResult<Car>(carDal.GetById(id));
         }
 
-        public IDataResult<List<Car>> GetCarWithCategory()
+        public IDataResult<List<CarDto>> GetCarWithCategory()
         {
-            return new SuccessDataResult<List<Car>>(carDal.GetCarWithCategory());
+            return new SuccessDataResult<List<CarDto>>(carDal.GetCarWithCategory());
         }
     }
 }
