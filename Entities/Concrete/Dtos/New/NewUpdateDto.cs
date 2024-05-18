@@ -9,7 +9,7 @@ namespace Entities.Concrete.Dtos
         public string Text { get; set; }
         public string ImageUrl { get; set; }
 
-        public static New ToNewDto(NewDto dto)
+        public static New ToNew(NewUpdateDto dto)
         {
             New news = new New()
             {

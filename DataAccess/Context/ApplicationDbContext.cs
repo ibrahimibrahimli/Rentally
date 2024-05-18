@@ -13,7 +13,7 @@ namespace DataAccess.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source = DESKTOP-89A3600; Initial Catalog = RentallyDataBase; Integrated Security= true;Encrypt = false;");
+            optionsBuilder.UseSqlServer(@"Data Source = LAPTOP-JBUKPKDJ; Initial Catalog = RentallyDataBase; Integrated Security= true;Encrypt = false;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

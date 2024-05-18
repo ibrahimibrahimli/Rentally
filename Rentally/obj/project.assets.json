@@ -85,12 +85,12 @@
         },
         "compile": {
           "ref/net6.0/Microsoft.Data.SqlClient.dll": {
-            "related": ".xml;.pdb"
+            "related": ".pdb;.xml"
           }
         },
         "runtime": {
           "lib/net6.0/Microsoft.Data.SqlClient.dll": {
-            "related": ".xml;.pdb"
+            "related": ".pdb;.xml"
           }
         },
         "runtimeTargets": {
@@ -531,12 +531,12 @@
         "type": "package",
         "compile": {
           "lib/netstandard2.0/Microsoft.SqlServer.Server.dll": {
-            "related": ".xml;.pdb"
+            "related": ".pdb;.xml"
           }
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.SqlServer.Server.dll": {
-            "related": ".xml;.pdb"
+            "related": ".pdb;.xml"
           }
         }
       },
@@ -2824,24 +2824,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ibrah\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ibrah\\Desktop\\FinalProject\\Rentally\\Rentally.WEB.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\Rentally.WEB.csproj",
       "projectName": "Rentally.WEB",
-      "projectPath": "C:\\Users\\ibrah\\Desktop\\FinalProject\\Rentally\\Rentally.WEB.csproj",
-      "packagesPath": "C:\\Users\\ibrah\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ibrah\\Desktop\\FinalProject\\Rentally\\obj\\",
+      "projectPath": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\Rentally.WEB.csproj",
+      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\ibrah\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2855,8 +2850,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\ibrah\\Desktop\\FinalProject\\Business\\Business.csproj": {
-              "projectPath": "C:\\Users\\ibrah\\Desktop\\FinalProject\\Business\\Business.csproj"
+            "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Business\\Business.csproj": {
+              "projectPath": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Business\\Business.csproj"
             }
           }
         }

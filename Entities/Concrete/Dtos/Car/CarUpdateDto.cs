@@ -16,11 +16,11 @@ namespace Entities.Concrete.Dtos
         public string ImageUrl { get; set; }
         public string  CarCategoryName { get; set; }
 
-        public static Car ToCarCategory(CarCreateDto dto)
+        public static Car ToCarCategory(CarUpdateDto dto)
         {
             Car car = new Car()
             { 
-              //Favourites = car.Favourites,
+                Favourites = dto.Favourites,
                 Brand = dto.Brand,
                 Model = dto.Model,
                 CarCategoryId = dto.CarCategoryId,

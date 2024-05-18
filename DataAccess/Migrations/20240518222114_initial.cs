@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class initMig : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -67,23 +67,6 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "QuestionsAnswers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "10000, 1"),
-                    Question = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Answer = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    Deleted = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_QuestionsAnswers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "News",
                 columns: table => new
                 {
@@ -115,6 +98,23 @@ namespace DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Positions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "QuestionsAnswers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "10000, 1"),
+                    Question = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Answer = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_QuestionsAnswers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -373,6 +373,12 @@ namespace DataAccess.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "idx_Brand_Deleted",
+                table: "Cars",
+                columns: new[] { "Brand", "Model", "Year", "Deleted" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Cars_Brand",
                 table: "Cars",
                 column: "Brand");
@@ -383,21 +389,15 @@ namespace DataAccess.Migrations
                 column: "CarCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "idx_Brand_Deleted",
-                table: "Cars",
-                columns: new[] { "Brand", "Model", "Year", "Deleted" },
+                name: "idx_Email_Deleted",
+                table: "Contacts",
+                columns: new[] { "Email", "Deleted" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Contacts_Email",
                 table: "Contacts",
                 column: "Email");
-
-            migrationBuilder.CreateIndex(
-                name: "idx_Email_Deleted",
-                table: "Contacts",
-                columns: new[] { "Email", "Deleted" },
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Favourites_UserId",
@@ -411,15 +411,15 @@ namespace DataAccess.Migrations
                 column: "FavouritesId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Features_Title",
-                table: "Features",
-                column: "Title");
-
-            migrationBuilder.CreateIndex(
                 name: "idx_Title_Name",
                 table: "Features",
                 columns: new[] { "Title", "Deleted" },
                 unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Features_Title",
+                table: "Features",
+                column: "Title");
 
             migrationBuilder.CreateIndex(
                 name: "idx_Title_Deleted",
@@ -434,15 +434,10 @@ namespace DataAccess.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Socials_TeamBoardId_Deleted_FacebookUrl_TwitterUrl_PinterestUrl_LinkedinUrl",
+                name: "IX_Socials_TeamBoardId_Deleted",
                 table: "Socials",
-                columns: new[] { "TeamBoardId", "Deleted", "FacebookUrl", "TwitterUrl", "PinterestUrl", "LinkedinUrl" },
+                columns: new[] { "TeamBoardId", "Deleted" },
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TeamBoards_PositionId",
-                table: "TeamBoards",
-                column: "PositionId");
 
             migrationBuilder.CreateIndex(
                 name: "idx_Name_Deleted",
@@ -451,9 +446,9 @@ namespace DataAccess.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Testimonials_CustomerName",
-                table: "Testimonials",
-                column: "CustomerName");
+                name: "IX_TeamBoards_PositionId",
+                table: "TeamBoards",
+                column: "PositionId");
 
             migrationBuilder.CreateIndex(
                 name: "idx_CustomerName_Deleted",
@@ -462,15 +457,20 @@ namespace DataAccess.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_Email",
-                table: "Users",
-                column: "Email",
-                unique: true);
+                name: "IX_Testimonials_CustomerName",
+                table: "Testimonials",
+                column: "CustomerName");
 
             migrationBuilder.CreateIndex(
                 name: "idx_Email_PhoneNumber_Deleted",
                 table: "Users",
                 columns: new[] { "Email", "Deleted", "PhoneNumber" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                table: "Users",
+                column: "Email",
                 unique: true);
         }
 
@@ -490,10 +490,10 @@ namespace DataAccess.Migrations
                 name: "Features");
 
             migrationBuilder.DropTable(
-                name: "QuestionsAnswers");
+                name: "News");
 
             migrationBuilder.DropTable(
-                name: "News");
+                name: "QuestionsAnswers");
 
             migrationBuilder.DropTable(
                 name: "Sliders");

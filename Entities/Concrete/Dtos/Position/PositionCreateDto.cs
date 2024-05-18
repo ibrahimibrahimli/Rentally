@@ -6,7 +6,7 @@ namespace Entities.Concrete.Dtos
     {
         public string Name { get; set; }
 
-        public static Position ToPositionDto(PositionDto dto)
+        public static Position ToPosition(PositionCreateDto dto)
         {
             Position position = new Position()
             {

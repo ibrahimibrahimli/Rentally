@@ -7,7 +7,7 @@ namespace Entities.Concrete.Dtos
         public string Question { get; set; }
         public string Answer { get; set; }
 
-        public static QA ToFeature(QuestionAnswerDto dto)
+        public static QA ToQuestionAnswer(QuestionAnswerCreateDto dto)
         {
             QA questionAnswer = new QA()
             {

@@ -15,8 +15,6 @@ namespace Entities.Concrete.TableModels
         public string PhoneNumber { get; set; }
         public string Password { get; set; }
         public ICollection<Booking> Bookings { get; set; }
-        //public int FavouriteId { get; set; }
-        //public virtual Favourite Favourite { get; set; }
 
     }
 

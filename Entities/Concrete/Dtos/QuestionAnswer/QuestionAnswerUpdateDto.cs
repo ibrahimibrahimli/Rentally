@@ -7,11 +7,10 @@ namespace Entities.Concrete.Dtos
         public string Question { get; set; }
         public string Answer { get; set; }
 
-        public static QA ToFeature(QuestionAnswerDto dto)
+        public static QA ToQuestionAnswer(QuestionAnswerUpdateDto dto)
         {
             QA questionAnswer = new QA()
             {
-                Id = dto.Id,
                 Question = dto.Question,
                 Answer = dto.Answer,
             };

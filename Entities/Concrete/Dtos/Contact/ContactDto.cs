@@ -16,7 +16,7 @@ namespace Entities.Concrete.Dtos
         public string Message { get; set; }
         public bool IsAnswered { get; set; } = false;
 
-        public static Contact ToContact(ContactUpdateDto dto)
+        public static Contact ToContact(ContactDto dto)
         {
             Contact contact = new Contact()
             {
