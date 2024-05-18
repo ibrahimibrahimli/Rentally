@@ -11,6 +11,8 @@ namespace DataAccess.Configurations
         {
             builder.ToTable("Socials");
 
+            builder.HasIndex(x => new { x.TeamBoardId, x.Deleted }).IsUnique();
+
             builder.Property(x => x.Id)
                 .UseIdentityColumn(seed: DefaultConstantValue.DEFAULT_PRIMARY_SEED_VALUE, increment: 1);
 
@@ -25,7 +27,7 @@ namespace DataAccess.Configurations
             builder.Property(x => x.TwitterUrl)
                 .HasMaxLength(100)
                 .IsRequired();
-            
+
             builder.Property(x => x.PinterestUrl)
                 .HasMaxLength(100)
                 .IsRequired();

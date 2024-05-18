@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240516225737_initial")]
-    partial class initial
+    [Migration("20240517205830_SocialConfigurationUpdated")]
+    partial class SocialConfigurationUpdated
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -419,6 +419,9 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name", "Deleted")
+                        .IsUnique();
+
                     b.ToTable("Positions", (string)null);
                 });
 
@@ -533,7 +536,8 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeamBoardId");
+                    b.HasIndex("TeamBoardId", "Deleted")
+                        .IsUnique();
 
                     b.ToTable("Socials", (string)null);
                 });

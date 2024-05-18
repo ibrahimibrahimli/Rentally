@@ -12,7 +12,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Vəzifəsi</th>
+                            @* <th>Vəzifəsi</th> *@
                             <th>Adı</th>
                             <th>Linkedin Url</th>
                             <th>Twitter Url</th>
@@ -25,7 +25,7 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.TeamBoard.Position.Name</td>
+                                @* <td>@item.TeamBoard.Position.Name</td> *@
                                 <td>@item.TeamBoard.Name</td>
                                 <td>@item.LinkedinUrl</td>
                                 <td>@item.TwitterUrl</td>
@@ -36,7 +36,7 @@
                                     <a asp-action="Edit" asp-route-id="@item.Id">
                                         <i class="fa-solid fa-pen-to-square"></i>
                                     </a> |
-                                    <a item-value="@item.Id" item-title="@(item.TeamBoard.Name + "Hesabları" )" class="btnDelete">
+                                    <a item-value="@item.Id" item-title="@item.TeamBoard.Name" class="btnDelete">
                                         <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
@@ -74,7 +74,7 @@
                     })
                     Swal.fire({
                         title: 'Silindi!',
-                        text: "'" + itemTitle + "' silindi",
+                        text: "'" + itemTitle  + "' adlı şəxsin hesabları silindi",
                         icon: 'success',
 
                     }).then((result) => {

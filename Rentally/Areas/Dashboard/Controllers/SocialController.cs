@@ -18,7 +18,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewData["TeamBoards"] = _teamboardManager.GetTeamBoardWithPosition();
+            ViewData["TeamBoards"] = _teamboardManager.GetTeamBoardWithPosition().Data;
             return View();
         }
 
@@ -35,7 +35,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewData["TeamBoards"] = _teamboardManager.GetTeamBoardWithPosition();
+            ViewData["TeamBoards"] = _teamboardManager.GetTeamBoardWithPosition().Data;
 
             var data = _socialManager.GetById(id).Data;
             return View(data);

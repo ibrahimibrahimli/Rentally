@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240517085427_seconds")]
-    partial class seconds
+    [Migration("20240517205102_initMig")]
+    partial class initMig
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -536,7 +536,8 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeamBoardId");
+                    b.HasIndex("TeamBoardId", "Deleted", "FacebookUrl", "TwitterUrl", "PinterestUrl", "LinkedinUrl")
+                        .IsUnique();
 
                     b.ToTable("Socials", (string)null);
                 });

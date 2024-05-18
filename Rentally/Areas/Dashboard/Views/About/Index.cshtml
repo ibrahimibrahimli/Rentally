@@ -1,0 +1,49 @@
+﻿@model List<About>
+
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <form action="About/Create" method="get">
+                    <p>
+                        <button class="btn btn-primary">@DefaultConstantValue.ADD_MESSAGE</button>
+                    </p>
+                </form>
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Başlıq</th>
+                            <th>Mətn</th>
+                           @*  <th>Avtomobil Sayı</th>
+                            <th>Müştəri Sayı</th>
+                            <th>Sifariş Sayı</th> *@
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Title</td>
+                                <td>@item.Description</td>
+                                <td>@ViewData["TotalCarsCount"]</td>
+                                @* <td>@(item.Message.Length > 70 ? item.Message.Substring(0, 70) + "..." : item.Message)</td>
+                                <td>@(item.IsAnswered ? "Bəli" : "Xeyr")</td> *@
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a> |
+                                    <a item-value="@item.Id" item-title="@item.Title" class="btnDelete">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+

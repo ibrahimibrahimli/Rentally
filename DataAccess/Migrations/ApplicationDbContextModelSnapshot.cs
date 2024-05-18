@@ -533,7 +533,8 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeamBoardId");
+                    b.HasIndex("TeamBoardId", "Deleted")
+                        .IsUnique();
 
                     b.ToTable("Socials", (string)null);
                 });

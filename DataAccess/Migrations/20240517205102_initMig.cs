@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class initMig : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -428,9 +428,16 @@ namespace DataAccess.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Socials_TeamBoardId",
+                name: "IX_Positions_Name_Deleted",
+                table: "Positions",
+                columns: new[] { "Name", "Deleted" },
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Socials_TeamBoardId_Deleted_FacebookUrl_TwitterUrl_PinterestUrl_LinkedinUrl",
                 table: "Socials",
-                column: "TeamBoardId");
+                columns: new[] { "TeamBoardId", "Deleted", "FacebookUrl", "TwitterUrl", "PinterestUrl", "LinkedinUrl" },
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_TeamBoards_PositionId",
