@@ -13,7 +13,9 @@ namespace DataAccess.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source = LAPTOP-JBUKPKDJ; Initial Catalog = RentallyDataBase; Integrated Security= true;Encrypt = false;");
+            optionsBuilder.UseSqlServer(@"Data Source = LAPTOP-JBUKPKDJ;
+                                         Initial Catalog = RentallyDataBase;
+                                         Integrated Security= true;Encrypt = false;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -22,6 +24,7 @@ namespace DataAccess.Context
         }
 
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<About> Abouts { get; set; }
         public DbSet<CarCategory> CarCategories { get; set; }
         public DbSet<Car> Cars { get; set; }
         public DbSet<Contact> Contacts { get; set; }
@@ -31,10 +34,8 @@ namespace DataAccess.Context
         public DbSet<New> News {  get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Slider> Sliders { get; set; }
-        public DbSet<Social> Socials { get; set; }
         public DbSet<TeamBoard> TeamBoards { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }    
         public DbSet<User> Users { get; set; }
-        public DbSet<About> WeExperiences { get; set; }
     }
 }

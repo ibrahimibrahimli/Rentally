@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,13 +22,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Testimonial testimonial)
+        public IActionResult Create(TestimonialCreateDto dto)
         {
-            var result = _testimonialManager.Add(testimonial);
+            var result = _testimonialManager.Add(dto);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
-            return View(testimonial);
+            return View(dto);
         }
 
         [HttpGet]
@@ -39,13 +40,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         [HttpPost]
 
-        public IActionResult Edit(Testimonial testimonial)
+        public IActionResult Edit(TestimonialUpdateDto dto)
         {
-            var result = _testimonialManager.Update(testimonial);
+            var result = _testimonialManager.Update(dto);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
-            return View(testimonial);
+            return View(dto);
         }
 
         [HttpPost]

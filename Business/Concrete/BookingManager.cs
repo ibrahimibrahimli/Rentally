@@ -4,6 +4,7 @@ using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,10 @@ namespace Business.Concrete
     public class BookingManager : IBookingService
     {
         BookingDal bookingDal = new();
-        public IResult Add(Booking entity)
+        public IResult Add(BookingCreateDto dto)
         {
-            bookingDal.Add(entity);
+            var model = BookingCreateDto.ToBooking(dto);
+            bookingDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
@@ -38,15 +40,16 @@ namespace Business.Concrete
             return new SuccessDataResult<Booking>(bookingDal.GetById(id));
         }
 
-        public IDataResult<List<Booking>> GetTeamBoardWithPosition()
+        public IDataResult<List<BookingDto>> GetTeamBoardWithPosition()
         {
-            return new SuccessDataResult<List<Booking>>(bookingDal.GetBookingWithUserIdAndCarId());
+            return new SuccessDataResult<List<BookingDto>>(bookingDal.GetBookingWithUserIdAndCarId());
         }
 
-        public IResult Update(Booking entity)
+        public IResult Update(BookingUpdateDto dto)
         {
-            entity.UpdatedDate = DateTime.Now;
-            bookingDal.Update(entity);
+            var model = BookingUpdateDto.ToBooking(dto);
+            model.UpdatedDate = DateTime.Now;
+            bookingDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }

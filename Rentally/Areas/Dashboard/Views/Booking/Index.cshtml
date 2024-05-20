@@ -1,4 +1,4 @@
-﻿@model List<Booking>
+﻿@model List<BookingDto>
 
 <div class="container-fluid">
     <div class="card shadow mb-4">
@@ -13,29 +13,33 @@
                     <thead>
                         <tr>
                             <th>Sifarişçi</th>
-                            <th>Ad</th>
-                            <th>Soyad</th>
-                            <th>Şəkil URL-si</th>
+                            <th>Maşın Adı</th>
+                            <th>Başlanğıc nöqtəsi</th>
+                            <th>Bitiş nöqtəsi</th>
+                            <th>Başlanğıc tarixi</th>
+                            <th>Bitiş tarixi</th>
+                            <th>Status</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            @* <tr>
-                                <td>@item.User.Name</td>
-                                <td>@item.Car.Brand</td>
-                                <td>@item.Surname</td>
-                                <td>@item.ImageUrl</td>
-                                <td>
+                            <tr>
+                                <td>@item.UserName</td>
+                                <td>@item.CarBrand</td>
+                                <td>@item.PickUpLocation</td>
+                                <td>@item.DropOffLocation</td>
+                                <td>@item.PickUpDateTime</td>
+                                <td>@item.DropOffDateTime</td>
+                                <td>@(item.Status == 0 ? "Gözlənilir" : item.Status == 1 ?
+                                    "Təsdiqlənib" : "Ləğv edilib")</td>
+                                <td class="d-flex align-items-center">
                                     <a asp-action="Edit" asp-route-id="@item.Id">
                                         <i class="fa-solid fa-pen-to-square"></i>
-                                    </a> |
-                                    <a item-value="@item.Id" item-title="@item.Name" class="btnDelete">
-                                        <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
-                            </tr> *@
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -62,7 +66,7 @@
                     let itemTitle = e.currentTarget.attributes[1].value;
                     $.ajax({
                         method: "POST",
-                        url: "teamboard/delete/",
+                        url: "booking/delete/",
                         data: {
                             id: itemId
                         }
@@ -73,7 +77,7 @@
                         icon: 'success',
 
                     }).then((result) => {
-                        window.location = "teamboard"
+                        window.location = "booking"
                     })
 
                 }

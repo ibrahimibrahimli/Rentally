@@ -1,4 +1,5 @@
 ﻿using Core.Results.Abstract;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace Business.Abstract
 {
     public interface IQAService
     {
-        IResult Add(QA entity);
-        IResult Update(QA entity);
+        IResult Add(QuestionAnswerCreateDto dto);
+        IResult Update(QuestionAnswerUpdateDto dto);
         IResult Delete(int id);
         IDataResult<List<QA>> GetAll();
         IDataResult<QA> GetById(int id);

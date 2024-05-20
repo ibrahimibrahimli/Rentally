@@ -10,7 +10,7 @@ namespace Entities.Concrete.Dtos
         public string Message { get; set; }
         public bool IsAnswered { get; set; } = false;
 
-        public static Contact ToCarCategory(ContactCreateDto dto)
+        public static Contact ToContact(ContactCreateDto dto)
         {
             Contact contact = new Contact()
             {

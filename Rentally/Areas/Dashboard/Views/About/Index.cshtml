@@ -1,22 +1,26 @@
-﻿@model List<About>
+﻿@model List<AboutDto>
 
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <form action="About/Create" method="get">
-                    <p>
-                        <button class="btn btn-primary">@DefaultConstantValue.ADD_MESSAGE</button>
-                    </p>
-                </form>
+                @if (ViewBag.ShowButton)
+                {
+                    <form action="About/Create" method="get">
+                        <p>
+                            <button class="btn btn-primary">@DefaultConstantValue.ADD_MESSAGE</button>
+                        </p>
+                    </form>
+                }
+                
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Başlıq</th>
                             <th>Mətn</th>
-                           @*  <th>Avtomobil Sayı</th>
+                            <th>Avtomobil Sayı</th>
                             <th>Müştəri Sayı</th>
-                            <th>Sifariş Sayı</th> *@
+                            <th>Sifariş Sayı</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -24,17 +28,14 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.Title</td>
-                                <td>@item.Description</td>
-                                <td>@ViewData["TotalCarsCount"]</td>
-                                @* <td>@(item.Message.Length > 70 ? item.Message.Substring(0, 70) + "..." : item.Message)</td>
-                                <td>@(item.IsAnswered ? "Bəli" : "Xeyr")</td> *@
-                                <td>
+                                <td>@(item.Title.Length > 30 ? item.Title.Substring(0,30) + "..." :item.Title)</td>
+                                <td>@(item.Description.Length > 30 ? item.Description.Substring(0, 30) + "..." : item.Description)</td>
+                                <td>@item.Cars</td>
+                                <td>@item.Customers</td>
+                                <td>@item.CompletedOrders</td>
+                                <td class="d-flex justify-content-center">
                                     <a asp-action="Edit" asp-route-id="@item.Id">
                                         <i class="fa-solid fa-pen-to-square"></i>
-                                    </a> |
-                                    <a item-value="@item.Id" item-title="@item.Title" class="btnDelete">
-                                        <i class="fas fa-trash"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -45,5 +46,42 @@
         </div>
     </div>
 </div>
+@section Scripts {
+    <script>
+        $(".btnDelete").click(function (e) {
+            Swal.fire({
+                title: 'Əminsən?',
+                text: "Geri döndərə bilməyəcəksiz!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonText: "Ləğv et",
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Bəli '
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    let itemId = e.currentTarget.attributes[0].value;
+                    let itemTitle = e.currentTarget.attributes[1].value;
+                    $.ajax({
+                        method: "POST",
+                        url: "about/delete/",
+                        data: {
+                            id: itemId
+                        }
+                    })
+                    Swal.fire({
+                        title: 'Silindi!',
+                        text: "'" + itemTitle + "' silindi",
+                        icon: 'success',
+
+                    }).then((result) => {
+                        window.location = "about"
+                    })
+
+                }
+            })
+        })
+    </script>
+}
 
 

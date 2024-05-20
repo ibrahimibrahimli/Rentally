@@ -1,5 +1,10 @@
 
 
+using Business.Abstract;
+using Business.Concrete;
+using DataAccess.Abstract;
+using DataAccess.Concrete;
+using DataAccess.Context;
 using Microsoft.AspNetCore.Builder;
 
 namespace Rentally
@@ -12,6 +17,17 @@ namespace Rentally
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddDbContext<ApplicationDbContext>();
+
+            builder.Services.AddScoped<ICarCategoryDal, CarCategoryDal>();
+            builder.Services.AddScoped<ICarCategoryService, CarCategoryManager>();
+
+            builder.Services.AddScoped<IContactDal, ContactDal>();
+            builder.Services.AddScoped<IContactService, ContactManager>();
+
+            builder.Services.AddScoped<ICarDal, CarDal>();
+            builder.Services.AddScoped<ICarService, CarManager>();
 
             var app = builder.Build();
 

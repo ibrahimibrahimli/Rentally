@@ -14,7 +14,7 @@ namespace Entities.Concrete.Dtos
         public string CarBrand { get; set; }
         public string UserName { get; set; }
 
-        public static Booking ToBookingDto(BookingCreateDto dto)
+        public static Booking ToBooking(BookingCreateDto dto)
         {
             Booking booking = new Booking()
             {

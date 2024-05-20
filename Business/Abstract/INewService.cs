@@ -1,4 +1,5 @@
 ﻿using Core.Results.Abstract;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,8 @@ namespace Business.Abstract
 {
     public interface INewService
     {
-        IResult Add(New entity);
-        IResult Update(New entity);
+        IResult Add(NewCreateDto dto);
+        IResult Update(NewUpdateDto dto);
         IResult Delete(int id);
         IDataResult<List<New>> GetAll();
         IDataResult<New> GetById(int id);

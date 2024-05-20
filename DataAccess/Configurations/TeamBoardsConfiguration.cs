@@ -26,11 +26,26 @@ namespace DataAccess.Configurations
                 .HasMaxLength(200)
                 .IsRequired();
 
+            builder.Property(x => x.LinkedinUrl)
+                .HasMaxLength(200)
+                .IsRequired();
+            builder.Property(x => x.PinterestUrl)
+                .HasMaxLength(200)
+                .IsRequired();
+
+            builder.Property(x => x.FacebookUrl)
+                .HasMaxLength(200)
+                .IsRequired();
+
+            builder.Property(x => x.TwitterUrl)
+                .HasMaxLength(200)
+                .IsRequired();
+
             builder.HasOne(x => x.Position)
                 .WithMany(x => x.TeamBoards)
                 .HasForeignKey(x => x.PositionId);
 
-            builder.HasIndex(x => new { x.Name, x.Deleted })
+            builder.HasIndex(x => new { x.Id, x.Deleted })
                 .IsUnique()
                 .HasDatabaseName("idx_Name_Deleted");
         } 

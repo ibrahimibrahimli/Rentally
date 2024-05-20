@@ -3,6 +3,7 @@ using Business.BaseMessages;
 using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using System;
 using System.Collections.Generic;
@@ -15,16 +16,20 @@ namespace Business.Concrete
     public class FeatureManager : IFeatureService
     {
         FeatureDal featureDal = new();
-        public IResult Add(Feature entity)
+        public IResult Add(FeatureCreateDto dto)
         {
-            featureDal.Add(entity);
+            var model = FeatureCreateDto.ToFeature(dto);
+
+            featureDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
-        public IResult Update(Feature entity)
+        public IResult Update(FeatureUpdateDto dto)
         {
-            entity.UpdatedDate = DateTime.Now;
-            featureDal.Update(entity);
+            var model = FeatureUpdateDto.ToFeature(dto);
+
+            model.UpdatedDate = DateTime.Now;
+            featureDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }
@@ -49,6 +54,6 @@ namespace Business.Concrete
             return new SuccessDataResult<Feature>(featureDal.GetById(id));
         }
 
-      
+
     }
 }

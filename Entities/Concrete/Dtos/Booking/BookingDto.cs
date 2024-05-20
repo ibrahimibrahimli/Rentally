@@ -9,6 +9,7 @@ namespace Entities.Concrete.Dtos
 {
     public class BookingDto
     {
+        public int Id { get; set; }
         public int UserId { get; set; }
         public int CarID { get; set; }
         public string PickUpLocation { get; set; }

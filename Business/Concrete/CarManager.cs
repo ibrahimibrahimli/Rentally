@@ -16,11 +16,15 @@ namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
-        CarDal carDal = new();
+        private readonly ICarDal _carDal;
+        public CarManager(ICarDal carDal)
+        {
+            _carDal = carDal;
+        }
 
         public IResult Add(Car entity)
         {
-            carDal.Add(entity);
+            _carDal.Add(entity);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
@@ -28,7 +32,7 @@ namespace Business.Concrete
         public IResult Update(Car entity)
         {
             entity.UpdatedDate = DateTime.Now;
-            carDal.Update(entity);
+            _carDal.Update(entity);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }
@@ -38,7 +42,7 @@ namespace Business.Concrete
             var data = GetById(id).Data;
             data.Deleted = id;
 
-            carDal.Update(data);
+            _carDal.Update(data);
 
             return new SuccessResult(UIMessages.SUCCESS_DELETED_MESSAGE);
         }
@@ -47,12 +51,12 @@ namespace Business.Concrete
 
         public IDataResult<Car> GetById(int id)
         {
-            return new SuccessDataResult<Car>(carDal.GetById(id));
+            return new SuccessDataResult<Car>(_carDal.GetById(id));
         }
 
         public IDataResult<List<CarDto>> GetCarWithCategory()
         {
-            return new SuccessDataResult<List<CarDto>>(carDal.GetCarWithCategory());
+            return new SuccessDataResult<List<CarDto>>(_carDal.GetCarWithCategory());
         }
     }
 }

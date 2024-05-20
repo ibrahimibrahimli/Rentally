@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,7 +11,9 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         AboutManager _aboutService = new();
         public IActionResult Index()
         {
-            var data = _aboutService.GetAll().Data;
+            
+            var data = _aboutService.GetAboutWithCarCustomerBooking().Data;
+            ViewBag.ShowButton = data.Count() == 0;
             return View(data);
         }
 
@@ -21,13 +24,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(About about)
+        public IActionResult Create(AboutCreateDto dto)
         {
-            var result = _aboutService.Add(about);
+            var result = _aboutService.Add(dto);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
-            return View(about);
+            return View(dto);
         }
 
         [HttpGet]
@@ -39,13 +42,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         [HttpPost]
 
-        public IActionResult Edit(About about)
+        public IActionResult Edit(AboutUpdateDto dto)
         {
-            var result = _aboutService.Update(about);
+            var result = _aboutService.Update(dto);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
-            return View(about);
+            return View(dto);
         }
     }
 }

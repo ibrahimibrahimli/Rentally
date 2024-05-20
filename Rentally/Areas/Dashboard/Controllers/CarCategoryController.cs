@@ -9,10 +9,15 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     [Area("Dashboard")]
     public class CarCategoryController : Controller
     {
-        CarCategoryManager _carCategoryManager = new();
+        private readonly ICarCategoryService _carCategoryService;
+        public CarCategoryController(ICarCategoryService carCategoryService)
+        {
+            _carCategoryService = carCategoryService;
+        }
+
         public IActionResult Index()
         {
-            var data = _carCategoryManager.GetAll().Data;
+            var data = _carCategoryService.GetAll().Data;
             return View(data);
         }
 
@@ -25,7 +30,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Create(CarCategoryCreateDto dto)
         {
-            var result = _carCategoryManager.Add(dto);
+            var result = _carCategoryService.Add(dto);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
@@ -35,7 +40,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var data = _carCategoryManager.GetById(id).Data;
+            var data = _carCategoryService.GetById(id).Data;
             return View(data);
         }
 
@@ -43,7 +48,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Edit(CarCategoryUpdateDto dto)
         {
-            var result = _carCategoryManager.Update(dto);
+            var result = _carCategoryService.Update(dto);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
@@ -54,7 +59,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Delete(int id)
         {
-            var result = _carCategoryManager.Delete(id);
+            var result = _carCategoryService.Delete(id);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 

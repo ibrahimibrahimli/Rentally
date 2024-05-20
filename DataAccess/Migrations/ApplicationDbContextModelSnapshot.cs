@@ -75,7 +75,7 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WeExperiences", (string)null);
+                    b.ToTable("Abouts", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concrete.TableModels.Booking", b =>
@@ -491,7 +491,7 @@ namespace DataAccess.Migrations
                     b.ToTable("Sliders", (string)null);
                 });
 
-            modelBuilder.Entity("Entities.Concrete.TableModels.Social", b =>
+            modelBuilder.Entity("Entities.Concrete.TableModels.TeamBoard", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -507,53 +507,15 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("FacebookUrl")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("LinkedinUrl")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("PinterestUrl")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("TeamBoardId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TwitterUrl")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TeamBoardId", "Deleted")
-                        .IsUnique();
-
-                    b.ToTable("Socials", (string)null);
-                });
-
-            modelBuilder.Entity("Entities.Concrete.TableModels.TeamBoard", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 10000L);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Deleted")
-                        .HasColumnType("int");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("LinkedinUrl")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
@@ -563,6 +525,11 @@ namespace DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("PinterestUrl")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<int>("PositionId")
                         .HasColumnType("int");
 
@@ -571,6 +538,11 @@ namespace DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("TwitterUrl")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
@@ -578,7 +550,7 @@ namespace DataAccess.Migrations
 
                     b.HasIndex("PositionId");
 
-                    b.HasIndex("Name", "Deleted")
+                    b.HasIndex("Id", "Deleted")
                         .IsUnique()
                         .HasDatabaseName("idx_Name_Deleted");
 
@@ -750,17 +722,6 @@ namespace DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Entities.Concrete.TableModels.Social", b =>
-                {
-                    b.HasOne("Entities.Concrete.TableModels.TeamBoard", "TeamBoard")
-                        .WithMany()
-                        .HasForeignKey("TeamBoardId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("TeamBoard");
                 });
 
             modelBuilder.Entity("Entities.Concrete.TableModels.TeamBoard", b =>

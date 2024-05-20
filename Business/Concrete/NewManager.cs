@@ -3,15 +3,18 @@ using Business.BaseMessages;
 using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 namespace Business.Concrete
 {
     public class NewManager : INewService
     {
         NewDal newDal = new();
-        public IResult Add(New entity)
+        public IResult Add(NewCreateDto dto)
         {
-            newDal.Add(entity);
+            var model  = NewCreateDto.ToNew(dto);
+
+            newDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
@@ -36,10 +39,11 @@ namespace Business.Concrete
             return new SuccessDataResult<New>(newDal.GetById(id)); 
         }
 
-        public IResult Update(New entity)
+        public IResult Update(NewUpdateDto dto)
         {
-            entity.UpdatedDate = DateTime.Now;
-            newDal.Update(entity);
+            var model = NewUpdateDto.ToNew( dto);
+            model.UpdatedDate = DateTime.Now;
+            newDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }

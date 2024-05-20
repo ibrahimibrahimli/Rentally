@@ -4,6 +4,7 @@ using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using System;
 using System.Collections.Generic;
@@ -16,17 +17,19 @@ namespace Business.Concrete
     public class SliderManager : ISliderService
     {
         SliderDal sliderDal = new();
-        public IResult Add(Slider entity)
+        public IResult Add(SliderCreateDto dto)
         {
-            sliderDal.Add(entity);
+            var model = SliderCreateDto.ToSlider(dto);
+            sliderDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
 
-        public IResult Update(Slider entity)
+        public IResult Update(SliderUpdateDto dto)
         {
-            entity.UpdatedDate = DateTime.Now;
-            sliderDal.Update(entity);
+            var model = SliderUpdateDto.ToSlider( dto );
+            model.UpdatedDate = DateTime.Now;
+            sliderDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }

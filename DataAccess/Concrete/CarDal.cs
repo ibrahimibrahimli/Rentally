@@ -9,7 +9,12 @@ namespace DataAccess.Concrete
 {
     public class CarDal : BaseRepository<Car, ApplicationDbContext>, ICarDal
     {
-        ApplicationDbContext _context = new();
+        private readonly ApplicationDbContext _context;
+
+        public CarDal(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public List<CarDto> GetCarWithCategory()
         {
 

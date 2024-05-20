@@ -4,6 +4,7 @@ using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,10 @@ namespace Business.Concrete
     {
         UserDal userDal = new();
 
-        public IResult Add(User entity)
+        public IResult Add(UserCreateDto dto)
         {
-            userDal.Add(entity);
+            var model = UserCreateDto.ToUser(dto);
+            userDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
@@ -44,10 +46,11 @@ namespace Business.Concrete
             return new SuccessDataResult<User>(userDal.GetById(id));
         }
 
-        public IResult Update(User entity)
+        public IResult Update(UserUpdateDto dto)
         {
-            entity.UpdatedDate = DateTime.Now;
-            userDal.Update(entity);
+            var model = UserUpdateDto.ToUser(dto);
+            model.UpdatedDate = DateTime.Now;
+            userDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }

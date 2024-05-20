@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,13 +22,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Feature feature)
+        public IActionResult Create(FeatureCreateDto dto)
         {
-            var result = _featureManager.Add(feature);
+            var result = _featureManager.Add(dto);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
-            return View(feature);
+            return View(dto);
         }
 
         [HttpGet]
@@ -39,13 +40,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         [HttpPost]
 
-        public IActionResult Edit(Feature feature)
+        public IActionResult Edit(FeatureUpdateDto dto)
         {
-            var result = _featureManager.Update(feature);
+            var result = _featureManager.Update(dto);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
-            return View(feature);
+            return View(dto);
         }
 
         [HttpPost]

@@ -1,27 +1,22 @@
-﻿@model SliderUpdateDto
+﻿@model About
 
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create" method="post">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Title" class="control-label">Slayd Başlığı</label>
+                <label asp-for="Title" class="control-label">Başlığ</label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label">Slayd Mətni</label>
+                <label asp-for="Description" class="control-label">Mətn</label>
                 <textarea asp-for="Description" class="form-control" id="answer"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label">Slayd Şəkli Url-si</label>
-                <input asp-for="ImageUrl" class="form-control" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="@DefaultConstantValue.ADD_MESSAGE" class="btn btn-primary" />
+                <input type="submit" value="@DefaultConstantValue.ADD_MESSAGE" class="btn btn-primary"/>
             </div>
         </form>
     </div>

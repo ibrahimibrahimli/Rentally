@@ -4,6 +4,7 @@ using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using System;
 using System.Collections.Generic;
@@ -16,17 +17,20 @@ namespace Business.Concrete
     public class QAManager : IQAService
     {
         QADal qaDal = new();
-        public IResult Add(QA entity)
+        public IResult Add(QuestionAnswerCreateDto dto)
         {
-            qaDal.Add(entity);
+            var model = QuestionAnswerCreateDto.ToQuestionAnswer(dto);
+
+            qaDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
 
-        public IResult Update(QA entity)
+        public IResult Update(QuestionAnswerUpdateDto dto)
         {
-            entity.UpdatedDate = DateTime.Now;
-            qaDal.Update(entity);
+            var model = QuestionAnswerUpdateDto.ToQuestionAnswer(dto);
+            model.UpdatedDate = DateTime.Now;
+            qaDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }

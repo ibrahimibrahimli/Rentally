@@ -16,7 +16,7 @@ namespace Entities.Concrete.Dtos
         public string ImageUrl { get; set; }
         public string  CarCategoryName { get; set; }
 
-        public static Car ToCarCategory(CarUpdateDto dto)
+        public static Car ToCar(CarUpdateDto dto)
         {
             Car car = new Car()
             { 

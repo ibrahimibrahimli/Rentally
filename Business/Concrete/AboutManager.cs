@@ -4,6 +4,7 @@ using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using System;
 using System.Collections.Generic;
@@ -16,16 +17,19 @@ namespace Business.Concrete
     public class AboutManager : IAboutService
     {
         AboutDal aboutDal = new();
-        public IResult Add(About entity)
+        public IResult Add(AboutCreateDto dto)
         {
-            aboutDal.Add(entity);
+            var model = AboutCreateDto.ToAbout(dto);
+            aboutDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
 
-        public IDataResult<List<About>> GetAll()
+ 
+
+        public IDataResult<List<AboutDto>> GetAboutWithCarCustomerBooking()
         {
-            return new SuccessDataResult<List<About>>(aboutDal.GetAll(x => x.Deleted == 0));
+            return new SuccessDataResult<List<AboutDto>>(aboutDal.GetAboutWithCarCustomerBooking());
         }
 
         public IDataResult<About> GetById(int id)
@@ -33,10 +37,11 @@ namespace Business.Concrete
             return new SuccessDataResult<About>(aboutDal.GetById(id));
         }
 
-        public IResult Update(About entity)
+        public IResult Update(AboutUpdateDto dto)
         {
-            entity.UpdatedDate = DateTime.Now;
-            aboutDal.Update(entity);
+            var model = AboutUpdateDto.ToAbout(dto);
+            model.UpdatedDate = DateTime.Now;
+            aboutDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }

@@ -1,4 +1,5 @@
 ﻿using Core.Results.Abstract;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ namespace Business.Abstract
 {
     public interface ITeamBoardService
     {
-        IResult Add(TeamBoard entity);
-        IResult Update(TeamBoard entity);
+        IResult Add(TeamBoardCreateDto dto);
+        IResult Update(TeamBoardUpdateDto dto);
         IResult Delete(int id);
-        IDataResult<List<TeamBoard>> GetTeamBoardWithPosition();
+        IDataResult<List<TeamBoardDto>> GetTeamBoardWithPosition();
         IDataResult<TeamBoard> GetById(int id);
     }
 }

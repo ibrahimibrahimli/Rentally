@@ -1,4 +1,4 @@
-﻿@model QuestionAnswerCreateDto
+﻿@model AboutCreateDto
 
 <hr />
 <div class="row">
@@ -6,15 +6,16 @@
         <form asp-action="Create" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Question" class="control-label">Sual</label>
-                <input asp-for="Question" class="form-control" />
-                <span asp-validation-for="Question" class="text-danger"></span>
+                <label asp-for="Title" class="control-label">Başlığ</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Answer" class="control-label">Cavab</label>
-                <input asp-for="Answer" class="form-control" id="answer" />
-                <span asp-validation-for="Answer" class="text-danger"></span>
+                <label asp-for="Description" class="control-label">Mətn</label>
+                <textarea asp-for="Description" class="form-control" id="answer"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
                 <input type="submit" value="@DefaultConstantValue.ADD_MESSAGE" class="btn btn-primary" />
             </div>

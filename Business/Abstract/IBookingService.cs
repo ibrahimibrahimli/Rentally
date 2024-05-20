@@ -1,4 +1,5 @@
 ﻿using Core.Results.Abstract;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ namespace Business.Abstract
 {
     public interface IBookingService
     {
-        IResult Add(Booking entity);
-        IResult Update(Booking entity);
+        IResult Add(BookingCreateDto entity);
+        IResult Update(BookingUpdateDto entity);
         IResult Delete(int id);
-        IDataResult<List<Booking>> GetTeamBoardWithPosition();
+        IDataResult<List<BookingDto>> GetTeamBoardWithPosition();
         IDataResult<Booking> GetById(int id);
     }
 }

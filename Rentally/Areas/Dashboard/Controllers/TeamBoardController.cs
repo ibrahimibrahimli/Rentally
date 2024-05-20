@@ -1,4 +1,5 @@
 ﻿using Business.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,13 +24,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(TeamBoard teamBoard)
+        public IActionResult Create(TeamBoardCreateDto dto)
         {
-            var result = _teamBoardManager.Add(teamBoard);
+            var result = _teamBoardManager.Add(dto);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
-            return View(teamBoard);
+            return View(dto);
         }
 
         [HttpGet]
@@ -42,13 +43,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         [HttpPost]
 
-        public IActionResult Edit(TeamBoard teamBoard)
+        public IActionResult Edit(TeamBoardUpdateDto dto)
         {
-            var result = _teamBoardManager.Update(teamBoard);
+            var result = _teamBoardManager.Update(dto);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
-            return View(teamBoard);
+            return View(dto);
         }
 
         [HttpPost]

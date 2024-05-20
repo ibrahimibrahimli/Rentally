@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,25 +8,33 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     [Area("Dashboard")]
     public class CarController : Controller
     {
-        CarManager _carManager = new();
-        CarCategoryManager _carCategoryManager = new();
+        private readonly ICarService _carService;
+        private readonly ICarCategoryService _carCategoryService ;
+
+        public CarController(ICarCategoryService carCategoryService, ICarService carService)
+        {
+
+            _carCategoryService = carCategoryService;
+            _carService = carService;
+        }
+
         public IActionResult Index()
         {
-            var data = _carManager.GetCarWithCategory().Data;
+            var data = _carService.GetCarWithCategory().Data;
             return View(data);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            ViewData["CarCategories"] = _carCategoryManager.GetAll().Data;
+            ViewData["CarCategories"] = _carCategoryService.GetAll().Data;
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(Car car)
         {
-            var result = _carManager.Add(car);
+            var result = _carService.Add(car);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
@@ -36,9 +45,9 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Edit(int id)
         {
-            ViewData["CarCategories"] = _carCategoryManager.GetAll().Data;
+            ViewData["CarCategories"] = _carCategoryService.GetAll().Data;
 
-            var data = _carManager.GetById(id).Data;
+            var data = _carService.GetById(id).Data;
 
             return View(data);
         }
@@ -47,7 +56,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Edit(Car car)
         {
-            var result = _carManager.Update(car);
+            var result = _carService.Update(car);
 
             if (result.IsSuccess)
             {
@@ -60,7 +69,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Delete(int id)
         {
-            var result = _carManager.Delete(id);
+            var result = _carService.Delete(id);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 

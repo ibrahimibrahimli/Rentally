@@ -4,6 +4,7 @@ using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 
 namespace Business.Concrete
@@ -11,9 +12,10 @@ namespace Business.Concrete
     public class TeamBoardManager : ITeamBoardService
     {
         TeamBoardDal teamBoardDal = new();
-        public IResult Add(TeamBoard entity)
+        public IResult Add(TeamBoardCreateDto dto)
         {
-            teamBoardDal.Add(entity);
+            var model = TeamBoardCreateDto.ToTeamboard(dto);
+            teamBoardDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
@@ -28,20 +30,26 @@ namespace Business.Concrete
             return new SuccessResult(UIMessages.SUCCESS_DELETED_MESSAGE);
         }
 
+        public IDataResult<List<TeamBoard>> GetAll()
+        {
+            return new SuccessDataResult<List<TeamBoard>>(teamBoardDal.GetAll(x => x.Deleted == 0));
+        }
+
         public IDataResult<TeamBoard> GetById(int id)
         {
             return new SuccessDataResult<TeamBoard>(teamBoardDal.GetById(id));
         }
 
-        public IDataResult<List<TeamBoard>> GetTeamBoardWithPosition()
+        public IDataResult<List<TeamBoardDto>> GetTeamBoardWithPosition()
         {
-            return new SuccessDataResult<List<TeamBoard>>(teamBoardDal.GetTeamBoardWithPosition());
+            return new SuccessDataResult<List<TeamBoardDto>>(teamBoardDal.GetTeamBoardWithPosition());
         }
 
-        public IResult Update(TeamBoard entity)
+        public IResult Update(TeamBoardUpdateDto dto)
         {
-            entity.UpdatedDate = DateTime.Now;
-            teamBoardDal.Update(entity);
+            var model = TeamBoardUpdateDto.ToTeamboard(dto);
+            model.UpdatedDate = DateTime.Now;
+            teamBoardDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }

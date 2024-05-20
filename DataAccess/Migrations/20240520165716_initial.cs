@@ -12,6 +12,26 @@ namespace DataAccess.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Abouts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "10000, 1"),
+                    Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
+                    CompletedOrders = table.Column<int>(type: "int", nullable: false),
+                    Customers = table.Column<int>(type: "int", nullable: false),
+                    Cars = table.Column<int>(type: "int", nullable: false),
+                    Deleted = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Abouts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CarCategories",
                 columns: table => new
                 {
@@ -177,26 +197,6 @@ namespace DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "WeExperiences",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "10000, 1"),
-                    Title = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
-                    CompletedOrders = table.Column<int>(type: "int", nullable: false),
-                    Customers = table.Column<int>(type: "int", nullable: false),
-                    Cars = table.Column<int>(type: "int", nullable: false),
-                    Deleted = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_WeExperiences", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Cars",
                 columns: table => new
                 {
@@ -235,6 +235,10 @@ namespace DataAccess.Migrations
                     Surname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     PositionId = table.Column<int>(type: "int", nullable: false),
+                    FacebookUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    TwitterUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    LinkedinUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    PinterestUrl = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Deleted = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -302,32 +306,6 @@ namespace DataAccess.Migrations
                         name: "FK_Bookings_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Socials",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "10000, 1"),
-                    TeamBoardId = table.Column<int>(type: "int", nullable: false),
-                    FacebookUrl = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    TwitterUrl = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    LinkedinUrl = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    PinterestUrl = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Deleted = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Socials", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Socials_TeamBoards_TeamBoardId",
-                        column: x => x.TeamBoardId,
-                        principalTable: "TeamBoards",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -434,15 +412,9 @@ namespace DataAccess.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Socials_TeamBoardId_Deleted",
-                table: "Socials",
-                columns: new[] { "TeamBoardId", "Deleted" },
-                unique: true);
-
-            migrationBuilder.CreateIndex(
                 name: "idx_Name_Deleted",
                 table: "TeamBoards",
-                columns: new[] { "Name", "Deleted" },
+                columns: new[] { "Id", "Deleted" },
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -478,6 +450,9 @@ namespace DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Abouts");
+
+            migrationBuilder.DropTable(
                 name: "Bookings");
 
             migrationBuilder.DropTable(
@@ -499,13 +474,10 @@ namespace DataAccess.Migrations
                 name: "Sliders");
 
             migrationBuilder.DropTable(
-                name: "Socials");
+                name: "TeamBoards");
 
             migrationBuilder.DropTable(
                 name: "Testimonials");
-
-            migrationBuilder.DropTable(
-                name: "WeExperiences");
 
             migrationBuilder.DropTable(
                 name: "Cars");
@@ -514,16 +486,13 @@ namespace DataAccess.Migrations
                 name: "Favourites");
 
             migrationBuilder.DropTable(
-                name: "TeamBoards");
+                name: "Positions");
 
             migrationBuilder.DropTable(
                 name: "CarCategories");
 
             migrationBuilder.DropTable(
                 name: "Users");
-
-            migrationBuilder.DropTable(
-                name: "Positions");
         }
     }
 }

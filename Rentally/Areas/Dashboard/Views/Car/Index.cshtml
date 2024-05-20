@@ -70,7 +70,7 @@
                     let itemTitle = e.currentTarget.attributes[1].value;
                     $.ajax({
                         method: "POST",
-                        url: "carcategory/delete/",
+                        url: "car/delete/",
                         data: {
                             id: itemId
                         }
@@ -81,7 +81,7 @@
                         icon: 'success',
 
                     }).then((result) => {
-                        window.location = "carcategory"
+                        window.location = "car"
                     })
 
                 }

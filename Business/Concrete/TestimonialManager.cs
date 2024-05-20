@@ -4,6 +4,7 @@ using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using System;
 using System.Collections.Generic;
@@ -16,17 +17,19 @@ namespace Business.Concrete
     public class TestimonialManager : ITestimonialService
     {
         TestimonialDal testimonialDal = new();
-        public IResult Add(Testimonial entity)
+        public IResult Add(TestimonialCreateDto dto)
         {
-            testimonialDal.Add(entity);
+            var model = TestimonialCreateDto.ToTestimonial(dto);  
+            testimonialDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
 
-        public IResult Update(Testimonial entity)
+        public IResult Update(TestimonialUpdateDto dto)
         {
-            entity.UpdatedDate = DateTime.Now;
-            testimonialDal.Update(entity);
+            var model = TestimonialUpdateDto.ToTestimonial(dto);
+            model.UpdatedDate = DateTime.Now;
+            testimonialDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }

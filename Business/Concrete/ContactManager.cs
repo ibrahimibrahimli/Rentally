@@ -2,7 +2,9 @@
 using Business.BaseMessages;
 using Core.Results.Abstract;
 using Core.Results.Concrete;
+using DataAccess.Abstract;
 using DataAccess.Concrete;
+using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using System;
 using System.Collections.Generic;
@@ -14,17 +16,24 @@ namespace Business.Concrete
 {
     public class ContactManager : IContactService
     {
-        ContactDal contactDal = new();
-        public IResult Add(Contact entity)
+        private readonly IContactDal _contactDal;
+        public ContactManager(IContactDal contactDal)
         {
-            contactDal.Add(entity);
+            _contactDal = contactDal;
+        }
+        public IResult Add(ContactCreateDto dto)
+        {
+            var model = ContactCreateDto.ToContact(dto);
+
+            _contactDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
-        public IResult Update(Contact entity)
+        public IResult Update(ContactUpdateDto dto)
         {
-            entity.UpdatedDate = DateTime.Now;
-            contactDal.Update(entity);
+            var model = ContactUpdateDto.ToContact(dto);
+            model.UpdatedDate = DateTime.Now;
+            _contactDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }
@@ -34,19 +43,19 @@ namespace Business.Concrete
             var data = GetById(id).Data;
             data.Deleted = id;
 
-            contactDal.Update(data);
+            _contactDal.Update(data);
 
             return new SuccessResult(UIMessages.SUCCESS_DELETED_MESSAGE);
         }
 
         public IDataResult<List<Contact>> GetAll()
         {
-            return new SuccessDataResult<List<Contact>>(contactDal.GetAll(x => x.Deleted == 0));
+            return new SuccessDataResult<List<Contact>>(_contactDal.GetAll(x => x.Deleted == 0));
         }
 
         public IDataResult<Contact> GetById(int id)
         {
-            return new SuccessDataResult<Contact>(contactDal.GetById(id));
+            return new SuccessDataResult<Contact>(_contactDal.GetById(id));
         }
 
     }

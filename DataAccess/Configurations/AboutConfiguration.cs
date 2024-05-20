@@ -10,7 +10,7 @@ namespace DataAccess.Configurations
     {
         public void Configure(EntityTypeBuilder<About> builder)
         {
-            builder.ToTable("WeExperiences");
+            builder.ToTable("Abouts");
 
             builder.Property(x => x.Id)
                 .UseIdentityColumn(seed: DefaultConstantValue.DEFAULT_PRIMARY_SEED_VALUE, increment: 1);

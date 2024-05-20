@@ -8,7 +8,7 @@ namespace Entities.Concrete.Dtos
         public string Description { get; set; }
         public string ImageUrl { get; set; }
 
-        public static Slider ToPosition(SliderCreateDto dto)
+        public static Slider ToSlider(SliderCreateDto dto)
         {
             Slider slider = new Slider()
             {
