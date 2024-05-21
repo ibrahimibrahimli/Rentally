@@ -6,19 +6,34 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using FluentValidation;
 namespace Business.Concrete
 {
     public class NewManager : INewService
     {
         private readonly INewDal _newDal;
+        private readonly IValidator<New> _validator;
 
-        public NewManager(INewDal newDal)
+        public NewManager(INewDal newDal, IValidator<New> validator)
         {
             _newDal = newDal;
+            _validator = validator;
         }
         public IResult Add(NewCreateDto dto)
         {
             var model  = NewCreateDto.ToNew(dto);
+            var validator = _validator.Validate(model);
+
+            string errorMessage = "";
+            foreach (var error in validator.Errors)
+            {
+                errorMessage = error.ErrorMessage;
+            }
+
+            if (!validator.IsValid)
+            {
+                return new ErrorResult(errorMessage);
+            }
 
             _newDal.Add(model);
 

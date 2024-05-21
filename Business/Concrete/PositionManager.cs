@@ -6,20 +6,35 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using FluentValidation;
 
 namespace Business.Concrete
 {
     public class PositionManager : IPositionService
     {
         private readonly IPositionDal _positionDal;
+        private readonly IValidator<Position> _validator;   
 
-        public PositionManager(IPositionDal positionDal)
+        public PositionManager(IPositionDal positionDal, IValidator<Position> validator)
         {
             _positionDal = positionDal;
+            _validator = validator;
         }
         public IResult Add(PositionCreateDto dto)
         {
             var model = PositionCreateDto.ToPosition(dto);
+            var validator = _validator.Validate(model);
+
+            string errorMessage = "";
+            foreach (var error in validator.Errors)
+            {
+                errorMessage = error.ErrorMessage;
+            }
+
+            if (!validator.IsValid)
+            {
+                return new ErrorResult(errorMessage);
+            }
 
             _positionDal.Add(model);
 

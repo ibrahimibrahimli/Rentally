@@ -6,20 +6,35 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using FluentValidation;
 
 namespace Business.Concrete
 {
     public class CarCategoryManager : ICarCategoryService
     {
         private readonly ICarCategoryDal _carCategoryDal;
-        public CarCategoryManager(ICarCategoryDal carCategoryDal)
+        private readonly IValidator<CarCategory> _validator;
+        public CarCategoryManager(ICarCategoryDal carCategoryDal, IValidator<CarCategory> validator)
         {
             _carCategoryDal = carCategoryDal;   
+            _validator = validator;
         }
 
         public IResult Add(CarCategoryCreateDto dto)
         {
             var model = CarCategoryCreateDto.ToCarCategory(dto);
+            var validator = _validator.Validate(model);
+
+            string errorMessage = "";
+            foreach (var error in validator.Errors)
+            {
+                errorMessage = error.ErrorMessage;
+            }
+
+            if (!validator.IsValid)
+            {
+                return new ErrorResult(errorMessage);
+            }
 
             _carCategoryDal.Add(model);
 

@@ -3,5 +3,8 @@ using Entities.Concrete.TableModels;
 
 namespace DataAccess.Abstract
 {
-    public interface IFavouriteDal : IBaseRepository<Favourite> { }
+    public interface IFavouriteDal : IBaseRepository<Favourite> 
+    {
+        //List<Favourite> GetFavouritesWithUserIdAndCarID();
+    }
 }

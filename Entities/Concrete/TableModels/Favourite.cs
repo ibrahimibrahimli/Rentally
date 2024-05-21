@@ -10,6 +10,7 @@ namespace Entities.Concrete.TableModels
         }
         //-------------------------
         public int UserId { get; set; }
+        public int CarId { get; set; }
         public virtual User User { get; set; }
         public ICollection<Car> Cars { get; set; }
     }

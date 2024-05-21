@@ -6,20 +6,35 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using FluentValidation;
 
 namespace Business.Concrete
 {
     public class TeamBoardManager : ITeamBoardService
     {
         private readonly ITeamBoardDal _teamBoardDal;
+        private readonly IValidator<TeamBoard> _validator;
 
-        public TeamBoardManager(ITeamBoardDal teamBoardDal)
+        public TeamBoardManager(ITeamBoardDal teamBoardDal, IValidator<TeamBoard> validator)
         {
             _teamBoardDal = teamBoardDal;
+            _validator = validator;
         }
         public IResult Add(TeamBoardCreateDto dto)
         {
             var model = TeamBoardCreateDto.ToTeamboard(dto);
+            var validator = _validator.Validate(model);
+
+            string errorMessage = "";
+            foreach (var error in validator.Errors)
+            {
+                errorMessage = error.ErrorMessage;
+            }
+
+            if (!validator.IsValid)
+            {
+                return new ErrorResult(errorMessage);
+            }
             _teamBoardDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);

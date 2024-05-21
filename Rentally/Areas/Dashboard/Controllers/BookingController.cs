@@ -9,13 +9,15 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     [Area("Dashboard")]
     public class BookingController : Controller
     {
-        UserManager _userManager = new();
+        private readonly IUserService _userService;
         private readonly IBookingService _bookingService;
         private readonly ICarService _carService;
-        public BookingController(ICarService carService, IBookingService bookingService)
+        public BookingController(ICarService carService, IBookingService bookingService, IUserService userService)
         {
             _carService = carService;
             _bookingService = bookingService;
+            _userService = userService;
+
         }
         public IActionResult Index()
         {
@@ -26,7 +28,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewData["Users"] = _userManager.GetAll().Data;
+            ViewData["Users"] = _userService.GetAll().Data;
             ViewData["Cars"] = _carService.GetCarWithCategory().Data;
             return View();
         }
@@ -44,7 +46,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewData["Users"] = _userManager.GetAll().Data;
+            ViewData["Users"] = _userService.GetAll().Data;
             ViewData["Cars"] = _carService.GetCarWithCategory().Data;
             var data = _bookingService.GetById(id).Data;
             return View(data);

@@ -6,6 +6,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +18,28 @@ namespace Business.Concrete
     public class TestimonialManager : ITestimonialService
     {
         private readonly ITestimonialDal _testimonialDal;
+        private readonly IValidator<Testimonial> _validator;
 
-        public TestimonialManager(ITestimonialDal testimonialDal)
+        public TestimonialManager(ITestimonialDal testimonialDal, IValidator<Testimonial> validator)
         {
             _testimonialDal = testimonialDal;
+            _validator = validator;
         }
         public IResult Add(TestimonialCreateDto dto)
         {
             var model = TestimonialCreateDto.ToTestimonial(dto);
+            var validator = _validator.Validate(model);
+
+            string errorMessage = "";
+            foreach (var error in validator.Errors)
+            {
+                errorMessage = error.ErrorMessage;
+            }
+
+            if (!validator.IsValid)
+            {
+                return new ErrorResult(errorMessage);
+            }
             _testimonialDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);

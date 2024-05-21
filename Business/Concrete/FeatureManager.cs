@@ -6,6 +6,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,13 +18,27 @@ namespace Business.Concrete
     public class FeatureManager : IFeatureService
     {
         private readonly IFeatureDal _featureDal;
-        public FeatureManager(IFeatureDal featureDal)
+        private readonly IValidator<Feature> _validator;
+        public FeatureManager(IFeatureDal featureDal, IValidator<Feature> validator)
         {
             _featureDal = featureDal;
+            _validator = validator;
         }
         public IResult Add(FeatureCreateDto dto)
         {
             var model = FeatureCreateDto.ToFeature(dto);
+            var validator = _validator.Validate(model);
+
+            string errorMessage = "";
+            foreach (var error in validator.Errors)
+            {
+                errorMessage = error.ErrorMessage;
+            }
+
+            if (!validator.IsValid)
+            {
+                return new ErrorResult(errorMessage);
+            }
 
             _featureDal.Add(model);
 

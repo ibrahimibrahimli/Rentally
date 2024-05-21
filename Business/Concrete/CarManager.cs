@@ -6,8 +6,10 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,13 +19,28 @@ namespace Business.Concrete
     public class CarManager : ICarService
     {
         private readonly ICarDal _carDal;
-        public CarManager(ICarDal carDal)
+        private readonly IValidator<Car> _validator;
+        public CarManager(ICarDal carDal, IValidator<Car> validator)
         {
             _carDal = carDal;
+            _validator = validator;
         }
 
         public IResult Add(Car entity)
         {
+
+            var validator = _validator.Validate(entity);
+
+            string errorMessage = "";
+            foreach (var error in validator.Errors)
+            {
+                errorMessage = error.ErrorMessage;
+            }
+
+            if (!validator.IsValid)
+            {
+                return new ErrorResult(errorMessage);
+            }
             _carDal.Add(entity);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);

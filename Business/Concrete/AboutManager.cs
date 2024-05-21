@@ -12,7 +12,6 @@ namespace Business.Concrete
     public class AboutManager : IAboutService
     {
         private readonly IAboutDal _aboutDal;
-        
         private readonly IValidator<About> _validator;
         public AboutManager(IAboutDal aboutDal, IValidator<About> validator)
         {

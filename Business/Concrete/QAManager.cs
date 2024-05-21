@@ -3,27 +3,36 @@ using Business.BaseMessages;
 using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
-using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FluentValidation;
 
 namespace Business.Concrete
 {
     public class QAManager : IQAService
     {
         private readonly IQADal _qADal;
-        public QAManager(IQADal qADal)
+        private readonly IValidator<QA> _validator;
+        public QAManager(IQADal qADal, IValidator<QA> validator)
         {
             _qADal = qADal;
+            _validator = validator;
         }
         public IResult Add(QuestionAnswerCreateDto dto)
         {
             var model = QuestionAnswerCreateDto.ToQuestionAnswer(dto);
+            var validator = _validator.Validate(model);
+
+            string errorMessage = "";
+            foreach (var error in validator.Errors)
+            {
+                errorMessage = error.ErrorMessage;
+            }
+
+            if (!validator.IsValid)
+            {
+                return new ErrorResult(errorMessage);
+            }
 
             _qADal.Add(model);
 

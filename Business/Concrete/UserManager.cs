@@ -6,6 +6,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +18,30 @@ namespace Business.Concrete
     public class UserManager : IUserService
     {
         private readonly IUserDal _userDal;
+        private readonly IValidator<User> _validator;
 
-        public UserManager(IUserDal userDal)
+        public UserManager(IUserDal userDal, IValidator<User> validator)
         {
             _userDal = userDal;
+            _validator = validator;
         }
 
         public IResult Add(UserCreateDto dto)
         {
             var model = UserCreateDto.ToUser(dto);
+            var validator = _validator.Validate(model);
+
+            string errorMessage = "";
+            foreach (var error in validator.Errors)
+            {
+                errorMessage = error.ErrorMessage;
+            }
+
+            if (!validator.IsValid)
+            {
+                return new ErrorResult(errorMessage);
+            }
+
             _userDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);

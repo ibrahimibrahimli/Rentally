@@ -6,6 +6,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,13 +18,28 @@ namespace Business.Concrete
     public class ContactManager : IContactService
     {
         private readonly IContactDal _contactDal;
-        public ContactManager(IContactDal contactDal)
+        private readonly IValidator<Contact> _validator;
+
+        public ContactManager(IContactDal contactDal, IValidator<Contact> validator)
         {
             _contactDal = contactDal;
+            _validator = validator;
         }
         public IResult Add(ContactCreateDto dto)
         {
             var model = ContactCreateDto.ToContact(dto);
+            var validator = _validator.Validate(model);
+
+            string errorMessage = "";
+            foreach (var error in validator.Errors)
+            {
+                errorMessage = error.ErrorMessage;
+            }
+
+            if (!validator.IsValid)
+            {
+                return new ErrorResult(errorMessage);
+            }
 
             _contactDal.Add(model);
 

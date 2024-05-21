@@ -19,7 +19,7 @@ namespace DataAccess.Configurations
                 .IsRequired();
 
             builder.Property(x => x.Description)
-                .HasMaxLength(200)
+                .HasMaxLength(500)
                 .IsRequired();
 
             builder.Property(x => x.ImageUrl)

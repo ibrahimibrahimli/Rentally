@@ -24,7 +24,7 @@ namespace DataAccess.Configurations
                 .IsRequired();
 
             builder.Property(x => x.Description)
-                .HasMaxLength(1000)
+                .HasMaxLength(2000)
                 .IsRequired();
 
             builder.Property(x => x.IconName)

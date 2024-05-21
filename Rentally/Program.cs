@@ -29,42 +29,51 @@ namespace Rentally
 
             builder.Services.AddScoped<IBookingDal, BookingDal>();
             builder.Services.AddScoped<IBookingService, BookingManager>();
+            builder.Services.AddScoped<IValidator<Booking>, BookingValidation>();
 
             builder.Services.AddScoped<ICarCategoryDal, CarCategoryDal>();
             builder.Services.AddScoped<ICarCategoryService, CarCategoryManager>();
+            builder.Services.AddScoped<IValidator<CarCategory>, CarCategoryValidation>();
 
             builder.Services.AddScoped<ICarDal, CarDal>();
             builder.Services.AddScoped<ICarService, CarManager>();
+            builder.Services.AddScoped<IValidator<Car>, CarValidation>();
 
             builder.Services.AddScoped<IContactDal, ContactDal>();
             builder.Services.AddScoped<IContactService, ContactManager>();
-
-            builder.Services.AddScoped<ICarDal, CarDal>();
-            builder.Services.AddScoped<ICarService, CarManager>();
+            builder.Services.AddScoped<IValidator<Contact>, ContactValidation>();
 
             builder.Services.AddScoped<IFeatureDal, FeatureDal>();
             builder.Services.AddScoped<IFeatureService, FeatureManager>();
+            builder.Services.AddScoped<IValidator<Feature>, FeatureValidation>();
 
             builder.Services.AddScoped<INewDal, NewDal>();
             builder.Services.AddScoped<INewService, NewManager>();
+            builder.Services.AddScoped<IValidator<New>, NewValidation>();
 
             builder.Services.AddScoped<IPositionDal, PositionDal>();
             builder.Services.AddScoped<IPositionService, PositionManager>();
+            builder.Services.AddScoped<IValidator<Position>, PositionValidation>();
 
             builder.Services.AddScoped<IQADal, QADal>();
             builder.Services.AddScoped<IQAService, QAManager>();
+            builder.Services.AddScoped<IValidator<QA>, QuestionAnswerValidation>();
 
             builder.Services.AddScoped<ISliderDal, SliderDal>();
             builder.Services.AddScoped<ISliderService, SliderManager>();
+            builder.Services.AddScoped<IValidator<Slider>, SliderValidation>();
 
             builder.Services.AddScoped<ITeamBoardDal, TeamBoardDal>();
             builder.Services.AddScoped<ITeamBoardService, TeamBoardManager>();
+            builder.Services.AddScoped<IValidator<TeamBoard>, TeamBoardValidation>();
 
             builder.Services.AddScoped<ITestimonialDal, TestimonialDal>();
             builder.Services.AddScoped<ITestimonialService, TestimonialManager>();
+            builder.Services.AddScoped<IValidator<Testimonial>, TestimonialValidation>();
 
             builder.Services.AddScoped<IUserDal, UserDal>();
             builder.Services.AddScoped<IUserService, UserManager>();
+            builder.Services.AddScoped<IValidator<User>, UserValidation>();
 
 
             var app = builder.Build();

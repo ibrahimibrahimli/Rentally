@@ -6,6 +6,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,13 +18,29 @@ namespace Business.Concrete
     public class BookingManager : IBookingService
     {
         private readonly IBookingDal _bookingDal;
-        public BookingManager(IBookingDal bookingDal)
+        private readonly IValidator<Booking> _validator;
+        public BookingManager(IBookingDal bookingDal, IValidator<Booking> validator)
         {
+            _validator = validator; 
             _bookingDal = bookingDal;
         }
         public IResult Add(BookingCreateDto dto)
         {
+
             var model = BookingCreateDto.ToBooking(dto);
+            var validator = _validator.Validate(model);
+
+            string errorMessage = "";
+            foreach (var error in validator.Errors)
+            {
+                errorMessage = error.ErrorMessage;
+            }
+
+            if (!validator.IsValid)
+            {
+                return new ErrorResult(errorMessage);
+            }
+
             _bookingDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);

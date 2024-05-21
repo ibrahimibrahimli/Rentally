@@ -6,6 +6,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +18,29 @@ namespace Business.Concrete
     public class SliderManager : ISliderService
     {
         private readonly ISliderDal _sliderDal;
+        private readonly IValidator<Slider> _validator;
 
-        public SliderManager(ISliderDal sliderDal)
+        public SliderManager(ISliderDal sliderDal, IValidator<Slider> validator)
         {
             _sliderDal = sliderDal; 
+            _validator = validator;
         }
         public IResult Add(SliderCreateDto dto)
         {
             var model = SliderCreateDto.ToSlider(dto);
+            var validator = _validator.Validate(model);
+
+            string errorMessage = "";
+            foreach (var error in validator.Errors)
+            {
+                errorMessage = error.ErrorMessage;
+            }
+
+            if (!validator.IsValid)
+            {
+                return new ErrorResult(errorMessage);
+            }
+
             _sliderDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
