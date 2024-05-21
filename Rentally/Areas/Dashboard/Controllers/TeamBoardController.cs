@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
@@ -8,25 +9,31 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     [Area("Dashboard")]
     public class TeamBoardController : Controller
     {
-        TeamBoardManager _teamBoardManager = new();
-        PositionManager _positionManager = new();
+        private readonly ITeamBoardService _teamBoardService;
+        private readonly IPositionService _positionService;
+
+        public TeamBoardController(ITeamBoardService teamBoardService, IPositionService positionService)
+        {
+            _teamBoardService = teamBoardService;
+            _positionService = positionService;
+        }
         public IActionResult Index()
         {
-            var data = _teamBoardManager.GetTeamBoardWithPosition().Data;
+            var data = _teamBoardService.GetTeamBoardWithPosition().Data;
             return View(data);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            ViewData["Positions"] = _positionManager.GetAll().Data;
+            ViewData["Positions"] = _positionService.GetAll().Data;
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(TeamBoardCreateDto dto)
         {
-            var result = _teamBoardManager.Add(dto);
+            var result = _teamBoardService.Add(dto);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
@@ -36,8 +43,8 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewData["Positions"] = _positionManager.GetAll().Data;
-            var data = _teamBoardManager.GetById(id).Data;
+            ViewData["Positions"] = _positionService.GetAll().Data;
+            var data = _teamBoardService.GetById(id).Data;
             return View(data);
         }
 
@@ -45,7 +52,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Edit(TeamBoardUpdateDto dto)
         {
-            var result = _teamBoardManager.Update(dto);
+            var result = _teamBoardService.Update(dto);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
@@ -56,7 +63,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Delete(int id)
         {
-            var result = _teamBoardManager.Delete(id);
+            var result = _teamBoardService.Delete(id);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 

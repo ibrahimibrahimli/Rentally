@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +9,14 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     [Area("Dashboard")]
     public class SliderController : Controller
     {
-        SliderManager _sliderManager = new();
+        private readonly ISliderService _sliderService;
+        public SliderController(ISliderService sliderService)
+        {
+            _sliderService = sliderService;
+        }
         public IActionResult Index()
         {
-            var data = _sliderManager.GetAll().Data;
+            var data = _sliderService.GetAll().Data;
             return View(data);
         }
 
@@ -24,7 +29,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Create(SliderCreateDto dto)
         {
-            var result = _sliderManager.Add(dto);
+            var result = _sliderService.Add(dto);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
@@ -34,7 +39,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var data = _sliderManager.GetById(id).Data;
+            var data = _sliderService.GetById(id).Data;
             return View(data);
         }
 
@@ -42,7 +47,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Edit(SliderUpdateDto dto)
         {
-            var result = _sliderManager.Update(dto);
+            var result = _sliderService.Update(dto);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
@@ -53,7 +58,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Delete(int id)
         {
-            var result = _sliderManager.Delete(id);
+            var result = _sliderService.Delete(id);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 

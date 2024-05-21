@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
@@ -8,11 +9,16 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     [Area("Dashboard")]
     public class QAController : Controller
     {
-        QAManager _qaManager = new();
+        private readonly IQAService _iQaService;
+
+        public QAController(IQAService qAService)
+        {
+            _iQaService = qAService;
+        }
 
         public IActionResult Index()
         {
-            var data = _qaManager.GetAll().Data;
+            var data = _iQaService.GetAll().Data;
             return View(data);
         }
 
@@ -25,7 +31,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Create(QuestionAnswerCreateDto dto)
         {
-            var result = _qaManager.Add(dto);
+            var result = _iQaService.Add(dto);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
@@ -35,7 +41,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var data = _qaManager.GetById(id).Data;
+            var data = _iQaService.GetById(id).Data;
             return View(data);
         }
 
@@ -43,7 +49,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Edit(QuestionAnswerUpdateDto dto)
         {
-            var result = _qaManager.Update(dto);
+            var result = _iQaService.Update(dto);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
@@ -54,7 +60,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Delete(int id)
         {
-            var result = _qaManager.Delete(id);
+            var result = _iQaService.Delete(id);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 

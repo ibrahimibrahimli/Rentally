@@ -2,6 +2,7 @@
 using Business.BaseMessages;
 using Core.Results.Abstract;
 using Core.Results.Concrete;
+using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
@@ -9,12 +10,17 @@ namespace Business.Concrete
 {
     public class NewManager : INewService
     {
-        NewDal newDal = new();
+        private readonly INewDal _newDal;
+
+        public NewManager(INewDal newDal)
+        {
+            _newDal = newDal;
+        }
         public IResult Add(NewCreateDto dto)
         {
             var model  = NewCreateDto.ToNew(dto);
 
-            newDal.Add(model);
+            _newDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
@@ -24,26 +30,26 @@ namespace Business.Concrete
             var data = GetById(id).Data;
             data.Deleted = id;
 
-            newDal.Update(data);
+            _newDal.Update(data);
 
             return new SuccessResult(UIMessages.SUCCESS_DELETED_MESSAGE);
         }
 
         public IDataResult<List<New>> GetAll()
         {
-            return new SuccessDataResult<List<New>>(newDal.GetAll(x => x.Deleted == 0));
+            return new SuccessDataResult<List<New>>(_newDal.GetAll(x => x.Deleted == 0));
         }
 
         public IDataResult<New> GetById(int id)
         {
-            return new SuccessDataResult<New>(newDal.GetById(id)); 
+            return new SuccessDataResult<New>(_newDal.GetById(id)); 
         }
 
         public IResult Update(NewUpdateDto dto)
         {
             var model = NewUpdateDto.ToNew( dto);
             model.UpdatedDate = DateTime.Now;
-            newDal.Update(model);
+            _newDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }

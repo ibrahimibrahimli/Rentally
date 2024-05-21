@@ -156,3 +156,5 @@ C:\Users\Lenovo\source\repos\Rentally\Rentally\obj\Debug\net8.0\scopedcss\projec
 C:\Users\Lenovo\source\repos\Rentally\Rentally\obj\Debug\net8.0\Rentally.D6091F7E.Up2Date
 C:\Users\Lenovo\source\repos\Rentally\Rentally\obj\Debug\net8.0\Rentally.WEB.genruntimeconfig.cache
 C:\Users\Lenovo\source\repos\Rentally\Rentally\obj\Debug\net8.0\ref\Rentally.WEB.dll
+C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll

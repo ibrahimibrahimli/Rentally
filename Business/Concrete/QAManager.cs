@@ -16,12 +16,16 @@ namespace Business.Concrete
 {
     public class QAManager : IQAService
     {
-        QADal qaDal = new();
+        private readonly IQADal _qADal;
+        public QAManager(IQADal qADal)
+        {
+            _qADal = qADal;
+        }
         public IResult Add(QuestionAnswerCreateDto dto)
         {
             var model = QuestionAnswerCreateDto.ToQuestionAnswer(dto);
 
-            qaDal.Add(model);
+            _qADal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
@@ -30,7 +34,7 @@ namespace Business.Concrete
         {
             var model = QuestionAnswerUpdateDto.ToQuestionAnswer(dto);
             model.UpdatedDate = DateTime.Now;
-            qaDal.Update(model);
+            _qADal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }
@@ -40,19 +44,19 @@ namespace Business.Concrete
             var data = GetById(id).Data;
             data.Deleted = id;
 
-            qaDal.Update(data);
+            _qADal.Update(data);
 
             return new SuccessResult(UIMessages.SUCCESS_DELETED_MESSAGE);
         }
 
         public IDataResult<List<QA>> GetAll()
         {
-            return new SuccessDataResult<List<QA>>(qaDal.GetAll(x => x.Deleted == 0));
+            return new SuccessDataResult<List<QA>>(_qADal.GetAll(x => x.Deleted == 0));
         }
 
         public IDataResult<QA> GetById(int id)
         {
-            return new SuccessDataResult<QA>(qaDal.GetById(id));
+            return new SuccessDataResult<QA>(_qADal.GetById(id));
         }
     }
 }

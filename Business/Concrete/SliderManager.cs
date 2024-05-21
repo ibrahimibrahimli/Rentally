@@ -16,11 +16,16 @@ namespace Business.Concrete
 {
     public class SliderManager : ISliderService
     {
-        SliderDal sliderDal = new();
+        private readonly ISliderDal _sliderDal;
+
+        public SliderManager(ISliderDal sliderDal)
+        {
+            _sliderDal = sliderDal; 
+        }
         public IResult Add(SliderCreateDto dto)
         {
             var model = SliderCreateDto.ToSlider(dto);
-            sliderDal.Add(model);
+            _sliderDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
@@ -29,7 +34,7 @@ namespace Business.Concrete
         {
             var model = SliderUpdateDto.ToSlider( dto );
             model.UpdatedDate = DateTime.Now;
-            sliderDal.Update(model);
+            _sliderDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }
@@ -39,19 +44,19 @@ namespace Business.Concrete
             var data = GetById(id).Data;
             data.Deleted = id;
 
-            sliderDal.Update(data);
+            _sliderDal.Update(data);
 
             return new SuccessResult(UIMessages.SUCCESS_DELETED_MESSAGE);
         }
 
         public IDataResult<List<Slider>> GetAll()
         {
-            return new SuccessDataResult<List<Slider>>(sliderDal.GetAll(x => x.Deleted == 0));
+            return new SuccessDataResult<List<Slider>>(_sliderDal.GetAll(x => x.Deleted == 0));
         }
 
         public IDataResult<Slider> GetById(int id)
         {
-            return new SuccessDataResult<Slider>(sliderDal.GetById(id));
+            return new SuccessDataResult<Slider>(_sliderDal.GetById(id));
         }
 
     }

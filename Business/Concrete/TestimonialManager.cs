@@ -16,11 +16,16 @@ namespace Business.Concrete
 {
     public class TestimonialManager : ITestimonialService
     {
-        TestimonialDal testimonialDal = new();
+        private readonly ITestimonialDal _testimonialDal;
+
+        public TestimonialManager(ITestimonialDal testimonialDal)
+        {
+            _testimonialDal = testimonialDal;
+        }
         public IResult Add(TestimonialCreateDto dto)
         {
-            var model = TestimonialCreateDto.ToTestimonial(dto);  
-            testimonialDal.Add(model);
+            var model = TestimonialCreateDto.ToTestimonial(dto);
+            _testimonialDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
@@ -29,7 +34,7 @@ namespace Business.Concrete
         {
             var model = TestimonialUpdateDto.ToTestimonial(dto);
             model.UpdatedDate = DateTime.Now;
-            testimonialDal.Update(model);
+            _testimonialDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }
@@ -39,19 +44,19 @@ namespace Business.Concrete
             var data = GetById(id).Data;
             data.Deleted = id;
 
-            testimonialDal.Update(data);
+            _testimonialDal.Update(data);
 
             return new SuccessResult(UIMessages.SUCCESS_DELETED_MESSAGE);
         }
 
         public IDataResult<List<Testimonial>> GetAll()
         {
-            return new SuccessDataResult<List<Testimonial>>(testimonialDal.GetAll(x => x.Deleted == 0));
+            return new SuccessDataResult<List<Testimonial>>(_testimonialDal.GetAll(x => x.Deleted == 0));
         }
 
         public IDataResult<Testimonial> GetById(int id)
         {
-            return new SuccessDataResult<Testimonial>(testimonialDal.GetById(id));
+            return new SuccessDataResult<Testimonial>(_testimonialDal.GetById(id));
         }
     }
 }

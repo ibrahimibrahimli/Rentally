@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +9,15 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     [Area("Dashboard")]
     public class NewController : Controller
     {
-        NewManager _newManager = new();
+        private readonly INewService _newService;
+
+        public NewController(INewService newService)
+        {
+            _newService = newService;
+        }
         public IActionResult Index()
         {
-            var data = _newManager.GetAll().Data;
+            var data = _newService.GetAll().Data;
             return View(data);
         }
 
@@ -24,7 +30,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Create(NewCreateDto dto)
         {
-            var result = _newManager.Add(dto);
+            var result = _newService.Add(dto);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
@@ -34,7 +40,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var data = _newManager.GetById(id).Data;
+            var data = _newService.GetById(id).Data;
             return View(data);
         }
 
@@ -42,7 +48,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Edit(NewUpdateDto dto)
         {
-            var result = _newManager.Update(dto);
+            var result = _newService.Update(dto);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
@@ -53,7 +59,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Delete(int id)
         {
-            var result = _newManager.Delete(id);
+            var result = _newService.Delete(id);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 

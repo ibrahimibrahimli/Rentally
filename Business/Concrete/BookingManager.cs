@@ -16,11 +16,15 @@ namespace Business.Concrete
 {
     public class BookingManager : IBookingService
     {
-        BookingDal bookingDal = new();
+        private readonly IBookingDal _bookingDal;
+        public BookingManager(IBookingDal bookingDal)
+        {
+            _bookingDal = bookingDal;
+        }
         public IResult Add(BookingCreateDto dto)
         {
             var model = BookingCreateDto.ToBooking(dto);
-            bookingDal.Add(model);
+            _bookingDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
@@ -30,26 +34,26 @@ namespace Business.Concrete
             var data = GetById(id).Data;
             data.Deleted = id;
 
-            bookingDal.Update(data);
+            _bookingDal.Update(data);
 
             return new SuccessResult(UIMessages.SUCCESS_DELETED_MESSAGE);
         }
 
         public IDataResult<Booking> GetById(int id)
         {
-            return new SuccessDataResult<Booking>(bookingDal.GetById(id));
+            return new SuccessDataResult<Booking>(_bookingDal.GetById(id));
         }
 
         public IDataResult<List<BookingDto>> GetTeamBoardWithPosition()
         {
-            return new SuccessDataResult<List<BookingDto>>(bookingDal.GetBookingWithUserIdAndCarId());
+            return new SuccessDataResult<List<BookingDto>>(_bookingDal.GetBookingWithUserIdAndCarId());
         }
 
         public IResult Update(BookingUpdateDto dto)
         {
             var model = BookingUpdateDto.ToBooking(dto);
             model.UpdatedDate = DateTime.Now;
-            bookingDal.Update(model);
+            _bookingDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }

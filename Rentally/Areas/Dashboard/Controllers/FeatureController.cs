@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +9,15 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     [Area("Dashboard")]
     public class FeatureController : Controller
     {
-        FeatureManager _featureManager = new();
+        private readonly IFeatureService _featureService;
+
+        public FeatureController(IFeatureService featureService)
+        {
+            _featureService = featureService;
+        }
         public IActionResult Index()
         {
-            var data = _featureManager.GetAll().Data;
+            var data = _featureService.GetAll().Data;
             return View(data);
         }
 
@@ -24,7 +30,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Create(FeatureCreateDto dto)
         {
-            var result = _featureManager.Add(dto);
+            var result = _featureService.Add(dto);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
@@ -34,7 +40,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var data = _featureManager.GetById(id).Data;
+            var data = _featureService.GetById(id).Data;
             return View(data);
         }
 
@@ -42,7 +48,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Edit(FeatureUpdateDto dto)
         {
-            var result = _featureManager.Update(dto);
+            var result = _featureService.Update(dto);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
@@ -53,7 +59,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Delete(int id)
         {
-            var result = _featureManager.Delete(id);
+            var result = _featureService.Delete(id);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 

@@ -1,4 +1,5 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +9,15 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     [Area("Dashboard")]
     public class PositionController : Controller
     {
-        PositionManager _positionManager = new();
+        private readonly IPositionService _positionService;
+
+        public PositionController(IPositionService positionService)
+        {
+            _positionService = positionService;
+        }
         public IActionResult Index()
         {
-            var data = _positionManager.GetAll().Data;
+            var data = _positionService.GetAll().Data;
             return View(data);
         }
 
@@ -24,7 +30,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpPost]
         public IActionResult Create(PositionCreateDto dto)
         {
-            var result = _positionManager.Add(dto);
+            var result = _positionService.Add(dto);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 
@@ -34,7 +40,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var data = _positionManager.GetById(id).Data;
+            var data = _positionService.GetById(id).Data;
             return View(data);
         }
 
@@ -42,7 +48,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Edit(PositionUpdateDto dto)
         {
-            var result = _positionManager.Update(dto);
+            var result = _positionService.Update(dto);
 
             if (result.IsSuccess) return RedirectToAction("Index");
 
@@ -53,7 +59,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         public IActionResult Delete(int id)
         {
-            var result = _positionManager.Delete(id);
+            var result = _positionService.Delete(id);
             if (result.IsSuccess)
                 return RedirectToAction("Index");
 

@@ -1,6 +1,8 @@
-﻿using Business.Concrete;
+﻿using Business.Abstract;
+using Business.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
@@ -8,10 +10,15 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     [Area("Dashboard")]
     public class AboutController : Controller
     {
-        AboutManager _aboutService = new();
+        private readonly IAboutService _aboutService;
+
+        public AboutController(IAboutService aboutService)
+        {
+            _aboutService = aboutService;
+        }
         public IActionResult Index()
         {
-            
+
             var data = _aboutService.GetAboutWithCarCustomerBooking().Data;
             ViewBag.ShowButton = data.Count() == 0;
             return View(data);
@@ -27,10 +34,14 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         public IActionResult Create(AboutCreateDto dto)
         {
             var result = _aboutService.Add(dto);
-            if (result.IsSuccess)
-                return RedirectToAction("Index");
+            if (!result.IsSuccess)
+            {
+                ModelState.AddModelError("", result.Message);
 
-            return View(dto);
+                return View();
+            }
+            return RedirectToAction("Index");
+
         }
 
         [HttpGet]
