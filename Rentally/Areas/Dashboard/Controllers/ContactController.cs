@@ -30,10 +30,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         public IActionResult Create(ContactCreateDto dto)
         {
             var result = _contactService.Add(dto);
-            if (result.IsSuccess)
-                return RedirectToAction("Index");
+            if (!result.IsSuccess)
+            {
+                ModelState.AddModelError("", result.Message);
 
-            return View(dto);
+                return View(dto);
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -49,9 +52,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         {
             var result = _contactService.Update(dto);
 
-            if (result.IsSuccess) return RedirectToAction("Index");
+            if (!result.IsSuccess)
+            {
+                ModelState.AddModelError("", result.Message);
 
-            return View(dto);
+                return View(dto);
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

@@ -34,10 +34,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         public IActionResult Create(TeamBoardCreateDto dto)
         {
             var result = _teamBoardService.Add(dto);
-            if (result.IsSuccess)
-                return RedirectToAction("Index");
-
-            return View(dto);
+            if (!result.IsSuccess)
+            {
+                ModelState.AddModelError("", result.Message);
+                ViewData["Positions"] = _positionService.GetAll().Data;
+                return View(dto);
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -54,9 +57,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         {
             var result = _teamBoardService.Update(dto);
 
-            if (result.IsSuccess) return RedirectToAction("Index");
+            if (!result.IsSuccess)
+            {
+                ModelState.AddModelError("", result.Message);
 
-            return View(dto);
+                return View(dto);
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

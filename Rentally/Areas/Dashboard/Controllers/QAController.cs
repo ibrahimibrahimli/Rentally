@@ -32,10 +32,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         public IActionResult Create(QuestionAnswerCreateDto dto)
         {
             var result = _iQaService.Add(dto);
-            if (result.IsSuccess)
-                return RedirectToAction("Index");
+            if (!result.IsSuccess)
+            {
+                ModelState.AddModelError("", result.Message);
 
-            return View(dto);
+                return View(dto);
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -51,9 +54,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         {
             var result = _iQaService.Update(dto);
 
-            if (result.IsSuccess) return RedirectToAction("Index");
+            if (!result.IsSuccess)
+            {
+                ModelState.AddModelError("", result.Message);
 
-            return View(dto);
+                return View(dto);
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

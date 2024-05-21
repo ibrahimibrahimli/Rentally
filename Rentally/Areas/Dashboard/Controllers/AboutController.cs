@@ -57,9 +57,14 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         {
             var result = _aboutService.Update(dto);
 
-            if (result.IsSuccess) return RedirectToAction("Index");
+            if (!result.IsSuccess)
+            {
+                ModelState.AddModelError("", result.Message);
 
-            return View(dto);
+                return View(dto);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

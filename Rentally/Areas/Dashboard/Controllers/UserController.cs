@@ -31,10 +31,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         public IActionResult Create(UserCreateDto dto)
         {
             var result = _userService.Add(dto);
-            if (result.IsSuccess)
-                return RedirectToAction("Index");
+            if (!result.IsSuccess)
+            {
+                ModelState.AddModelError("", result.Message);
 
-            return View(dto);
+                return View(dto);
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -49,10 +52,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         public IActionResult Edit(UserUpdateDto dto)
         {
             var result = _userService.Update(dto);
+            if (!result.IsSuccess)
+            {
+                ModelState.AddModelError("", result.Message);
 
-            if (result.IsSuccess) return RedirectToAction("Index");
-
-            return View(dto);
+                return View(dto);
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

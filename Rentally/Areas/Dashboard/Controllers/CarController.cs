@@ -35,10 +35,14 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         public IActionResult Create(Car car)
         {
             var result = _carService.Add(car);
-            if (result.IsSuccess)
-                return RedirectToAction("Index");
+            if (!result.IsSuccess)
+            {
+                ViewData["CarCategories"] = _carCategoryService.GetAll().Data;
+                ModelState.AddModelError("", result.Message);
 
-            return View(car);
+                return View(car);
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -58,11 +62,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         {
             var result = _carService.Update(car);
 
-            if (result.IsSuccess)
+            if (!result.IsSuccess)
             {
-                return RedirectToAction("Index");
+                ModelState.AddModelError("", result.Message);
+
+                return View(car);
             }
-            return View(car);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
