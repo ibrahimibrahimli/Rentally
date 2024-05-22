@@ -45,13 +45,13 @@ namespace Business.Validations
                 .MaximumLength(50)
                 .WithMessage(UIMessages.MAXIMUM_50_SYMBOL_MESSAGE);
 
-            RuleFor(x => x.ImageUrl)
-                .NotEmpty()
-                .WithMessage(UIMessages.NOT_EMPTY_MESSAGE)
-                .MinimumLength(3)
-                .WithMessage(UIMessages.MINIMUM_3_SYMBOL_MESSAGE)
-                .MaximumLength(200)
-                .WithMessage(UIMessages.MAXIMUM_200_SYMBOL_MESSAGE);
+            //RuleFor(x => x.ImageUrl)
+            //    .NotEmpty()
+            //    .WithMessage(UIMessages.NOT_EMPTY_MESSAGE)
+            //    .MinimumLength(3)
+            //    .WithMessage(UIMessages.MINIMUM_3_SYMBOL_MESSAGE)
+            //    .MaximumLength(200)
+            //    .WithMessage(UIMessages.MAXIMUM_200_SYMBOL_MESSAGE);
         }
     }
 }

@@ -10,10 +10,12 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     public class TestimonialController : Controller
     {
         private readonly ITestimonialService _testimonialService;
+        private readonly IWebHostEnvironment _env;
 
-        public TestimonialController(ITestimonialService testimonialService)
+        public TestimonialController(ITestimonialService testimonialService, IWebHostEnvironment hostEnvironment)
         {
             _testimonialService = testimonialService;
+            _env = hostEnvironment;
         }
         public IActionResult Index()
         {
@@ -28,9 +30,9 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(TestimonialCreateDto dto)
+        public IActionResult Create(TestimonialCreateDto dto, IFormFile ImageUrl)
         {
-            var result = _testimonialService.Add(dto);
+            var result = _testimonialService.Add(dto, ImageUrl, _env.WebRootPath);
             if (!result.IsSuccess)
             {
                 ModelState.AddModelError("", result.Message);
@@ -49,9 +51,9 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         [HttpPost]
 
-        public IActionResult Edit(TestimonialUpdateDto dto)
+        public IActionResult Edit(TestimonialUpdateDto dto, IFormFile imageUrl)
         {
-            var result = _testimonialService.Update(dto);
+            var result = _testimonialService.Update(dto, imageUrl, _env.WebRootPath);
 
             if (!result.IsSuccess)
             {

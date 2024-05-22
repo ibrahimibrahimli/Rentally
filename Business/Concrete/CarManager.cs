@@ -3,16 +3,12 @@ using Business.BaseMessages;
 using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
-using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using FluentValidation;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Core.Extensions;
+using Microsoft.AspNetCore.Http;
+using Core.Extenstion;
 
 namespace Business.Concrete
 {
@@ -26,10 +22,11 @@ namespace Business.Concrete
             _validator = validator;
         }
 
-        public IResult Add(Car entity)
+        public IResult Add(Car entity, IFormFile imageUrl, string webRootPath)
         {
 
             var validator = _validator.Validate(entity);
+            entity.ImageUrl = PictureHelper.UploadImage(imageUrl, webRootPath);
 
             string errorMessage = "";
             foreach (var error in validator.Errors)
@@ -41,13 +38,26 @@ namespace Business.Concrete
             {
                 return new ErrorResult(errorMessage);
             }
+
+            
+
             _carDal.Add(entity);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
 
-        public IResult Update(Car entity)
+        public IResult Update(Car entity, IFormFile imageUrl, string webRootPath)
         {
+            var existData = GetById(entity.Id).Data;
+            if (imageUrl == null)
+            {
+                entity.ImageUrl = existData.ImageUrl;
+            }
+            else
+            {
+                entity.ImageUrl = PictureHelper.UploadImage(imageUrl, webRootPath);
+            }
+
             entity.UpdatedDate = DateTime.Now;
             _carDal.Update(entity);
 

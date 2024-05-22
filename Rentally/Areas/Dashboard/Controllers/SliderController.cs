@@ -1,7 +1,5 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
 using Entities.Concrete.Dtos;
-using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
@@ -10,9 +8,11 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     public class SliderController : Controller
     {
         private readonly ISliderService _sliderService;
-        public SliderController(ISliderService sliderService)
+        private readonly IWebHostEnvironment _env;
+        public SliderController(ISliderService sliderService, IWebHostEnvironment hostEnvironment)
         {
             _sliderService = sliderService;
+            _env = hostEnvironment;
         }
         public IActionResult Index()
         {
@@ -27,9 +27,9 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(SliderCreateDto dto)
+        public IActionResult Create(SliderCreateDto dto, IFormFile ImageUrl)
         {
-            var result = _sliderService.Add(dto);
+            var result = _sliderService.Add(dto, ImageUrl, _env.WebRootPath);
             if (!result.IsSuccess)
             {
                 ModelState.AddModelError("", result.Message);
@@ -48,9 +48,9 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         [HttpPost]
 
-        public IActionResult Edit(SliderUpdateDto dto)
+        public IActionResult Edit(SliderUpdateDto dto, IFormFile imageUrl)
         {
-            var result = _sliderService.Update(dto);
+            var result = _sliderService.Update(dto, imageUrl, _env.WebRootPath);
 
             if (!result.IsSuccess)
             {

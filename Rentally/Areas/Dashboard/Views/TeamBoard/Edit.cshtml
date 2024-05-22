@@ -3,7 +3,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="PositionId" class="control-label">Kateqoriya</label>
@@ -25,11 +25,6 @@
                 <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImageUrl" class="control-label">Şəkil</label>
-                <input asp-for="ImageUrl" min="0" class="form-control" id="answer" />
-                <span asp-validation-for="ImageUrl" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="LinkedinUrl" class="control-label">Linkedin Url</label>
                 <input asp-for="LinkedinUrl" class="form-control" />
                 <span asp-validation-for="LinkedinUrl" class="text-danger"></span>
@@ -48,6 +43,16 @@
                 <label asp-for="PinterestUrl" class="control-label">Pinterest Url</label>
                 <input asp-for="PinterestUrl" class="form-control" id="answer" />
                 <span asp-validation-for="PinterestUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="min-height:300px;">
+                <div class="card">
+                    <div class="card-body">
+                        <img class="img-fluid" src="@Model.ImageUrl" />
+                    </div>
+                    <div class="card p-3 mt-3">
+                        <input type="file" asp-for="ImageUrl" name="ImageUrl" />
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="@DefaultConstantValue.ADD_MESSAGE" class="btn btn-primary" />

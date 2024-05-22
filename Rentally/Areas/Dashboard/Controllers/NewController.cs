@@ -1,7 +1,5 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
 using Entities.Concrete.Dtos;
-using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
@@ -10,10 +8,12 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     public class NewController : Controller
     {
         private readonly INewService _newService;
+        private readonly IWebHostEnvironment _env;
 
-        public NewController(INewService newService)
+        public NewController(INewService newService,IWebHostEnvironment hostEnvironment)
         {
             _newService = newService;
+            _env = hostEnvironment;
         }
         public IActionResult Index()
         {
@@ -28,9 +28,9 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(NewCreateDto dto)
+        public IActionResult Create(NewCreateDto dto, IFormFile ImageUrl)
         {
-            var result = _newService.Add(dto);
+            var result = _newService.Add(dto, ImageUrl, _env.WebRootPath);
             if (!result.IsSuccess)
             {
                 ModelState.AddModelError("", result.Message);
@@ -49,9 +49,9 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         [HttpPost]
 
-        public IActionResult Edit(NewUpdateDto dto)
+        public IActionResult Edit(NewUpdateDto dto, IFormFile imageUrl)
         {
-            var result = _newService.Update(dto);
+            var result = _newService.Update(dto, imageUrl, _env.WebRootPath);
             if (!result.IsSuccess)
             {
                 ModelState.AddModelError("", result.Message);

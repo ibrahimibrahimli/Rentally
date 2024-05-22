@@ -1,12 +1,13 @@
 ﻿using Business.Abstract;
 using Business.BaseMessages;
+using Core.Extenstion;
 using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
-using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using FluentValidation;
+using Microsoft.AspNetCore.Http;
 namespace Business.Concrete
 {
     public class NewManager : INewService
@@ -19,10 +20,11 @@ namespace Business.Concrete
             _newDal = newDal;
             _validator = validator;
         }
-        public IResult Add(NewCreateDto dto)
+        public IResult Add(NewCreateDto dto, IFormFile imageUrl, string webRootPath)
         {
             var model  = NewCreateDto.ToNew(dto);
             var validator = _validator.Validate(model);
+            model.ImageUrl = PictureHelper.UploadImage(imageUrl, webRootPath);
 
             string errorMessage = "";
             foreach (var error in validator.Errors)
@@ -60,9 +62,21 @@ namespace Business.Concrete
             return new SuccessDataResult<New>(_newDal.GetById(id)); 
         }
 
-        public IResult Update(NewUpdateDto dto)
+        public IResult Update(NewUpdateDto dto, IFormFile imageUrl, string webRootPath)
         {
-            var model = NewUpdateDto.ToNew( dto);
+            var model = NewUpdateDto.ToNew(dto);
+
+            var existData = GetById(dto.Id).Data;
+            if (imageUrl == null)
+            {
+                model.ImageUrl = existData.ImageUrl;
+            }
+            else
+            {
+                model.ImageUrl = PictureHelper.UploadImage(imageUrl, webRootPath);
+            }
+
+            
             model.UpdatedDate = DateTime.Now;
             _newDal.Update(model);
 

@@ -39,6 +39,8 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
             var result = _bookingService.Add(dto);
             if (!result.IsSuccess)
             {
+                ViewData["Users"] = _userService.GetAll().Data;
+                ViewData["Cars"] = _carService.GetCarWithCategory().Data;
                 ModelState.AddModelError("", result.Message);
 
                 return View(dto);
@@ -61,8 +63,11 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         {
             var result = _bookingService.Update(dto);
 
+
             if (!result.IsSuccess)
             {
+                ViewData["Users"] = _userService.GetAll().Data;
+                ViewData["Cars"] = _carService.GetCarWithCategory().Data;
                 ModelState.AddModelError("", result.Message);
 
                 return View(dto);
@@ -80,5 +85,6 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
             return View(result);
         }
+
     }
 }

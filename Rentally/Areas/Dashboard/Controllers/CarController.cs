@@ -2,6 +2,7 @@
 using Business.Concrete;
 using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
+using Core.Extensions;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
@@ -10,10 +11,11 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     {
         private readonly ICarService _carService;
         private readonly ICarCategoryService _carCategoryService ;
+        private readonly IWebHostEnvironment _env;
 
-        public CarController(ICarCategoryService carCategoryService, ICarService carService)
+        public CarController(ICarCategoryService carCategoryService, ICarService carService, IWebHostEnvironment webHostEnvironment)
         {
-
+            _env = webHostEnvironment;  
             _carCategoryService = carCategoryService;
             _carService = carService;
         }
@@ -32,9 +34,9 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Car car)
+        public IActionResult Create(Car car, IFormFile imageUrl)
         {
-            var result = _carService.Add(car);
+            var result = _carService.Add(car, imageUrl, _env.WebRootPath);
             if (!result.IsSuccess)
             {
                 ViewData["CarCategories"] = _carCategoryService.GetAll().Data;
@@ -58,9 +60,9 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         [HttpPost]
 
-        public IActionResult Edit(Car car)
+        public IActionResult Edit(Car car, IFormFile imageUrl)
         {
-            var result = _carService.Update(car);
+            var result = _carService.Update(car, imageUrl, _env.WebRootPath);
 
             if (!result.IsSuccess)
             {

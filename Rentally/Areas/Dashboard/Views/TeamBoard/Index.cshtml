@@ -15,11 +15,11 @@
                             <th>Vəzifə</th>
                             <th>Ad</th>
                             <th>Soyad</th>
-                            <th>Şəkil URL-si</th>
                             <th>Linkedin Url</th>
                             <th>Facebook Url</th>
                             <th>Twitter Url</th>
                             <th>Pinterest Url</th>
+                            <th>Şəkil URL-si</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -30,11 +30,11 @@
                                 <td>@item.PositionName</td>
                                 <td>@item.Name</td>
                                 <td>@item.Surname</td>
-                                <td>@item.ImageUrl</td>
                                 <td>@(item.LinkedinUrl.Length > 0 ? "Var" : "Yoxdur")</td>
                                 <td>@(item.FacebookUrl.Length > 0 ? "Var" : "Yoxdur")</td>
                                 <td>@(item.TwitterUrl.Length > 0 ? "Var" : "Yoxdur")</td>
                                 <td>@(item.PinterestUrl.Length > 0 ? "Var" : "Yoxdur")</td>
+                                <td><img src="@item.ImageUrl" width="55px" /></td>
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.Id">
                                         <i class="fa-solid fa-pen-to-square"></i>

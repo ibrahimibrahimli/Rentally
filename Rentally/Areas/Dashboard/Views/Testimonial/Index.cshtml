@@ -4,6 +4,11 @@
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
+                <form action="New/Create" method="get">
+                    <p>
+                        <button class="btn btn-primary">@DefaultConstantValue.ADD_MESSAGE</button>
+                    </p>
+                </form>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -23,7 +28,7 @@
                                 <td>@item.Description</td>
                                 <td>@item.CustomerName</td>
                                 <td>@item.CustomerSurname</td>
-                                <td>@item.ImageUrl</td>
+                                <td><img src="@item.ImageUrl" width="55px" /></td>
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.Id">
                                         <i class="fa-solid fa-pen-to-square"></i>

@@ -58,14 +58,14 @@ namespace Business.Validations
                    .WithMessage(UIMessages.PASSWORD_LESS_THAN_LETTER)
                    .MaximumLength(16)
                    .WithMessage(UIMessages.PASSWORD_GREAT_THAN_LETTER)
-                   .Matches(@"[A-Z]+")
-                   .WithMessage(UIMessages.PASSWORD_NOT_CONTAIN_UPPERCASE)
+                   //.Matches(@"[A-Z]+")
+                   //.WithMessage(UIMessages.PASSWORD_NOT_CONTAIN_UPPERCASE)
                    .Matches(@"[a-z]+")
                    .WithMessage(UIMessages.PASSWORD_NOT_CONTAIN_LOWERCASE)
                    .Matches(@"[0-9]+")
-                   .WithMessage(UIMessages.PASSWORD_NOT_CONTAIN_NUMBER)
-                   .Matches(@"[\!\@\#]+")
-                   .WithMessage(UIMessages.PASSWORD_NOT_CONTAIN_SYMBOL);
+                   .WithMessage(UIMessages.PASSWORD_NOT_CONTAIN_NUMBER);
+                   //.Matches(@"[\!\@\#]+")
+                   //.WithMessage(UIMessages.PASSWORD_NOT_CONTAIN_SYMBOL);
         }
     }
 }

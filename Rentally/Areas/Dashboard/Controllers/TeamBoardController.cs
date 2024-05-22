@@ -11,11 +11,13 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     {
         private readonly ITeamBoardService _teamBoardService;
         private readonly IPositionService _positionService;
+        private readonly IWebHostEnvironment _env;
 
-        public TeamBoardController(ITeamBoardService teamBoardService, IPositionService positionService)
+        public TeamBoardController(ITeamBoardService teamBoardService, IPositionService positionService, IWebHostEnvironment hostEnvironment)
         {
             _teamBoardService = teamBoardService;
             _positionService = positionService;
+            _env = hostEnvironment;
         }
         public IActionResult Index()
         {
@@ -31,9 +33,9 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(TeamBoardCreateDto dto)
+        public IActionResult Create(TeamBoardCreateDto dto, IFormFile ImageUrl)
         {
-            var result = _teamBoardService.Add(dto);
+            var result = _teamBoardService.Add(dto, ImageUrl, _env.WebRootPath);
             if (!result.IsSuccess)
             {
                 ModelState.AddModelError("", result.Message);
@@ -53,14 +55,14 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         [HttpPost]
 
-        public IActionResult Edit(TeamBoardUpdateDto dto)
+        public IActionResult Edit(TeamBoardUpdateDto dto, IFormFile imageUrl)
         {
-            var result = _teamBoardService.Update(dto);
+            var result = _teamBoardService.Update(dto, imageUrl, _env.WebRootPath);
 
             if (!result.IsSuccess)
             {
                 ModelState.AddModelError("", result.Message);
-
+                ViewData["Positions"] = _positionService.GetAll().Data;
                 return View(dto);
             }
             return RedirectToAction("Index");

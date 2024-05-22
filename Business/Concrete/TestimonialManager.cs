@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.BaseMessages;
+using Core.Extenstion;
 using Core.Results.Abstract;
 using Core.Results.Concrete;
 using DataAccess.Abstract;
@@ -7,6 +8,7 @@ using DataAccess.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
 using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,10 +27,12 @@ namespace Business.Concrete
             _testimonialDal = testimonialDal;
             _validator = validator;
         }
-        public IResult Add(TestimonialCreateDto dto)
+        public IResult Add(TestimonialCreateDto dto, IFormFile imageUrl, string webRootPath)
         {
             var model = TestimonialCreateDto.ToTestimonial(dto);
             var validator = _validator.Validate(model);
+            model.ImageUrl = PictureHelper.UploadImage(imageUrl, webRootPath);
+
 
             string errorMessage = "";
             foreach (var error in validator.Errors)
@@ -45,9 +49,20 @@ namespace Business.Concrete
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
 
-        public IResult Update(TestimonialUpdateDto dto)
+        public IResult Update(TestimonialUpdateDto dto, IFormFile imageUrl, string webRootPath)
         {
             var model = TestimonialUpdateDto.ToTestimonial(dto);
+
+            var existData = GetById(dto.Id).Data;
+            if (imageUrl == null)
+            {
+                model.ImageUrl = existData.ImageUrl;
+            }
+            else
+            {
+                model.ImageUrl = PictureHelper.UploadImage(imageUrl, webRootPath);
+            }
+
             model.UpdatedDate = DateTime.Now;
             _testimonialDal.Update(model);
 

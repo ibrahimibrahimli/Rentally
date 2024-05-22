@@ -29,7 +29,7 @@ namespace Business.Validations
             RuleFor(x => x.DropOffDateTime)
                 .NotEmpty()
                 .WithMessage(UIMessages.NOT_EMPTY_MESSAGE)
-                .LessThan(x => x.PickUpDateTime).WithMessage(UIMessages.DROPOFFDATE_GREAT_PICKUPDATE);
+                .GreaterThan(x => x.PickUpDateTime).WithMessage(UIMessages.DROPOFFDATE_GREAT_PICKUPDATE);
         }
     }
 }
