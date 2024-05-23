@@ -12,11 +12,41 @@
 
   <ItemGroup>
     <Folder Include="Areas\Dashboard\Models\" />
-    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
+    <None Include="wwwroot\fonts\elegant_font\HTML_CSS\fonts\ElegantIcons.svg" />
+    <None Include="wwwroot\fonts\et-line-font\fonts\et-line.svg" />
+    <None Include="wwwroot\fonts\font-awesome\fonts\fontawesome-webfont3e6e.svg" />
+    <None Include="wwwroot\fonts\font-awesome\fonts\fontawesome-webfont3e6e.woff2" />
+    <None Include="wwwroot\fonts\icofont\fonts\icofont.woff2" />
+    <None Include="wwwroot\images\icons\1-green.svg" />
+    <None Include="wwwroot\images\icons\2-green.svg" />
+    <None Include="wwwroot\images\icons\3-green.svg" />
+    <None Include="wwwroot\images\icons\4-green.svg" />
+    <None Include="wwwroot\images\preloader\arrows.svg" />
+    <None Include="wwwroot\images\preloader\balls.svg" />
+    <None Include="wwwroot\images\preloader\gear.svg" />
+    <None Include="wwwroot\images\preloader\hatchway.svg" />
+    <None Include="wwwroot\images\preloader\pacman.svg" />
+    <None Include="wwwroot\images\preloader\petals.svg" />
+    <None Include="wwwroot\images\preloader\segments.svg" />
+    <None Include="wwwroot\images\preloader\stars.svg" />
+    <None Include="wwwroot\images\preloader\stopwatch.svg" />
+    <None Include="wwwroot\images\preloader\timer.svg" />
+    <None Include="wwwroot\images\preloader\triplex.svg" />
+    <None Include="wwwroot\images\preloader\twirl.svg" />
+    <None Include="wwwroot\images\svg\facebook_icon.svg" />
+    <None Include="wwwroot\images\svg\google_icon.svg" />
+    <None Include="wwwroot\js\designesia.js" />
+    <None Include="wwwroot\js\plugins.js" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Business\Business.csproj" />
+    <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>
 
   <ItemGroup>

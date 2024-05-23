@@ -22,11 +22,11 @@ namespace Business.Concrete
             _validator = validator;
         }
 
-        public IResult Add(Car entity, IFormFile imageUrl, string webRootPath)
+        public IResult Add(CarCreateDto dto, IFormFile imageUrl, string webRootPath)
         {
-
-            var validator = _validator.Validate(entity);
-            entity.ImageUrl = PictureHelper.UploadImage(imageUrl, webRootPath);
+            var model = CarCreateDto.ToCar(dto);
+            var validator = _validator.Validate(model);
+            model.ImageUrl = PictureHelper.UploadImage(imageUrl, webRootPath);
 
             string errorMessage = "";
             foreach (var error in validator.Errors)
@@ -41,25 +41,26 @@ namespace Business.Concrete
 
             
 
-            _carDal.Add(entity);
+            _carDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
         }
 
-        public IResult Update(Car entity, IFormFile imageUrl, string webRootPath)
+        public IResult Update(CarUpdateDto dto, IFormFile imageUrl, string webRootPath)
         {
-            var existData = GetById(entity.Id).Data;
+            var model = CarUpdateDto.ToCar(dto);
+            var existData = GetById(model.Id).Data;
             if (imageUrl == null)
             {
-                entity.ImageUrl = existData.ImageUrl;
+                model.ImageUrl = existData.ImageUrl;
             }
             else
             {
-                entity.ImageUrl = PictureHelper.UploadImage(imageUrl, webRootPath);
+                model.ImageUrl = PictureHelper.UploadImage(imageUrl, webRootPath);
             }
 
-            entity.UpdatedDate = DateTime.Now;
-            _carDal.Update(entity);
+            model.UpdatedDate = DateTime.Now;
+            _carDal.Update(model);
 
             return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }

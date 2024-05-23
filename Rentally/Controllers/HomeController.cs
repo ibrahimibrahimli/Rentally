@@ -1,32 +1,53 @@
+using Business.Abstract;
 using Microsoft.AspNetCore.Mvc;
-using Rentally.Models;
+using Rentally.WEB.ViewModels;
 using System.Diagnostics;
 
 namespace Rentally.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ISliderService _sliderService;
+        private readonly ICarService _carService;   
+        private readonly IAboutService _aboutService;
+        private readonly IFeatureService _featureService;
+        private readonly ITestimonialService _testimonialService;
+        private readonly INewService _newService;
+        private readonly IQAService _qaService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ISliderService sliderService, ICarService carService, IAboutService aboutService, IFeatureService featureService, ITestimonialService estimonialService, INewService newService, IQAService qaService)
         {
-            _logger = logger;
+            _sliderService = sliderService;
+            _carService = carService;
+            _aboutService = aboutService;
+            _featureService = featureService;
+            _testimonialService = estimonialService;
+            _newService = newService;
+            _qaService = qaService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var sliderData = _sliderService.GetAll().Data;
+            var carData = _carService.GetCarWithCategory().Data;
+            var aboutData = _aboutService.GetAboutWithCarCustomerBooking().Data;
+            var featureData = _featureService.GetAll().Data;
+            var testimonialData = _testimonialService.GetAll().Data;
+            var newData = _newService.GetAll().Data;
+            var qaData = _qaService.GetAll().Data;
+
+            HomeViewModel viewModel = new()
+            {
+                Sliders = sliderData,
+                Cars = carData,
+                Abouts = aboutData,
+                Features = featureData,
+                Testimonials = testimonialData,
+                News = newData,
+                QAs = qaData
+            };
+            return View(viewModel);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

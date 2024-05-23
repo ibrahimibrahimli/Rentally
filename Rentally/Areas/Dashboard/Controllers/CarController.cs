@@ -3,6 +3,7 @@ using Business.Concrete;
 using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
 using Core.Extensions;
+using Entities.Concrete.Dtos;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
@@ -34,15 +35,15 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Car car, IFormFile imageUrl)
+        public IActionResult Create(CarCreateDto dto, IFormFile imageUrl)
         {
-            var result = _carService.Add(car, imageUrl, _env.WebRootPath);
+            var result = _carService.Add(dto, imageUrl, _env.WebRootPath);
             if (!result.IsSuccess)
             {
                 ViewData["CarCategories"] = _carCategoryService.GetAll().Data;
                 ModelState.AddModelError("", result.Message);
 
-                return View(car);
+                return View(dto);
             }
             return RedirectToAction("Index");
         }
@@ -60,15 +61,15 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
         [HttpPost]
 
-        public IActionResult Edit(Car car, IFormFile imageUrl)
+        public IActionResult Edit(CarUpdateDto dto, IFormFile imageUrl)
         {
-            var result = _carService.Update(car, imageUrl, _env.WebRootPath);
+            var result = _carService.Update(dto, imageUrl, _env.WebRootPath);
 
             if (!result.IsSuccess)
             {
                 ModelState.AddModelError("", result.Message);
 
-                return View(car);
+                return View(dto);
             }
             return RedirectToAction("Index");
         }

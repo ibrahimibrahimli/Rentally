@@ -1,8 +1,497 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
+@model HomeViewModel 
+<!-- content begin -->
+<div class="no-bottom no-top" id="content">
+    <div id="top"></div>
+    <section id="de-carousel" class="no-top no-bottom carousel slide carousel-fade" data-mdb-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators z1000">
+            <li data-mdb-target="#de-carousel" data-mdb-slide-to="0" class="active"></li>
+            <li data-mdb-target="#de-carousel" data-mdb-slide-to="1"></li>
+            <li data-mdb-target="#de-carousel" data-mdb-slide-to="2"></li>
+        </ol>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <!-- Inner -->
+        <div class="carousel-inner position-relative">
+            <!-- Single item -->
+            <div class="carousel-item active jarallax">
+                <img src="@Model.Sliders[0].ImageUrl" class="jarallax-img" alt="">
+                <div class="mask">
+                    <div class="no-top no-bottom">
+                        <div class="h-100 v-center">
+                            <div class="container">
+                                <div class="row gx-5 align-items-center">
+                                    <div class="col-lg-6 offset-lg-3 text-center mb-sm-30">
+                                        <h1 class="s3 mb-3 wow fadeInUp">@Model.Sliders[0].Title</h1>
+                                        <p class="lead wow fadeInUp" data-wow-delay=".3s">@Model.Sliders[0].Description</p>
+                                        <div class="spacer-10"></div>
+                                        <a class="btn-line mb10 wow fadeInUp" data-wow-delay=".6s" href="#">Kəşfet</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single item -->
+            <div class="carousel-item jarallax">
+                <img src="@Model.Sliders[1].ImageUrl" class="jarallax-img" alt="">
+                <div class="mask">
+                    <div class="no-top no-bottom">
+                        <div class="h-100 v-center">
+                            <div class="container">
+                                <div class="row gx-5 align-items-center">
+                                    <div class="col-lg-6 offset-lg-3 text-center mb-sm-30">
+                                        <h1 class="s3 mb-3 wow fadeInUp">@Model.Sliders[1].Title</h1>
+                                        <p class="lead wow fadeInUp" data-wow-delay=".3s">@Model.Sliders[1].Description</p>
+                                        <div class="spacer-10"></div>
+                                        <a class="btn-line mb10 wow fadeInUp" data-wow-delay=".6s" href="#">Kəşfet</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single item -->
+            <div class="carousel-item jarallax">
+                <img src="@Model.Sliders[2].ImageUrl" class="jarallax-img" alt="">
+                <div class="mask">
+                    <div class="no-top no-bottom">
+                        <div class="h-100 v-center">
+                            <div class="container">
+                                <div class="row gx-5 align-items-center">
+                                    <div class="col-lg-6 offset-lg-3 text-center mb-sm-30">
+                                        <h1 class="s3 mb-3 wow fadeInUp">@Model.Sliders[2].Title</h1>
+                                        <p class="lead wow fadeInUp" data-wow-delay=".3s">@Model.Sliders[2].Description</p>
+                                        <div class="spacer-10"></div>
+                                        <a class="btn-line mb10 wow fadeInUp" data-wow-delay=".6s" href="#">Kəşfet</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Inner -->
+        <!-- Controls -->
+        <a class="carousel-control-prev" href="#de-carousel" role="button" data-mdb-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Əvvəlki</span>
+        </a>
+        <a class="carousel-control-next" href="#de-carousel" role="button" data-mdb-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Sonrakı</span>
+        </a>
+        <div class="de-gradient-edge-bottom"></div>
+    </section>
+
+    <section id="section-cars">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 offset-lg-3 text-center">
+                    <h2>Bizim Maşın Qarajımız</h2>
+                    <p>Unudulmaz səyahətlər üçün çox yönlü nəqliyyat vasitələrinin incə parkı ilə xəyallarınızı gerçəkliyə aparın.</p>
+                    <div class="spacer-20"></div>
+                </div>
+
+                <div id="items-carousel" class="owl-carousel wow fadeIn">
+
+                    @foreach (var item in Model.Cars)
+                    {
+                        if (!item.IsHomePage)
+                        {
+                            <div class="col-lg-12">
+                                <div class="de-item mb30">
+                                    <div class="d-img">
+                                        <img src="@item.ImageUrl" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="d-info">
+                                        <div class="d-text">
+                                            <h4>@item.Brand  @item.Model</h4>
+                                            @* <div class="d-item_like">
+                                    <i class="fa fa-heart"></i><span>74</span>
+                                    </div> *@
+                                            <div class="d-atr-group">
+                                                <span class="d-atr"><img src="images/icons/1-green.svg" alt="">@item.PassengerCount</span>
+                                                <span class="d-atr"><img src="images/icons/3-green.svg" alt="">@item.DoorCount</span>
+                                                <span class="d-atr"><img src="images/icons/4-green.svg" alt="">@item.CarCategoryName</span>
+                                            </div>
+                                            <div class="d-price">
+                                                Bir günlük Kirayə <span>$@item.PricePerDay</span>
+                                                <a class="btn-main" href="02_dark-car-single.html">Kirayə et</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+            </div>
+        </div>
+    </section>
+      
+    @* About Section *@
+
+    @foreach(var item in Model.Abouts)
+    {
+        <section class="text-light jarallax">
+            <img src="images/AboutBackground.jpg" class="jarallax-img" alt="">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-6 wow fadeInRight">
+                        <h2>@item.Title</h2>
+                    </div>
+                    <div class="col-lg-6 wow fadeInLeft">@item.Description </div>
+                </div>
+                <div class="spacer-double"></div>
+                <div class="row text-center">
+                    <div class="col-md-3 col-sm-6 mb-sm-30">
+                        <div class="de_count transparent text-light wow fadeInUp">
+                            <h3 class="timer" data-to="@item.CompletedOrders" data-speed="3000">0</h3>
+                            Tamamlanmış Sifarişlər
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-sm-30">
+                        <div class="de_count transparent text-light wow fadeInUp">
+                            <h3 class="timer" data-to="@item.Customers" data-speed="3000">0</h3>
+                            Xoşbəxt Müştəri
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-sm-30">
+                        <div class="de_count transparent text-light wow fadeInUp">
+                            <h3 class="timer" data-to="@item.Cars" data-speed="3000">0</h3>
+                            Maşın Sayımız
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-sm-30">
+                        <div class="de_count transparent text-light wow fadeInUp">
+                            <h3 class="timer" data-to="15" data-speed="3000">0</h3>
+                            Years Experience
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+    
+
+  
+    <section aria-label="section" class="no-bottom">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 offset-lg-3 text-center">
+                    <h2>Xüsusiyyətlərimiz</h2>
+                    <p>Unudulmaz sərgüzəştlərə və qüsursuz mobillik həllərinə yol açaraq, rahatlıq, təhlükəsizlik və fərdiləşdirmə dünyasını kəşf edin.</p>
+                    <div class="spacer-20"></div>
+                </div>
+                <div class="clearfix"></div>
+                @{
+                    int count = 1;
+                }
+                <div class="col-lg-3">
+                @foreach (var item in Model.Features)
+                {
+                    <div class="box-icon s2 p-small mb20 wow fadeInRight" data-wow-delay=".5s">
+                        <i class="@item.IconName"></i>
+                        <div class="d-inner">
+                            <h4>@item.Title</h4>
+                            @item.Description
+                        </div>
+                    </div>
+
+                    count++;
+                    if(count > 2)
+                    {
+                        break;
+                    }
+                }
+                </div>
+
+                <div class="col-lg-6">
+                    <img src="images/car-2.png" alt="" class="img-fluid wow fadeInUp">
+                </div>
+
+                <div class="col-lg-3">
+                    @foreach (var item in Model.Features)
+                    {
+                        <div class="box-icon s2 p-small mb20 wow fadeInRight" data-wow-delay=".5s">
+                            <i class="@item.IconName"></i>
+                            <div class="d-inner">
+                                <h4>@item.Title</h4>
+                                @item.Description
+                            </div>
+                        </div>
+
+                        count++;
+                        if (count > 4)
+                        {
+                            break;
+                        }
+                    }
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-testimonials" class="no-top no-bottom">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+
+            @foreach(var item in Model.Testimonials)
+            {
+                <div class="col-md-4">
+                    <div class="de-image-text">
+                        <div class="d-text">
+                            <div class="d-quote id-color"><i class="fa fa-quote-right"></i></div>
+                            <h4>@item.Title</h4>
+                            <blockquote>
+                                @item.Description
+                                <span class="by">@item.CustomerName @item.CustomerSurname</span>
+                            </blockquote>
+                        </div>
+                        <img src="@item.ImageUrl" class="img-fluid" alt="">
+                    </div>
+                </div>
+            }
+            </div>
+        </div>
+    </section>
+
+    <section id="section-news">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 offset-lg-3 text-center">
+                    <h2>Son Yeniliklər</h2>
+                <p>Ən son xəbərlər, təzə perspektivlər və dərin əhatəli məlumatlar - ən son xəbərlərimiz, anlayışlarımız və təhlillərimizlə qabaqda olun.</p>
+                    <div class="spacer-20"></div>
+                </div>
+
+            @foreach(var item in Model.News)
+            {
+                <div class="col-lg-4 mb10">
+                    <div class="bloglist s2 item">
+                        <div class="post-content">
+                            <div class="post-image">
+                                <div class="date-box">
+                                    <div class="m">@item.CreatedDate.Day</div>
+                                    <div class="d">@item.CreatedDate.Month</div>
+                                </div>
+                                <img alt="" src="@item.ImageUrl" class="lazy">
+                            </div>
+                            <div class="post-text">
+                                <h4><a href="#"> <span>@item.Title</span></a></h4>
+                                <p>@item.Text</p>
+                                <a class="btn-line" href="#">Daha Çox</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            </div>
+        </div>
+    </section>
+
+    <section class="text-light jarallax" aria-label="section">
+        <img src="images/background/3.jpg" alt="" class="jarallax-img">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                <h1>Gəlin Macəranıza Başlayaq</h1>
+                    <div class="spacer-20"></div>
+                </div>
+                @{int featureCount = 0;}
+            @foreach(var item in Model.Features)
+            {
+                featureCount++;
+                if(featureCount < 4)
+                {
+                    <div class="col-md-3">
+                        <i class="@item.IconName mb20 de-icon"></i>
+                        <h4>@item.Title</h4>
+                        <p>@item.Description</p>
+                    </div>
+                }
+            }
+            </div>
+        </div>
+    </section>
+
+    <section id="section-faq">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <h2>Sualın Var?</h2>
+                    <div class="spacer-20"></div>
+                </div>
+            </div>
+            <div class="row g-custom-x">
+                <div class="col-md-6 wow fadeInUp">
+                    <div class="accordion secondary">
+                        <div class="accordion-section">
+                            @{int qaCount = 0;}
+                        @foreach(var item in Model.QAs)
+                        {
+                            qaCount++;
+                            
+                            <div class="accordion-section-title" data-tab="#accordion-1">
+                                @item.Question
+                            </div>
+                            <div class="accordion-section-content" id="accordion-1">
+                                <p>@item.Answer</p>
+                            </div>
+
+                            if (qaCount > 2)
+                            {
+                                break;
+                            }
+                        }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 wow fadeInUp">
+                    <div class="accordion secondary">
+                        <div class="accordion-section">
+                        @foreach (var item in Model.QAs)
+                        {
+                            qaCount++;
+                            <div class="accordion-section-title" data-tab="#accordion-1">
+                                @item.Question
+                            </div>
+                            <div class="accordion-section-content" id="accordion-1">
+                                <p>@item.Answer</p>
+                            </div>
+                            if (qaCount > 5)
+                            {
+                                break;
+                            }
+                        }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section aria-label="section" class="pt40 pb40 text-light" data-bgcolor="#111111">
+        <div class="wow fadeInRight d-flex">
+            <div class="de-marquee-list">
+                <div class="d-item">
+                    <span class="d-item-txt">SUV</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Hatchback</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Crossover</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Convertible</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Sedan</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Sports Car</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Coupe</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Minivan</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Station Wagon</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Truck</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Minivans</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Exotic Cars</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="de-marquee-list">
+                <div class="d-item">
+                    <span class="d-item-txt">SUV</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Hatchback</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Crossover</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Convertible</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Sedan</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Sports Car</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Coupe</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Minivan</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Station Wagon</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Truck</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Minivans</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                    <span class="d-item-txt">Exotic Cars</span>
+                    <span class="d-item-display">
+                        <i class="d-item-dot"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </div>
+<!-- content close -->
+<a href="#" id="back-to-top"></a>

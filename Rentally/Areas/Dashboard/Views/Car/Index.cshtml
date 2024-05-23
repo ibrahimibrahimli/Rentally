@@ -18,7 +18,9 @@
                             <th>İli</th>
                             <th>Qapı Sayı</th>
                             <th>Öz sayı</th>
+                            <th>Sərnişin sayı</th>
                             <th>Günlük kirayə</th>
+                            <th>Əsas ekran</th>
                             <th>Şəkil URL-si</th>
                             <th></th>
                         </tr>
@@ -33,7 +35,9 @@
                                 <td>@item.Year</td>
                                 <td>@item.DoorCount</td>
                                 <td>@item.Count</td>
+                                <td>@item.PassengerCount</td>
                                 <td>@item.PricePerDay</td>
+                                <td>@(item.IsHomePage ? "Aktiv" : "Deaktiv")</td>
                                 <td><img src="@item.ImageUrl" style="width:55px; height:55px;"/></td>
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.Id">

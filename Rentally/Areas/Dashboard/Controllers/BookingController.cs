@@ -17,7 +17,6 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
             _carService = carService;
             _bookingService = bookingService;
             _userService = userService;
-
         }
         public IActionResult Index()
         {

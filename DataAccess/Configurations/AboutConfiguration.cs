@@ -16,11 +16,11 @@ namespace DataAccess.Configurations
                 .UseIdentityColumn(seed: DefaultConstantValue.DEFAULT_PRIMARY_SEED_VALUE, increment: 1);
 
             builder.Property(x => x.Title)
-                .HasMaxLength(100)
+                .HasMaxLength(1000)
                 .IsRequired();
 
             builder.Property(x => x.Description)
-                .HasMaxLength(1000)
+                .HasMaxLength(3000)
                 .IsRequired();
 
             builder.Property(x => x.CompletedOrders)

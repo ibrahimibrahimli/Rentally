@@ -34,7 +34,9 @@ namespace DataAccess.Concrete
                              Count = car.Count,
                              PricePerDay = car.PricePerDay,
                              ImageUrl = car.ImageUrl,
-                             CarCategoryName = carCategory.Title
+                             CarCategoryName = carCategory.Title,
+                             IsHomePage = car.IsHomePage,
+                             PassengerCount = car.PassengerCount,
                          };
 
             return result.ToList();

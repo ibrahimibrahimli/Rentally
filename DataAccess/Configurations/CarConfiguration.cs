@@ -27,8 +27,16 @@ namespace DataAccess.Configurations
 
             builder.Property(x => x.DoorCount)
                 .IsRequired();
+            
+            builder.Property(x => x.PassengerCount)
+                .IsRequired();
+
             builder.Property(x => x.Year)
                 .IsRequired();
+
+            builder.Property(x => x.IsHomePage)
+                .IsRequired()
+                .HasDefaultValue(false);
 
             builder.Property(x => x.PricePerDay)
                 .IsRequired()
