@@ -1,5 +1,4 @@
-﻿
-@model HomeViewModel 
+﻿@model HomeViewModel
 <!-- content begin -->
 <div class="no-bottom no-top" id="content">
     <div id="top"></div>
@@ -103,7 +102,7 @@
 
                     @foreach (var item in Model.Cars)
                     {
-                        if (!item.IsHomePage)
+                        if (item.IsHomePage)
                         {
                             <div class="col-lg-12">
                                 <div class="de-item mb30">
@@ -136,10 +135,10 @@
             </div>
         </div>
     </section>
-      
+
     @* About Section *@
 
-    @foreach(var item in Model.Abouts)
+    @foreach (var item in Model.Abouts)
     {
         <section class="text-light jarallax">
             <img src="images/AboutBackground.jpg" class="jarallax-img" alt="">
@@ -180,9 +179,9 @@
             </div>
         </section>
     }
-    
 
-  
+
+
     <section aria-label="section" class="no-bottom">
         <div class="container">
             <div class="row align-items-center">
@@ -192,33 +191,11 @@
                     <div class="spacer-20"></div>
                 </div>
                 <div class="clearfix"></div>
-                @{
-                    int count = 1;
-                }
-                <div class="col-lg-3">
-                @foreach (var item in Model.Features)
-                {
-                    <div class="box-icon s2 p-small mb20 wow fadeInRight" data-wow-delay=".5s">
-                        <i class="@item.IconName"></i>
-                        <div class="d-inner">
-                            <h4>@item.Title</h4>
-                            @item.Description
-                        </div>
-                    </div>
 
-                    count++;
-                    if(count > 2)
-                    {
-                        break;
+                <div class="col-lg-3">
+                    @{
+                        int count = 0;
                     }
-                }
-                </div>
-
-                <div class="col-lg-6">
-                    <img src="images/car-2.png" alt="" class="img-fluid wow fadeInUp">
-                </div>
-
-                <div class="col-lg-3">
                     @foreach (var item in Model.Features)
                     {
                         <div class="box-icon s2 p-small mb20 wow fadeInRight" data-wow-delay=".5s">
@@ -230,22 +207,45 @@
                         </div>
 
                         count++;
-                        if (count > 4)
+                        if (count > 1)
                         {
+                            count = 0;
                             break;
                         }
                     }
                 </div>
+
+                <div class="col-lg-6">
+                    <img src="images/car-2.png" alt="" class="img-fluid wow fadeInUp">
+                </div>
+
+                <div class="col-lg-3">
+                    @foreach (var item in Model.Features)
+                    {
+                        count++;
+
+                        if (count > 2)
+                        {
+                            <div class="box-icon s2 p-small mb20 wow fadeInRight" data-wow-delay=".5s">
+                                <i class="@item.IconName"></i>
+                                <div class="d-inner">
+                                    <h4>@item.Title</h4>
+                                    @item.Description
+                                </div>
+                            </div>
+                        }
+                    }
                 </div>
             </div>
         </div>
+</div>
     </section>
 
-    <section id="section-testimonials" class="no-top no-bottom">
-        <div class="container">
-            <div class="row g-4 align-items-center">
+<section id="section-testimonials" class=" no-bottom ">
+    <div class="container">
+        <div class="row g-4 align-items-center">
 
-            @foreach(var item in Model.Testimonials)
+            @foreach (var item in Model.Testimonials)
             {
                 <div class="col-md-4">
                     <div class="de-image-text">
@@ -261,20 +261,20 @@
                     </div>
                 </div>
             }
-            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="section-news">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 offset-lg-3 text-center">
-                    <h2>Son Yeniliklər</h2>
+<section id="section-news">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 offset-lg-3 text-center">
+                <h2>Son Yeniliklər</h2>
                 <p>Ən son xəbərlər, təzə perspektivlər və dərin əhatəli məlumatlar - ən son xəbərlərimiz, anlayışlarımız və təhlillərimizlə qabaqda olun.</p>
-                    <div class="spacer-20"></div>
-                </div>
+                <div class="spacer-20"></div>
+            </div>
 
-            @foreach(var item in Model.News)
+            @foreach (var item in Model.News)
             {
                 <div class="col-lg-4 mb10">
                     <div class="bloglist s2 item">
@@ -296,23 +296,25 @@
                 </div>
             }
 
-            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="text-light jarallax" aria-label="section">
-        <img src="images/background/3.jpg" alt="" class="jarallax-img">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
+<section class="text-light jarallax" aria-label="section">
+    <img src="images/background/3.jpg" alt="" class="jarallax-img">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
                 <h1>Gəlin Macəranıza Başlayaq</h1>
-                    <div class="spacer-20"></div>
-                </div>
-                @{int featureCount = 0;}
-            @foreach(var item in Model.Features)
+                <div class="spacer-20"></div>
+            </div>
+            @{
+                int featureCount = 0;
+            }
+            @foreach (var item in Model.Features)
             {
                 featureCount++;
-                if(featureCount < 4)
+                if (featureCount < 4)
                 {
                     <div class="col-md-3">
                         <i class="@item.IconName mb20 de-icon"></i>
@@ -321,27 +323,30 @@
                     </div>
                 }
             }
+        </div>
+    </div>
+</section>
+
+<section id="section-faq">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <h2>Sualın Var?</h2>
+                <div class="spacer-20"></div>
             </div>
         </div>
-    </section>
+        <div class="row g-custom-x">
+            <div class="col-md-6 wow fadeInUp">
+                <div class="accordion secondary">
+                    <div class="accordion-section">
 
-    <section id="section-faq">
-        <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <h2>Sualın Var?</h2>
-                    <div class="spacer-20"></div>
-                </div>
-            </div>
-            <div class="row g-custom-x">
-                <div class="col-md-6 wow fadeInUp">
-                    <div class="accordion secondary">
-                        <div class="accordion-section">
-                            @{int qaCount = 0;}
-                        @foreach(var item in Model.QAs)
+                       
+
+                        @{
+                            int qaCount = 0;
+                        }
+                        @foreach (var item in Model.QAs)
                         {
-                            qaCount++;
-                            
                             <div class="accordion-section-title" data-tab="#accordion-1">
                                 @item.Question
                             </div>
@@ -349,148 +354,151 @@
                                 <p>@item.Answer</p>
                             </div>
 
+                            qaCount++;
                             if (qaCount > 2)
                             {
+                                qaCount = 0;
                                 break;
                             }
                         }
-                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="col-md-6 wow fadeInUp">
-                    <div class="accordion secondary">
-                        <div class="accordion-section">
+            <div class="col-md-6 wow fadeInUp">
+                <div class="accordion secondary">
+                    <div class="accordion-section">
+
+
                         @foreach (var item in Model.QAs)
                         {
                             qaCount++;
-                            <div class="accordion-section-title" data-tab="#accordion-1">
-                                @item.Question
-                            </div>
-                            <div class="accordion-section-content" id="accordion-1">
-                                <p>@item.Answer</p>
-                            </div>
-                            if (qaCount > 5)
+                            if (qaCount > 3)
                             {
-                                break;
+                                <div class="accordion-section-title" data-tab="#accordion-1">
+                                    @item.Question
+                                </div>
+                                <div class="accordion-section-content" id="accordion-1">
+                                    <p>@item.Answer</p>
+                                </div>
                             }
                         }
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section aria-label="section" class="pt40 pb40 text-light" data-bgcolor="#111111">
-        <div class="wow fadeInRight d-flex">
-            <div class="de-marquee-list">
-                <div class="d-item">
-                    <span class="d-item-txt">SUV</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Hatchback</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Crossover</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Convertible</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Sedan</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Sports Car</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Coupe</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Minivan</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Station Wagon</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Truck</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Minivans</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Exotic Cars</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                </div>
-            </div>
-
-            <div class="de-marquee-list">
-                <div class="d-item">
-                    <span class="d-item-txt">SUV</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Hatchback</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Crossover</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Convertible</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Sedan</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Sports Car</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Coupe</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Minivan</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Station Wagon</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Truck</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Minivans</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                    <span class="d-item-txt">Exotic Cars</span>
-                    <span class="d-item-display">
-                        <i class="d-item-dot"></i>
-                    </span>
-                </div>
+<section aria-label="section" class="pt40 pb40 text-light" data-bgcolor="#111111">
+    <div class="wow fadeInRight d-flex">
+        <div class="de-marquee-list">
+            <div class="d-item">
+                <span class="d-item-txt">SUV</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Hatchback</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Crossover</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Convertible</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Sedan</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Sports Car</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Coupe</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Minivan</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Station Wagon</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Truck</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Minivans</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Exotic Cars</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
             </div>
         </div>
-    </section>
+
+        <div class="de-marquee-list">
+            <div class="d-item">
+                <span class="d-item-txt">SUV</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Hatchback</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Crossover</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Convertible</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Sedan</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Sports Car</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Coupe</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Minivan</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Station Wagon</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Truck</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Minivans</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+                <span class="d-item-txt">Exotic Cars</span>
+                <span class="d-item-display">
+                    <i class="d-item-dot"></i>
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
 
 </div>
 <!-- content close -->

@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 
-<!-- Mirrored from www.madebydesignesia.com/themes/rentaly/02_dark-index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 May 2024 10:02:28 GMT -->
+
 <head>
     <title>Rentaly - Multipurpose Vehicle Car Rental Website Template</title>
     <link rel="icon" href="images/icon.png" type="image/gif" sizes="16x16">
@@ -30,7 +30,7 @@
         <!-- page preloader close -->
         <!-- header begin -->
         <header class="transparent has-topbar">
-            
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -39,7 +39,7 @@
                                 <div class="de-flex-col">
                                     <!-- logo begin -->
                                     <div id="logo">
-                                        <a href="index.html">
+                                        <a href="/">
                                             <img class="logo-1" src="images/logo-light.png" alt="">
                                             <img class="logo-2" src="images/logo-light.png" alt="">
                                         </a>
@@ -50,20 +50,20 @@
                             <div class="de-flex-col header-col-mid">
                                 <ul id="mainmenu">
                                     <li>
-                                        <a class="menu-item" href="02_dark-index-2.html">Home</a>
+                                        <a asp-controller="Home" asp-action="Index" class="menu-item">Ana Səhifə</a>
                                     </li>
                                     <li>
-                                        <a class="menu-item" href="02_dark-cars.html">Cars</a>
+                                        <a asp-controller="GlobalCar" asp-action="Index" class="menu-item">Maşınlar</a>
                                     </li>
+                                    <li> <a class="menu-item" href="booking.html">Rezervasiya</a></li>
                                     <li>
-                                        <a class="menu-item" href="quick-booking.html">Booking</a>
-                                        <ul>
-                                            <li><a class="menu-item new" href="quick-booking.html">Quick Booking</a></li>
-                                            <li><a class="menu-item" href="booking.html">Booking</a></li>
-                                        </ul>
+                                        <a asp-controller="GlobalAboutUs" asp-action="Index">Haqqımızda</a>
                                     </li>
+                                    <li><a asp-controller="GlobalContact" asp-action="Index" class="menu-item">Əlaqə</a></li>
+                                    <li><a class="menu-item" href="news-grid-right-sidebar.html">Yeniliklər</a></li>
+
                                     <li>
-                                        <a class="menu-item" href="account-dashboard.html">My Account</a>
+                                        <a class="menu-item" href="account-dashboard.html">Hesabım</a>
                                         <ul>
                                             <li><a class="menu-item" href="account-dashboard.html">Dashboard</a></li>
                                             <li><a class="menu-item" href="account-profile.html">My Profile</a></li>
@@ -71,60 +71,16 @@
                                             <li><a class="menu-item" href="account-favorite.html">My Favorite Cars</a></li>
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a class="menu-item" href="#">Pages</a>
-                                        <ul>
-                                            <li><a class="menu-item" href="about.html">About Us</a></li>
-                                            <li><a class="menu-item" href="contact.html">Contact</a></li>
-                                            <li><a class="menu-item" href="login.html">Login</a></li>
-                                            <li><a class="menu-item" href="register.html">Register</a></li>
-                                            <li><a class="menu-item" href="404.html">Page 404</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="menu-item" href="#">News</a>
-                                        <ul>
-                                            <li>
-                                                <a class="menu-item" href="news-standart-right-sidebar.html">News Standard</a>
-                                                <ul>
-                                                    <li><a class="menu-item" href="news-standart-right-sidebar.html">Right Sidebar</a></li>
-                                                    <li><a class="menu-item" href="news-standart-left-sidebar.html">Left Sidebar</a></li>
-                                                    <li><a class="menu-item" href="news-standart-no-sidebar.html">No Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="menu-item" href="news-grid-right-sidebar.html">News Grid</a>
-                                                <ul>
-                                                    <li><a class="menu-item" href="news-grid-right-sidebar.html">Right Sidebar</a></li>
-                                                    <li><a class="menu-item" href="news-grid-left-sidebar.html">Left Sidebar</a></li>
-                                                    <li><a class="menu-item" href="news-grid-no-sidebar.html">No Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="menu-item" href="#">Elements</a>
-                                        <ul>
-                                            <li><a class="menu-item" href="preloader.html">Preloader</a></li>
-                                            <li><a class="menu-item" href="icon-boxes.html">Icon Boxes</a></li>
-                                            <li><a class="menu-item" href="badge.html">Badge</a></li>
-                                            <li><a class="menu-item" href="counters.html">Counters</a></li>
-                                            <li><a class="menu-item" href="gallery-popup.html">Gallery Popup</a></li>
-                                            <li><a class="menu-item" href="icons-elegant.html">Icons Elegant</a></li>
-                                            <li><a class="menu-item" href="icons-etline.html">Icons Etline</a></li>
-                                            <li><a class="menu-item" href="icons-font-awesome.html">Icons Font Awesome</a></li>
-                                            <li><a class="menu-item" href="map.html">Map</a></li>
-                                            <li><a class="menu-item" href="modal.html">Modal</a></li>
-                                            <li><a class="menu-item" href="popover.html">Popover</a></li>
-                                            <li><a class="menu-item" href="tabs.html">Tabs</a></li>
-                                            <li><a class="menu-item" href="tooltips.html">Tooltips</a></li>
-                                        </ul>
-                                    </li>
+
                                 </ul>
                             </div>
                             <div class="de-flex-col">
                                 <div class="menu_side_area">
-                                    <a href="login.html" class="btn-main">Sign In</a>
+                                    <a href="login.html" class="btn-main">Giriş Et</a>
+                                    <span id="menu-btn"></span>
+                                </div>
+                                <div class="menu_side_area">
+                                    <a class="btn-main" href="register.html">Qeydiyyatdan Keç</a>
                                     <span id="menu-btn"></span>
                                 </div>
                             </div>
@@ -134,8 +90,9 @@
             </div>
         </header>
         <!-- header close -->
+
         @RenderBody()
-       
+
         <!-- footer begin -->
         <footer class="text-light">
             <div class="container">
@@ -197,12 +154,12 @@
                             <div class="de-flex">
                                 <div class="de-flex-col">
                                     <a href="index.html">
-                                        Copyright 2024 - Rentaly by Designesia
+                                        Copyright 2024 - İbrahim İbrahimli / dev.ibrahimlii@gmail.com
                                     </a>
                                 </div>
                                 <ul class="menu-simple">
-                                    <li><a href="#">Terms &amp; Conditions</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="https://github.com/ibrahimibrahimli">GitHub</a></li>
+                                    <li><a href="https://www.linkedin.com/in/ibrahimlii/">Linkedin</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -212,15 +169,7 @@
         </footer>
         <!-- footer close -->
     </div>
-    <div id="selector">
-        <div id="demo-rtl" class="sc-opt">
-            <div class="sc-icon">RTL</div><span class="sc-val">Click to Enable</span>
-        </div>
-    </div>
-    <div id="purchase-now">
-        <a href="https://themeforest.net/cart/configure_before_adding/44940477" target="_blank"><span>$</span>25</a>
-        <div class="pn-hover">Buy Now</div>
-    </div>
+
     <!-- Javascript Files
     ================================================== -->
     <script src="js/plugins.js"></script>
