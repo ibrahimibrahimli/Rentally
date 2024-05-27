@@ -1,0 +1,129 @@
+﻿@model List<New>
+
+<div class="no-bottom no-top" id="content">
+    <div id="top"></div>
+    <!-- section begin -->
+    <section id="subheader" class="jarallax text-light">
+        <img src="images/background/subheader.jpg" class="jarallax-img" alt="">
+        <div class="center-y relative text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>Xəbərlər &amp; Yeniliklər</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+
+    <section id="section-content" aria-label="section">
+        <div class="container">
+            <div class="row gx-5">
+                <div class="col-lg-8">
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="de-post-type-1">
+                            <div class="d-image">
+                                <img alt="" src="@item.ImageUrl" class="lazy">
+                            </div>
+                            <div class="d-content">
+                                <div class="d-meta">
+                                    <span class="d-date">@item.CreatedDate.Day . @item.CreatedDate.Month . @item.CreatedDate.Year</span>
+                                </div>
+                                <h4><a href="news-single.html">@item.Title<span></span></a></h4>
+                                <p>@(item.Text.Length > 200 ? item.Text.Substring(0, 200) : item.Text)</p>
+                                <a asp-route-id="@item.Id" asp-action="details" item-value="@item.Id" item-title="@item.Title" class="btn-main">Davamını Oxu</a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="widget widget-post">
+                        <h4>Son Postlar</h4>
+                        <div class="small-border"></div>
+                        <ul class="de-bloglist-type-1">
+                            @foreach (var item in Model)
+                            {
+                                <li>
+                                    <div class="d-image">
+                                        <img src="@item.ImageUrl" alt="">
+                                    </div>
+                                    <div class="d-content">
+                                        <a asp-route-id="@item.Id" asp-action="Details"><h4>@item.Title</h4></a>
+                                        <div class="d-date">@item.CreatedDate.Day</div>
+                                    </div>
+                                </li>
+                            }
+
+
+                        </ul>
+                    </div>
+
+                    <div class="widget widget_tags">
+                        <h4>Populyar Təqlər</h4>
+                        <div class="small-border"></div>
+                        <ul>
+                            <li><a href="#link">İncəsənət</a></li>
+                            <li><a href="#link">Tətbiqlər</a></li>
+                            <li><a href="#link">Dizayn</a></li>
+                            <li><a href="#link">Mühit</a></li>
+                            <li><a href="#link">İnternet</a></li>
+                            <li><a href="#link">Marketinq</a></li>
+                            <li><a href="#link">Çoxməqsədli</a></li>
+                            <li><a href="#link">Musiqi</a></li>
+                            <li><a href="#link">Rəsm</a></li>
+                            <li><a href="#link">Programlaşdırma</a></li>
+                            <li><a href="#link">Uyğunluq</a></li>
+                            <li><a href="#link">Veb sayt</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="widget">
+                        <h4>Testimonials</h4>
+                        <div class="small-border"></div>
+                        <div class="owl-carousel owl-theme" id="testimonial-carousel-1-col">
+
+                            @foreach (var item in ViewData["Testimonials"] as IEnumerable<Testimonial>)
+                            {
+                                <div class="item">
+                                    <div class="de_testi type-2">
+                                        <blockquote>
+                                            <h4>@item.Title</h4>
+                                            <p>@item.Description</p>
+                                            <div class="de_testi_by">
+                                                <img alt="" class="rounded-circle" src="@item.ImageUrl"> <span>@item.CustomerSurname @item.CustomerName</span>
+                                            </div>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="spacer-single"></div>
+
+            <div class="col-md-12">
+                <ul class="pagination">
+                    <li><a href="#">Əvvəl</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">Sonra</a></li>
+                </ul>
+            </div>
+
+        </div>
+</div>
+        </section>

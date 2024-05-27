@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2KRVp7v0RHnaHmGup/zwVHjUSVAYw4qHRh7jAtXLAj8=",
+  "Hash": "tNe/P7awuUhPzt9DozWw+Z43htgQWlm0Z+sgNkPJ1qg=",
   "Source": "Rentally.WEB",
   "BasePath": "_content/Rentally.WEB",
   "Mode": "Default",
@@ -36440,6 +36440,25 @@
       "OriginalItemSpec": "wwwroot\\images\\98513300-28a0-42f0-90c2-2ff1509f3be7car-2.png"
     },
     {
+      "Identity": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\images\\9a249774-66de-4061-971f-1351d04ad693bentley.jpg",
+      "SourceId": "Rentally.WEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\",
+      "BasePath": "_content/Rentally.WEB",
+      "RelativePath": "images/9a249774-66de-4061-971f-1351d04ad693bentley.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\9a249774-66de-4061-971f-1351d04ad693bentley.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\images\\9e290cbe-c7c9-439e-ab04-47b2c33557a11.jpg",
       "SourceId": "Rentally.WEB",
       "SourceType": "Discovered",
@@ -36875,6 +36894,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\c81f0b8a-f48e-4dad-aadc-0a0a7260599524_FRD_MAV_53100_desktop.avif"
+    },
+    {
+      "Identity": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\images\\c90b65f0-e1f4-4a46-834a-dd36375aa0fe70728-rainy-day-raining-rain-drops-desktop-background-beautiful.jpg",
+      "SourceId": "Rentally.WEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\",
+      "BasePath": "_content/Rentally.WEB",
+      "RelativePath": "images/c90b65f0-e1f4-4a46-834a-dd36375aa0fe70728-rainy-day-raining-rain-drops-desktop-background-beautiful.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\c90b65f0-e1f4-4a46-834a-dd36375aa0fe70728-rainy-day-raining-rain-drops-desktop-background-beautiful.jpg"
     },
     {
       "Identity": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\images\\car-2.png",

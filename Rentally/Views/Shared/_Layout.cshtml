@@ -39,7 +39,7 @@
                                 <div class="de-flex-col">
                                     <!-- logo begin -->
                                     <div id="logo">
-                                        <a href="/">
+                                        <a asp-controller="Home" asp-action="Index">
                                             <img class="logo-1" src="images/logo-light.png" alt="">
                                             <img class="logo-2" src="images/logo-light.png" alt="">
                                         </a>
@@ -60,7 +60,8 @@
                                         <a asp-controller="GlobalAboutUs" asp-action="Index">Haqqımızda</a>
                                     </li>
                                     <li><a asp-controller="GlobalContact" asp-action="Index" class="menu-item">Əlaqə</a></li>
-                                    <li><a class="menu-item" href="news-grid-right-sidebar.html">Yeniliklər</a></li>
+
+                                    <li><a asp-controller="GlobalNew" asp-action="Index" class="menu-item">Yeniliklər</a></li>
 
                                     <li>
                                         <a class="menu-item" href="account-dashboard.html">Hesabım</a>

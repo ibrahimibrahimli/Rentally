@@ -23,7 +23,7 @@
                         {
                             <tr>
                                 <td>@item.Title</td>
-                                <td>@item.Description</td>
+                                <td>@(item.Description.Length > 40 ? item.Description.Substring(0, 40) + "..." : item.Description)</td>
                                 <td>@item.IconName</td>
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.Id">
