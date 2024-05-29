@@ -1,0 +1,88 @@
+﻿
+@model LoginDto
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<!-- Mirrored from www.madebydesignesia.com/themes/rentaly/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 May 2024 10:03:48 GMT -->
+<head>
+    <title>Rentaly - Multipurpose Vehicle Car Rental Website Template</title>
+    <link rel="icon" href="images/icon.png" type="image/gif" sizes="16x16">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Rentaly - Multipurpose Vehicle Car Rental Website Template" name="description">
+    <meta content="" name="keywords">
+    <meta content="" name="author">
+    <!-- CSS Files
+    ================================================== -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
+    <link href="~/css/mdb.min.css" rel="stylesheet" type="text/css" id="mdb">
+    <link href="~/css/plugins.css" rel="stylesheet" type="text/css">
+    <link href="~/css/style.css" rel="stylesheet" type="text/css">
+    <link href="~/css/coloring.css" rel="stylesheet" type="text/css">
+    <!-- color scheme -->
+    <link id="colors" href="~/css/colors/scheme-01.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div id="wrapper" >
+
+        <div id="de-preloader"></div>
+        <!-- content begin -->
+        <div style="background-color: #121212;" class="no-bottom no-top" id="content">
+            <div id="top"></div>
+            
+                @* <img src="images/background/2.jpg" class="jarallax-img" alt=""> *@
+                <div class="v-center">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-4 offset-lg-4">
+                                <div class="padding40 rounded-3 shadow-soft" data-bgcolor="#ffffff">
+                                    <h4>Giriş</h4>
+                                    <div class="spacer-10"></div>
+                                    <form method="post" asp-action="Login" asp-controller="Account" id="form_register" class="form-border">
+                                        <div class="field-set">
+                                            <input asp-for="Email" type="text" name="email" id="email" class="form-control" placeholder="Sənin e-poçtun" />
+                                        </div>
+                                        <div class="field-set">
+                                            <input asp-for="Password" type="text" name="password" id="password" class="form-control" placeholder="Sənin şifrən" />
+                                        </div>
+                                        <div id="submit">
+                                            <input type="submit" id="send_message" value="Daxil ol" class="btn-main btn-fullwidth rounded-3" />
+                                        </div>
+                                    </form>
+                                    <div class="row g-2">
+                                    <p style="margin-top:20px; text-align:center; ">Hesabın yoxdur? <a class="small" asp-action="register">Hesab yarat</a></p>
+                                    @* <div class="col-lg-6">
+                                            <a class="btn-sc btn-fullwidth mb10" href="#"><img src="images/svg/google_icon.svg" alt="">Google</a>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <a class="btn-sc btn-fullwidth mb10" href="#"><img src="images/svg/facebook_icon.svg" alt="">Facebook</a>
+                                        </div> *@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+        </div>
+
+        <!-- content close -->
+      
+        <!-- Javascript Files
+        ================================================== -->
+        <script src="~/js/plugins.js"></script>
+        <script src="~/js/designesia.js"></script>
+
+</body>
+
+
+<!-- Mirrored from www.madebydesignesia.com/themes/rentaly/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 May 2024 10:03:49 GMT -->
+</html>

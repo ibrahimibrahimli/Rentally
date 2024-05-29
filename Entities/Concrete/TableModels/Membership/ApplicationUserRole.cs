@@ -2,7 +2,7 @@
 
 namespace Entities.Concrete.TableModels.Membership
 {
-    public class ApplicationUserRole : IdentityRole<int>
+    public class ApplicationUserRole : IdentityUserRole<int>
     {
     }
 }

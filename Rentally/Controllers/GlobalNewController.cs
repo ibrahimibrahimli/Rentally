@@ -29,12 +29,6 @@ namespace Rentally.WEB.Controllers
             return View(data);
         }
 
-        [HttpGet]
-
-        public IActionResult Error()
-        {
-
-            return View();
-        }
+       
     }
 }

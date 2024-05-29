@@ -1,4 +1,6 @@
 ﻿using Entities.Concrete.TableModels;
+using Entities.Concrete.TableModels.Membership;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,10 +11,11 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Context
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int, ApplicationUserClaim,ApplicationUserRole,ApplicationUserLogin, ApplicationRoleClaim, ApplicationUserToken>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            
             optionsBuilder.UseSqlServer(@"Data Source = LAPTOP-JBUKPKDJ;
                                          Initial Catalog = RentallyDataBase;
                                          Integrated Security= true;Encrypt = false;");
@@ -20,6 +23,7 @@ namespace DataAccess.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
 

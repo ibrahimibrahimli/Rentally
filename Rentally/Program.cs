@@ -10,6 +10,8 @@ using Entities.Concrete.TableModels;
 using FluentValidation;
 using Microsoft.AspNetCore.Builder;
 using Business.Extensions;
+using Entities.Concrete.TableModels.Membership;
+using Microsoft.AspNetCore.Identity;
 
 namespace Rentally
 {
@@ -22,7 +24,23 @@ namespace Rentally
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddDbContext<ApplicationDbContext>();
+            builder.Services.AddAuthentication();
+            builder.Services.AddAuthorization();
+
+            builder.Services.AddDbContext<ApplicationDbContext>()
+                .AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            builder.Services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequiredLength = 6;
+
+                options.User.RequireUniqueEmail = true;
+            });
 
             builder.Services.AddBusinessServices();
 
@@ -41,11 +59,10 @@ namespace Rentally
 
             app.UseRouting();
 
+            app.UseAuthentication();    
             app.UseAuthorization();
 
-            //app.MapControllerRoute(
-            //    name: "default",
-            //    pattern: "{controller=Home}/{action=Index}/{id?}");
+            
 
             app.UseEndpoints(endpoints =>
             {

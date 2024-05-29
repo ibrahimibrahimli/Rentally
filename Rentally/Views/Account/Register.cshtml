@@ -1,0 +1,147 @@
+﻿@model RegisterDto
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="">
+
+
+<!-- Mirrored from www.madebydesignesia.com/themes/rentaly/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 May 2024 10:03:49 GMT -->
+<head>
+    <title>Rentaly - Multipurpose Vehicle Car Rental Website Template</title>
+    <link rel="icon" href="images/icon.png" type="image/gif" sizes="16x16">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Rentaly - Multipurpose Vehicle Car Rental Website Template" name="description">
+    <meta content="" name="keywords">
+    <meta content="" name="author">
+    <!-- CSS Files
+    ================================================== -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap">
+    <link href="~/css/mdb.min.css" rel="stylesheet" type="text/css" id="mdb">
+    <link href="~/css/plugins.css" rel="stylesheet" type="text/css">
+    <link href="~/css/style.css" rel="stylesheet" type="text/css">
+    <link href="~/css/coloring.css" rel="stylesheet" type="text/css">
+    <!-- color scheme -->
+    <link id="colors" href="~/css/colors/scheme-01.css" rel="stylesheet" type="text/css">
+</head>
+
+<body style="background-color: #121212;">
+    <div id="wrapper">
+       
+        <div id="de-preloader"></div>
+       @*      <!-- section begin -->
+            <section id="subheader" class="jarallax text-light">
+                <img src="images/background/subheader.jpg" class="jarallax-img" alt="">
+                    <div class="center-y relative text-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+									<h1>Register</h1>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+            <!-- section close --> *@
+
+
+        <section  aria-label="section">
+                <div class="container">
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+							<h3 style="color: #ffffff;">Hələ hesabın yoxdur? Qeydiyyatdan keç</h3>
+                        <p style="color: #ffffff;">Rentaly-ə xoş gəlmisiniz. Sizi qarajımızda görməkdən məmnunuq. Bizimlə hesab yaratmaqla siz avtomobil icarəsi təcrübənizi artıracaq bir sıra üstünlüklərə və rahat funksiyalara giriş əldə edəcəksiniz.</p>
+							
+							<div class="spacer-10"></div>
+
+                        <form method="post" asp-action="Register" asp-controller="Account" name="contactForm" id='contact_form' class="form-border">
+                            
+                            @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+                            {
+                                <div class="form-group">
+                                    <div class="alert alert-danger">
+                                        @ViewBag.Message
+                                    </div>
+                                </div>
+                            }
+
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <div class="field-set">
+                                            <label>Ad:</label>
+                                        <input style="color:#fff;" asp-for="Name" type='text' name='name' id='name' class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="field-set">
+                                            <label>Soyad:</label>
+                                        <input style="color:#fff;" asp-for="Surname" type='text' name='surname' id='surname' class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="field-set">
+                                            <label>E-poçt:</label>
+                                        <input style="color:#fff;" asp-for="Email" type='text' name='email' id='email' class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="field-set">
+                                            <label>İstifadəçi adı:</label>
+                                        <input style="color:#fff;" asp-for="UserName" type='text' name='UserName' id='UserName' class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="field-set">
+                                            <label>Telefon:</label>
+                                            <input style="color:#fff;" asp-for="PhoneNumber" type='number' name='phoneNumber' class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="field-set">
+                                            <label>Şifrə:</label>
+                                        <input style="color:#fff;" asp-for="Password" type='password' name='password' id='password' class="form-control">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12">
+
+                                        <div style="margin-top: 25px;" id='submit' class="pull-left">
+                                            <input type='submit' id='send_message' value='Qeydiyyatdan keç' class="btn-main color-2">
+                                        </div>
+
+                                        <div id='mail_success' class='success'>Your message has been sent successfully.</div>
+                                        <div id='mail_fail' class='error'>Sorry, error occured this time sending your message.</div>
+                                        <div class="clearfix"></div>
+
+                                    </div>
+                                <p style="margin-top:20px; text-align:center; ">Hesabın var? <a class="small" asp-action="Login">Daxil ol</a></p>
+                                </div>
+                            </form>
+							
+						</div>
+                    </div>
+				</div>
+            </section>
+			
+			
+        </div>
+        
+       
+    </div>
+    <!-- Javascript Files
+    ================================================== -->
+    <script src="~/js/plugins.js"></script>
+    <script src="~/js/designesia.js"></script>
+
+</body>
+</html>

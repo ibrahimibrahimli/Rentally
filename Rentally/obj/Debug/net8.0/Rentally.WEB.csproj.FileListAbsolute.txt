@@ -339,3 +339,10 @@ C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Debug\net8.0\runtimes\win\lib
 C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+C:\Users\Lenovo\Source\Repos\Rentally\Rentally\bin\Debug\net8.0\IdentityModel.dll
+C:\Users\Lenovo\Source\Repos\Rentally\Rentally\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Lenovo\Source\Repos\Rentally\Rentally\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Lenovo\Source\Repos\Rentally\Rentally\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Lenovo\Source\Repos\Rentally\Rentally\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Lenovo\Source\Repos\Rentally\Rentally\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll

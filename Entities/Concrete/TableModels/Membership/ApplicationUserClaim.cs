@@ -2,7 +2,7 @@
 
 namespace Entities.Concrete.TableModels.Membership
 {
-    public class AplicationUserClaim : IdentityUserClaim<int>
+    public class ApplicationUserClaim : IdentityUserClaim<int>
     {
     }
 }
