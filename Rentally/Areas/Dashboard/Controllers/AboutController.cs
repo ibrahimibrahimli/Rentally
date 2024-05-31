@@ -2,12 +2,14 @@
 using Business.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
+    [Authorize]
     public class AboutController : Controller
     {
         private readonly IAboutService _aboutService;

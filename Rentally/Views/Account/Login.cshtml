@@ -38,10 +38,19 @@
             <div id="top"></div>
             
                 @* <img src="images/background/2.jpg" class="jarallax-img" alt=""> *@
+
                 <div class="v-center">
                     <div class="container">
                         <div class="row align-items-center">
                             <div class="col-lg-4 offset-lg-4">
+                            @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+                            {
+                                <div class="form-group">
+                                    <div class="alert alert-danger">
+                                        @ViewBag.Message
+                                    </div>
+                                </div>
+                            }
                                 <div class="padding40 rounded-3 shadow-soft" data-bgcolor="#ffffff">
                                     <h4>Giriş</h4>
                                     <div class="spacer-10"></div>

@@ -1,10 +1,12 @@
 ﻿using Business.Abstract;
 using Entities.Concrete.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
+    [Authorize]
     public class NewController : Controller
     {
         private readonly INewService _newService;

@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="d-content">
                                         <a asp-route-id="@item.Id" asp-action="Details"><h4>@item.Title</h4></a>
-                                        <div class="d-date">@item.CreatedDate.Day</div>
+                                        <div class="d-date">@item.CreatedDate.Day . @item.CreatedDate.Month . @item.CreatedDate.Year</div>
                                     </div>
                                 </li>
                             }
@@ -83,7 +83,7 @@
                     </div>
 
                     <div class="widget">
-                        <h4>Testimonials</h4>
+                        <h4>İstifadəçi cavabları</h4>
                         <div class="small-border"></div>
                         <div class="owl-carousel owl-theme" id="testimonial-carousel-1-col">
 

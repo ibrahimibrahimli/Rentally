@@ -26,8 +26,28 @@ namespace Rentally.WEB.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public IActionResult Login(LoginDto dto)
+        public async Task<IActionResult> Login(LoginDto dto)
         {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = new();
+
+                user = await _userManager.FindByEmailAsync(dto.Email);
+
+                if(user is null)
+                {
+                    ViewBag.Message = "E-Poçt və ya şifrə yanlışdır";
+                    goto end;
+                }
+                var result = await _signInManager.PasswordSignInAsync(user, dto.Password, false, false);
+
+                if (result.Succeeded)
+                {
+                   return RedirectToAction("Index",  "Home", new {area = "Dashboard"});
+                }
+
+            }
+            end:
             return View();
         }
 
@@ -70,6 +90,13 @@ namespace Rentally.WEB.Controllers
                 return RedirectToAction("Login");
             }
             return View();
+        }
+
+
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction(nameof(Login));
         }
     }
 }

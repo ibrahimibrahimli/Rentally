@@ -74,7 +74,7 @@
                                     <img src="@item.ImageUrl" alt="">
                                 </div>
                                 <div class="d-content">
-                                    <a asp-route-id="@item.Id" asp-action="details" item-value="@item.Id" item-title="@item.Title" class="btn-main">@item.Title</a>
+                                    <a asp-route-id="@item.Id" asp-action="Details"><h4>@item.Title</h4></a>
                                     <div class="d-date">@item.CreatedDate.Day . @item.CreatedDate.Month . @item.CreatedDate.Year</div>
                                 </div>
                             </li>

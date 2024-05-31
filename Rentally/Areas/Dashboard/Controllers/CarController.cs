@@ -4,10 +4,12 @@ using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
 using Core.Extensions;
 using Entities.Concrete.Dtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
+    [Authorize]
     public class CarController : Controller
     {
         private readonly ICarService _carService;

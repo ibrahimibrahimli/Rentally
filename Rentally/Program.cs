@@ -42,6 +42,14 @@ namespace Rentally
                 options.User.RequireUniqueEmail = true;
             });
 
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                //options.AccessDeniedPath= "/";
+                options.ExpireTimeSpan = TimeSpan.FromDays(1);
+                options.Cookie.Name = "Rentally";
+                options.Cookie.HttpOnly = false;
+            });
+
             builder.Services.AddBusinessServices();
 
             var app = builder.Build();

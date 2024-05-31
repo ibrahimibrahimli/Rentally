@@ -3,10 +3,12 @@ using Business.Abstract;
 using Business.Concrete;
 using Entities.Concrete.TableModels;
 using Entities.Concrete.Dtos;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
+    [Authorize]
     public class CarCategoryController : Controller
     {
         private readonly ICarCategoryService _carCategoryService;
