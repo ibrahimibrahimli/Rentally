@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ContactController : Controller
     {
         private readonly IContactService _contactService;

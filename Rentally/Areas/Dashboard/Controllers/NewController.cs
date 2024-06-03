@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class NewController : Controller
     {
         private readonly INewService _newService;

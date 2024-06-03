@@ -2,23 +2,27 @@
 using Business.Concrete;
 using Entities.Concrete.Dtos;
 using Entities.Concrete.TableModels;
+using Entities.Concrete.TableModels.Membership;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class BookingController : Controller
     {
-        private readonly IUserService _userService;
+        private readonly UserManager<ApplicationUser> _userManager;
+        //private readonly IUserService _userService;
         private readonly IBookingService _bookingService;
         private readonly ICarService _carService;
-        public BookingController(ICarService carService, IBookingService bookingService, IUserService userService)
+        public BookingController(ICarService carService, IBookingService bookingService, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             _carService = carService;
             _bookingService = bookingService;
-            _userService = userService;
+           // _userService = userService;
         }
         public IActionResult Index()
         {
@@ -29,7 +33,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewData["Users"] = _userService.GetAll().Data;
+            ViewData["Users"] = _userManager.Users;
             ViewData["Cars"] = _carService.GetCarWithCategory().Data;
             return View();
         }
@@ -40,7 +44,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
             var result = _bookingService.Add(dto);
             if (!result.IsSuccess)
             {
-                ViewData["Users"] = _userService.GetAll().Data;
+                ViewData["Users"] = _userManager.Users;
                 ViewData["Cars"] = _carService.GetCarWithCategory().Data;
                 ModelState.AddModelError("", result.Message);
 
@@ -52,7 +56,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            ViewData["Users"] = _userService.GetAll().Data;
+            ViewData["Users"] = _userManager.Users;
             ViewData["Cars"] = _carService.GetCarWithCategory().Data;
             var data = _bookingService.GetById(id).Data;
             return View(data);
@@ -67,7 +71,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
 
             if (!result.IsSuccess)
             {
-                ViewData["Users"] = _userService.GetAll().Data;
+                 ViewData["Users"] = _userManager.Users;
                 ViewData["Cars"] = _carService.GetCarWithCategory().Data;
                 ModelState.AddModelError("", result.Message);
 

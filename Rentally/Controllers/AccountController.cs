@@ -10,11 +10,13 @@ namespace Rentally.WEB.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<ApplicationRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         [HttpGet]
@@ -43,7 +45,7 @@ namespace Rentally.WEB.Controllers
 
                 if (result.Succeeded)
                 {
-                   return RedirectToAction("Index",  "Home", new {area = "Dashboard"});
+                   return RedirectToAction("Index", "Home");
                 }
 
             }
@@ -86,7 +88,19 @@ namespace Rentally.WEB.Controllers
 
                     return View(dto);
                 }
+               var roleResult = await _userManager.AddToRoleAsync(user, "User");
 
+                if (!roleResult.Succeeded)
+                {
+                    ViewBag.Message = "Bir xəta oldu";
+
+                    foreach (var item in roleResult.Errors)
+                    {
+                        ModelState.AddModelError(item.Code, item.Description);
+                    }
+                   
+                    return View(dto);
+                }
                 return RedirectToAction("Login");
             }
             return View();
@@ -96,7 +110,7 @@ namespace Rentally.WEB.Controllers
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction(nameof(Login));
+            return RedirectToAction("Index", "Home");
         }
     }
 }

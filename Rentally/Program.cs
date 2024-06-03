@@ -26,10 +26,13 @@ namespace Rentally
 
             builder.Services.AddAuthentication();
             builder.Services.AddAuthorization();
+        
 
             builder.Services.AddDbContext<ApplicationDbContext>()
                 .AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+           
 
             builder.Services.Configure<IdentityOptions>(options =>
             {

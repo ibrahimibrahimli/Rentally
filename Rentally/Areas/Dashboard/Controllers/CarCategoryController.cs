@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class CarCategoryController : Controller
     {
         private readonly ICarCategoryService _carCategoryService;

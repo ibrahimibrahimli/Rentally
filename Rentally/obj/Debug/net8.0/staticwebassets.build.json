@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tNe/P7awuUhPzt9DozWw+Z43htgQWlm0Z+sgNkPJ1qg=",
+  "Hash": "RCpx/QMoK35rghlozNwjGm22CIyXQWr5s0XO2yFRPxE=",
   "Source": "Rentally.WEB",
   "BasePath": "_content/Rentally.WEB",
   "Mode": "Default",
@@ -36269,6 +36269,25 @@
       "OriginalItemSpec": "wwwroot\\images\\5935397c-4351-483b-b68e-32c024871de2download.jpg"
     },
     {
+      "Identity": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\images\\5b60cd88-1370-4b7c-ad98-e2b20341ae0bdownload.jpg",
+      "SourceId": "Rentally.WEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\",
+      "BasePath": "_content/Rentally.WEB",
+      "RelativePath": "images/5b60cd88-1370-4b7c-ad98-e2b20341ae0bdownload.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\5b60cd88-1370-4b7c-ad98-e2b20341ae0bdownload.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\images\\6d275a45-b388-40d4-a0cb-cba0c99fcf0170728-rainy-day-raining-rain-drops-desktop-background-beautiful.jpg",
       "SourceId": "Rentally.WEB",
       "SourceType": "Discovered",
@@ -37464,6 +37483,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\car-single\\4.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\images\\d4333e40-c8f9-4898-b892-52b3ef2c5e38download.jpg",
+      "SourceId": "Rentally.WEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\",
+      "BasePath": "_content/Rentally.WEB",
+      "RelativePath": "images/d4333e40-c8f9-4898-b892-52b3ef2c5e38download.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\d4333e40-c8f9-4898-b892-52b3ef2c5e38download.jpg"
     },
     {
       "Identity": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\images\\d43f3ac9-8a11-4310-853d-4fa5d130fedc441135.jpg",

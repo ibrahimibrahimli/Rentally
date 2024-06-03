@@ -6,7 +6,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
     public class HomeController : Controller
     {
         [Area("Dashboard")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult Index()
         {
             return View();

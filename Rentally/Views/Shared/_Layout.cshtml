@@ -78,14 +78,26 @@
                                 </ul>
                             </div>
                             <div class="de-flex-col">
-                                <div class="menu_side_area">
-                                    <a href="login.html" class="btn-main">Giriş Et</a>
-                                    <span id="menu-btn"></span>
-                                </div>
-                                <div class="menu_side_area">
-                                    <a class="btn-main" href="register.html">Qeydiyyatdan Keç</a>
-                                    <span id="menu-btn"></span>
-                                </div>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <div class="menu_side_area">
+                                        <a asp-controller="Account" asp-action="Logout" class="btn-main">Çıxış Et</a>
+                                        <span id="menu-btn"></span>
+                                    </div>
+
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li style="list-style:none; margin-left:10px;" class="nav-item">
+                                            <a class="btn-main" asp-action="Index" asp-controller="Home" asp-area="Dashboard">Dashboard</a>
+                                        </li>
+                                    }
+                                }else{
+                                    <div class="menu_side_area">
+                                        <a asp-controller="Account" asp-action="Login" class="btn-main">Giriş Et</a>
+                                        <span id="menu-btn"></span>
+                                    </div>
+                                }
+                                
                             </div>
                         </div>
                     </div>
@@ -93,7 +105,6 @@
             </div>
         </header>
         <!-- header close -->
-
         @RenderBody()
 
         <!-- footer begin -->
