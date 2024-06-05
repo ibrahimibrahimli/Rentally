@@ -1,4 +1,4 @@
-using Business.Abstract;
+﻿using Business.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using Rentally.WEB.ViewModels;
 using System.Diagnostics;
@@ -49,5 +49,9 @@ namespace Rentally.Controllers
             return View(viewModel);
         }
 
+        public IActionResult Error(int statusCode)
+        {
+            return View("Error");
+        }
     }
 }

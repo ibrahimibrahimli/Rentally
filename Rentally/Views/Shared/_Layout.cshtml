@@ -42,8 +42,8 @@
                                     <!-- logo begin -->
                                     <div id="logo">
                                         <a asp-controller="Home" asp-action="Index">
-                                            <img class="logo-1" src="images/logo-light.png" alt="">
-                                            <img class="logo-2" src="images/logo-light.png" alt="">
+                                            <img class="logo-1" src="/images/logo-light.png" alt="">
+                                            <img class="logo-2" src="/images/logo-light.png" alt="">
                                         </a>
                                     </div>
                                     <!-- logo close -->
@@ -57,7 +57,7 @@
                                     <li>
                                         <a asp-controller="GlobalCar" asp-action="Index" class="menu-item">Maşınlar</a>
                                     </li>
-                                    <li> <a class="menu-item" href="booking.html">Rezervasiya</a></li>
+                                    <li> <a class="menu-item" asp-controller="Reservation" asp-action="Index">Rezervasiya</a></li>
                                     <li>
                                         <a asp-controller="GlobalAboutUs" asp-action="Index">Haqqımızda</a>
                                     </li>

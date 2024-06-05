@@ -73,7 +73,9 @@ namespace Rentally
             app.UseAuthentication();    
             app.UseAuthorization();
 
-            
+
+            app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
+
 
             app.UseEndpoints(endpoints =>
             {
