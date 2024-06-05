@@ -63,7 +63,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
             {
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    ModelState.AddModelError(error.Code, error.Description);
                 }
                 return BadRequest(ModelState);
             }

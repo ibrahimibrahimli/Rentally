@@ -41,7 +41,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return NotFound($"Kullanıcı bulunamadı: {userId}");
+                return NotFound($"İstifadəçi tapılmadı: {userId}");
             }
 
             var result = await _userManager.AddToRoleAsync(user, role);
