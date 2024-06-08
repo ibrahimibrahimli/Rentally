@@ -16,7 +16,6 @@ namespace DataAccess.Concrete
             var result = from booking in _context.Bookings
                          where booking.Deleted == 0
                          join user in _context.Users on booking.UserId equals user.Id
-                         where user.Deleted == 0
                          join car in _context.Cars on booking.CarID equals car.Id
                          where car.Deleted == 0
                          select new BookingDto

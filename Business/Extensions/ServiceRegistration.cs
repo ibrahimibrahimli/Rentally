@@ -62,9 +62,9 @@ namespace Business.Extensions
             services.AddScoped<ITestimonialService, TestimonialManager>();
             services.AddScoped<IValidator<Testimonial>, TestimonialValidation>();
 
-            services.AddScoped<IUserDal, UserDal>();
-            services.AddScoped<IUserService, UserManager>();
-            services.AddScoped<IValidator<User>, UserValidation>();
+            services.AddScoped<IRegionDal, RegionDal>();
+            services.AddScoped<IRegionService, RegionManager>();
+            services.AddScoped<IValidator<Region>, RegionValidation>();
 
             return services;
         }

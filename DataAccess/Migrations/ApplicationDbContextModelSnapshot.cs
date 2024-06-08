@@ -86,9 +86,6 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 10000L);
 
-                    b.Property<int?>("ApplicationUserId")
-                        .HasColumnType("int");
-
                     b.Property<int>("CarID")
                         .HasColumnType("int");
 
@@ -106,6 +103,10 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Message")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<DateTime>("PickUpDateTime")
                         .HasMaxLength(50)
@@ -128,8 +129,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("CarID");
 
@@ -285,10 +284,6 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("Email");
-
-                    b.HasIndex("Email", "Deleted")
-                        .IsUnique()
-                        .HasDatabaseName("idx_Email_Deleted");
 
                     b.ToTable("Contacts", (string)null);
                 });
@@ -684,6 +679,38 @@ namespace DataAccess.Migrations
                     b.ToTable("QuestionsAnswers", (string)null);
                 });
 
+            modelBuilder.Entity("Entities.Concrete.TableModels.Region", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 10000L);
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Deleted")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Regions", (string)null);
+                });
+
             modelBuilder.Entity("Entities.Concrete.TableModels.Slider", b =>
                 {
                     b.Property<int>("Id")
@@ -840,64 +867,6 @@ namespace DataAccess.Migrations
                     b.ToTable("Testimonials", (string)null);
                 });
 
-            modelBuilder.Entity("Entities.Concrete.TableModels.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 10000L);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Deleted")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
-
-                    b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Email")
-                        .IsUnique();
-
-                    b.HasIndex("Email", "Deleted", "PhoneNumber")
-                        .IsUnique()
-                        .HasDatabaseName("idx_Email_PhoneNumber_Deleted");
-
-                    b.ToTable("Users", (string)null);
-                });
-
             modelBuilder.Entity("CarFavourite", b =>
                 {
                     b.HasOne("Entities.Concrete.TableModels.Car", null)
@@ -915,17 +884,13 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entities.Concrete.TableModels.Booking", b =>
                 {
-                    b.HasOne("Entities.Concrete.TableModels.Membership.ApplicationUser", null)
-                        .WithMany("Bookings")
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("Entities.Concrete.TableModels.Car", "Car")
                         .WithMany()
                         .HasForeignKey("CarID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Entities.Concrete.TableModels.User", "User")
+                    b.HasOne("Entities.Concrete.TableModels.Membership.ApplicationUser", "User")
                         .WithMany("Bookings")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -953,7 +918,7 @@ namespace DataAccess.Migrations
                         .WithMany("Favourites")
                         .HasForeignKey("ApplicationUserId");
 
-                    b.HasOne("Entities.Concrete.TableModels.User", "User")
+                    b.HasOne("Entities.Concrete.TableModels.Membership.ApplicationUser", "User")
                         .WithOne()
                         .HasForeignKey("Entities.Concrete.TableModels.Favourite", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1039,11 +1004,6 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entities.Concrete.TableModels.Position", b =>
                 {
                     b.Navigation("TeamBoards");
-                });
-
-            modelBuilder.Entity("Entities.Concrete.TableModels.User", b =>
-                {
-                    b.Navigation("Bookings");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,8 +1,10 @@
-﻿using Entities.Concrete.TableModels.Membership;
+﻿using Entities.Concrete.Dtos.Membership;
+using Entities.Concrete.TableModels.Membership;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
+using Rentally.WEB.ViewModels;
 
 namespace Rentally.WEB.Areas.Dashboard.Controllers
 {
@@ -18,41 +20,68 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
             _userManager = userManager;
             _roleManager = roleManager;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            ViewData["Roles"] = _roleManager.Roles;
-            var data = _userManager.Users.ToList();
-            return View(data);
+            var users = _userManager.Users.ToList();
+            var userRolesViewModel = new List<UserWithRoles>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                UserWithRoles userWithRoles = new()
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Surname = user.Surname,
+                    UserName = user.UserName,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
+                    ImageUrl = user.ImageUrl,
+                    Roles = roles.ToList()
+                };
+                userRolesViewModel.Add(userWithRoles);
+            }
+
+            return View(userRolesViewModel);
         }
 
-        //[HttpGet]
-
-        //public IActionResult AddAdminRoleToUser(string email, int id)
-        //{
-        //    ViewData["Roles"] = _roleManager.Roles;
-        //    var data = _userManager.FindByEmailAsync(email);
-
-        //    return View(data);
-        //}
-
-        [HttpPost]
-        public async Task<IActionResult> AddAdminRoleToUser(string userId, string role)
+        [HttpGet]
+        public async Task<IActionResult> Edit(string Id)
         {
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _userManager.FindByIdAsync(Id);
+            var userRole = await _userManager.GetRolesAsync(user);
             if (user == null)
             {
-                return NotFound($"İstifadəçi tapılmadı: {userId}");
+                return NotFound($"İstifadəçi tapılmadı: {Id}");
             }
-
-            var result = await _userManager.AddToRoleAsync(user, role);
-            if (!result.Succeeded)
+            ApplicationUserDto dto = new()
             {
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
-                return View();
-            }
+                Name = user.Name,
+                Surname = user.Surname,
+                UserName = user.UserName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                ImageUrl = user.ImageUrl,
+                Roles = userRole.ToList(),
+            };
+            
+            return View(dto);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(string userId, string role)
+        {
+            
+
+            //var result = await _userManager.AddToRoleAsync(user, role);
+            //if (!result.Succeeded)
+            //{
+            //    foreach (var error in result.Errors)
+            //    {
+            //        ModelState.AddModelError("", error.Description);
+            //    }
+            //    return View();
+            //}
 
             return RedirectToAction("Index");
         }

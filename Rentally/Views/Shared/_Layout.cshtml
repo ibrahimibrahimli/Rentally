@@ -5,7 +5,7 @@
 
 <head>
     <title>Rentaly - Multipurpose Vehicle Car Rental Website Template</title>
-    <link rel="icon" href="images/icon.png" type="image/gif" sizes="16x16">
+    <link rel="icon" href="/images/icon.png" type="image/gif" sizes="16x16">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Rentaly - Multipurpose Vehicle Car Rental Website Template" name="description">
@@ -57,11 +57,11 @@
                                     <li>
                                         <a asp-controller="GlobalCar" asp-action="Index" class="menu-item">Maşınlar</a>
                                     </li>
-                                    <li> <a class="menu-item" asp-controller="Reservation" asp-action="Index">Rezervasiya</a></li>
+                                    <li> <a class="menu-item" asp-controller="GlobalBooking" asp-action="Index">Rezervasiya</a></li>
                                     <li>
                                         <a asp-controller="GlobalAboutUs" asp-action="Index">Haqqımızda</a>
                                     </li>
-                                    <li><a asp-controller="GlobalContact" asp-action="Index" class="menu-item">Əlaqə</a></li>
+                                    <li><a asp-controller="GlobalContact" asp-action="Create" class="menu-item">Əlaqə</a></li>
 
                                     <li><a asp-controller="GlobalNew" asp-action="Index" class="menu-item">Yeniliklər</a></li>
 
@@ -91,7 +91,9 @@
                                             <a class="btn-main" asp-action="Index" asp-controller="Home" asp-area="Dashboard">Dashboard</a>
                                         </li>
                                     }
-                                }else{
+
+                                }
+                                else{
                                     <div class="menu_side_area">
                                         <a asp-controller="Account" asp-action="Login" class="btn-main">Giriş Et</a>
                                         <span id="menu-btn"></span>
@@ -189,8 +191,9 @@
     ================================================== -->
     <script src="~/js/plugins.js"></script>
     <script src="~/js/designesia.js"></script>
+    <script src="~/booking-form.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgiM7ogCAA2Y5pgSk2KXZfxF5S_1jsptA&amp;libraries=places&amp;callback=initPlaces" async="" defer=""></script>
-
+    @RenderSection("Scripts", false)
 </body>
 
 

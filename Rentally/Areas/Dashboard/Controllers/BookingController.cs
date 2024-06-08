@@ -26,7 +26,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         }
         public IActionResult Index()
         {
-            var data = _bookingService.GetTeamBoardWithPosition().Data;
+            var data = _bookingService.GetBookingWithUserIdAndCarId().Data;
             return View(data);
         }
 

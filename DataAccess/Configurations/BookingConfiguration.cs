@@ -33,6 +33,9 @@ namespace DataAccess.Configurations
                 .HasMaxLength(50)
                 .IsRequired();
 
+            builder.Property(x => x.Message)
+                .HasMaxLength(200);
+
             builder.Property(x => x.Status)
                 .HasDefaultValue(0);
 

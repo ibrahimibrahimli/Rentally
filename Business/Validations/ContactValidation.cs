@@ -31,13 +31,13 @@ namespace Business.Validations
                 .EmailAddress()
                 .WithMessage(UIMessages.NOT_VALID_EMAIL);
 
-            RuleFor(x => x.PhoneNumber)
-                .NotEmpty()
-                .WithMessage(UIMessages.NOT_EMPTY_MESSAGE)
-                .MaximumLength(13)
-                .WithMessage(UIMessages.NOT_VALID_PHONENUMBER)
-                .MinimumLength(13)
-                .WithMessage(UIMessages.NOT_VALID_PHONENUMBER);
+            //RuleFor(x => x.PhoneNumber)
+            //    .NotEmpty()
+            //    .WithMessage(UIMessages.NOT_EMPTY_MESSAGE)
+            //    .MaximumLength(13)
+            //    .WithMessage(UIMessages.NOT_VALID_PHONENUMBER)
+            //    .MinimumLength(13)
+            //    .WithMessage(UIMessages.NOT_VALID_PHONENUMBER);
 
             RuleFor(x => x.Message)
                 .NotEmpty()

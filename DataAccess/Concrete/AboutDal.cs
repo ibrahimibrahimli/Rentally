@@ -13,7 +13,7 @@ namespace DataAccess.Concrete
         public List<AboutDto> GetAboutWithCarCustomerBooking()
         {
             int carCount = _context.Cars.Where(x=>x.Deleted==0).Count();
-            int customerCount = _context.Users.Where(user =>  user.Deleted == 0 && user.Bookings.Count > 0).Count();
+            int customerCount = _context.Users.Where(user => user.Bookings.Count > 0).Count();
             int orderCount = _context.Bookings.Where(booking =>  booking.Status == 1).Count();
 
             var result = from about in _context.Abouts

@@ -47,6 +47,8 @@ namespace Rentally.WEB.Controllers
                 {
                    return RedirectToAction("Index", "Home");
                 }
+                    ViewBag.Message = "E-Poçt və ya şifrə yanlışdır";
+                
 
             }
             end:

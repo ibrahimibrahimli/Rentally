@@ -20,6 +20,7 @@ namespace Business.BaseMessages
         public const string MAXIMUM_200_SYMBOL_MESSAGE = "200 simvoldan çox daxil edilə bilməz";
         public const string MAXIMUM_300_SYMBOL_MESSAGE = "300 simvoldan çox daxil edilə bilməz";
         public const string MAXIMUM_50_SYMBOL_MESSAGE = "50 simvoldan çox daxil edilə bilməz";
+        public const string MAXIMUM_20_SYMBOL_MESSAGE = "20 simvoldan çox daxil edilə bilməz";
         public const string NOT_EMPTY_MESSAGE = "Boş data daxil edilə bilməz";
         public const string PICKUPDATE_GREAT_NOW = "Başlama tarixi indiki zamandan böyük olmalıdır";
         public const string DROPOFFDATE_GREAT_PICKUPDATE = "Bitiş tarixi başlama tarixindən böyük olmalıdır";

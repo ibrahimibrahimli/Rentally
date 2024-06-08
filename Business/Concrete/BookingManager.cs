@@ -26,7 +26,7 @@ namespace Business.Concrete
         }
         public IResult Add(BookingCreateDto dto)
         {
-
+            //test
             var model = BookingCreateDto.ToBooking(dto);
             var validator = _validator.Validate(model);
 
@@ -61,7 +61,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Booking>(_bookingDal.GetById(id));
         }
 
-        public IDataResult<List<BookingDto>> GetTeamBoardWithPosition()
+        public IDataResult<List<BookingDto>> GetBookingWithUserIdAndCarId()
         {
             return new SuccessDataResult<List<BookingDto>>(_bookingDal.GetBookingWithUserIdAndCarId());
         }

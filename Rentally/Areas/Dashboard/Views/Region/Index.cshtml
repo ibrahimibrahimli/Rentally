@@ -1,23 +1,19 @@
-﻿@model List<User>
+﻿@model List<Region>
 
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-body">
             <div class="table-responsive">
-                <form action="User/Create" method="get">
+                <form action="Region/Create" method="get">
                     <p>
                         <button class="btn btn-primary">@DefaultConstantValue.ADD_MESSAGE</button>
                     </p>
                 </form>
-                
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Ad</th>
-                            <th>Soyad</th>
-                            <th>Email</th>
-                            <th>Istifadəçi adı</th>
-                            <th>Telefon</th>
+                            <th>Şəhər</th>
+                            <th>İndeks</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -26,10 +22,7 @@
                         {
                             <tr>
                                 <td>@item.Name</td>
-                                <td>@item.Surname</td>
-                                <td>@item.Email</td>
-                                <td>@item.UserName</td>
-                                <td>@item.PhoneNumber</td>
+                                <td>@item.PostalCode</td>
                                 <td>
                                     <a asp-action="Edit" asp-route-id="@item.Id">
                                         <i class="fa-solid fa-pen-to-square"></i>
@@ -65,7 +58,7 @@
                     let itemTitle = e.currentTarget.attributes[1].value;
                     $.ajax({
                         method: "POST",
-                        url: "user/delete/",
+                        url: "region/delete/",
                         data: {
                             id: itemId
                         }
@@ -76,7 +69,7 @@
                         icon: 'success',
 
                     }).then((result) => {
-                        window.location = "user"
+                        window.location = "region"
                     })
 
                 }

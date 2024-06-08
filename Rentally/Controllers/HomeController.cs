@@ -49,7 +49,7 @@ namespace Rentally.Controllers
             return View(viewModel);
         }
 
-        public IActionResult Error(int statusCode)
+        public IActionResult Error()
         {
             return View("Error");
         }

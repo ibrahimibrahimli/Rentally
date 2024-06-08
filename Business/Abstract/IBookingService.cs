@@ -14,7 +14,7 @@ namespace Business.Abstract
         IResult Add(BookingCreateDto entity);
         IResult Update(BookingUpdateDto entity);
         IResult Delete(int id);
-        IDataResult<List<BookingDto>> GetTeamBoardWithPosition();
+        IDataResult<List<BookingDto>> GetBookingWithUserIdAndCarId();
         IDataResult<Booking> GetById(int id);
     }
 }

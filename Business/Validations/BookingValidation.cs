@@ -21,6 +21,10 @@ namespace Business.Validations
                 .NotEmpty()
                 .WithMessage(UIMessages.NOT_EMPTY_MESSAGE);
 
+            RuleFor(x => x.DropOffLocation)
+                .MaximumLength(200)
+                .WithMessage(UIMessages.MAXIMUM_200_SYMBOL_MESSAGE);
+
             RuleFor(x => x.PickUpDateTime)
                 .NotEmpty()
                 .WithMessage(UIMessages.NOT_EMPTY_MESSAGE)

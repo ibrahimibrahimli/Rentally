@@ -40,6 +40,6 @@ namespace DataAccess.Context
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<TeamBoard> TeamBoards { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }    
-        public DbSet<User> Users { get; set; }
+        public DbSet<Region> Regions { get; set; }    
     }
 }

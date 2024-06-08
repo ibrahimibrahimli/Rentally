@@ -15,20 +15,20 @@ using System.Threading.Tasks;
 
 namespace Business.Concrete
 {
-    public class UserManager : IUserService
+    public class RegionManager : IRegionService
     {
-        private readonly IUserDal _userDal;
-        private readonly IValidator<User> _validator;
+        private readonly IRegionDal _regionDal;
+        private readonly IValidator<Region> _validator;
 
-        public UserManager(IUserDal userDal, IValidator<User> validator)
+        public RegionManager(IRegionDal regionDal, IValidator<Region> validator)
         {
-            _userDal = userDal;
+            _regionDal = regionDal;
             _validator = validator;
         }
 
-        public IResult Add(UserCreateDto dto)
+        public IResult Add(RegionCreateDto dto)
         {
-            var model = UserCreateDto.ToUser(dto);
+            var model = RegionCreateDto.ToRegion(dto);
             var validator = _validator.Validate(model);
 
             string errorMessage = "";
@@ -42,9 +42,18 @@ namespace Business.Concrete
                 return new ErrorResult(errorMessage);
             }
 
-            _userDal.Add(model);
+            _regionDal.Add(model);
 
             return new SuccessResult(UIMessages.SUCCESS_ADDED_MESSAGE);
+        }
+
+        public IResult Update(RegionUpdateDto dto)
+        {
+            var model = RegionUpdateDto.ToRegion(dto);
+            model.UpdatedDate = DateTime.Now;
+            _regionDal.Update(model);
+
+            return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
         }
 
         public IResult Delete(int id)
@@ -52,31 +61,19 @@ namespace Business.Concrete
             var data = GetById(id).Data;
             data.Deleted = id;
 
-            _userDal.Update(data);
+            _regionDal.Update(data);
 
             return new SuccessResult(UIMessages.SUCCESS_DELETED_MESSAGE);
         }
 
-        public IDataResult<List<User>> GetAll()
+        public IDataResult<List<Region>> GetAll()
         {
-            return new SuccessDataResult<List<User>>(_userDal.GetAll(x => x.Deleted == 0));
+            return new SuccessDataResult<List<Region>>(_regionDal.GetAll(x => x.Deleted == 0));
         }
 
-        public IDataResult<User> GetById(int id)
+        public IDataResult<Region> GetById(int id)
         {
-            return new SuccessDataResult<User>(_userDal.GetById(id));
+            return new SuccessDataResult<Region>(_regionDal.GetById(id));
         }
-
-        public IResult Update(UserUpdateDto dto)
-        {
-            var model = UserUpdateDto.ToUser(dto);
-            model.UpdatedDate = DateTime.Now;
-            _userDal.Update(model);
-
-            return new SuccessResult(UIMessages.SUCCESS_UPDATED_MESSAGE);
-        }
-
-        
-
     }
 }

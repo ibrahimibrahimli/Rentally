@@ -5,6 +5,5 @@ using Entities.Concrete.TableModels;
 
 namespace DataAccess.Concrete
 {
-    public class UserDal : BaseRepository<User, ApplicationDbContext>, IUserDal { }
-
+    public class RegionDal : BaseRepository<Region, ApplicationDbContext>, IRegionDal{}
 }

@@ -9,6 +9,7 @@ namespace Entities.Concrete.Dtos
         public int CarID { get; set; }
         public string PickUpLocation { get; set; }
         public string DropOffLocation { get; set; }
+        public string Message { get; set; }
         public DateTime PickUpDateTime { get; set; }
         public DateTime DropOffDateTime { get; set; }
         public byte Status { get; set; } //  0-Scheduled, 1-Completed, 2-Cancelled
@@ -26,6 +27,7 @@ namespace Entities.Concrete.Dtos
                 DropOffLocation = dto.DropOffLocation,
                 PickUpDateTime = dto.PickUpDateTime,
                 DropOffDateTime = dto.DropOffDateTime,
+                Message = dto.Message,
                 Status = dto.Status,
             };
 

@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-    public interface IUserService
+    public interface IRegionService
     {
-        IResult Add(UserCreateDto dto);
-        IResult Update(UserUpdateDto dto);
+        IResult Add(RegionCreateDto dto);
+        IResult Update(RegionUpdateDto dto);
         IResult Delete(int id);
-        IDataResult<List<User>> GetAll();
-        IDataResult<User> GetById(int id);
+        IDataResult<List<Region>> GetAll();
+        IDataResult<Region> GetById(int id);
     }
 }

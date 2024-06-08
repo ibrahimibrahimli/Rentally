@@ -31,8 +31,6 @@ namespace DataAccess.Configurations
                 .IsRequired();
 
             builder.HasIndex(x => x.Email);
-
-            builder.HasIndex(x => new { x.Email, x.Deleted }).IsUnique().HasDatabaseName("idx_Email_Deleted");
         }
     }
 }

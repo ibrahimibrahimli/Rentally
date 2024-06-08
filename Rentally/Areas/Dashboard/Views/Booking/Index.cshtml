@@ -18,6 +18,7 @@
                             <th>Bitiş nöqtəsi</th>
                             <th>Başlanğıc tarixi</th>
                             <th>Bitiş tarixi</th>
+                            <th>Mesaj</th>
                             <th>Status</th>
                             <th></th>
                         </tr>
@@ -32,6 +33,7 @@
                                 <td>@item.DropOffLocation</td>
                                 <td>@item.PickUpDateTime</td>
                                 <td>@item.DropOffDateTime</td>
+                                <td>@item.Message</td>
                                 <td>@(item.Status == 0 ? "Gözlənilir" : item.Status == 1 ?
                                     "Təsdiqlənib" : "Ləğv edilib")</td>
                                 <td class="d-flex align-items-center">
