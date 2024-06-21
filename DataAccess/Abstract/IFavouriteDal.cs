@@ -5,6 +5,6 @@ namespace DataAccess.Abstract
 {
     public interface IFavouriteDal : IBaseRepository<Favourite> 
     {
-        //List<Favourite> GetFavouritesWithUserIdAndCarID();
+        List<Favourite> GetFavouritesWithUserIdAndCarID();
     }
 }

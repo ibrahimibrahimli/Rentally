@@ -19,6 +19,7 @@ namespace Entities.Concrete.Dtos
         public DateTime DropOffDateTime { get; set; }
         public byte Status { get; set; } //  0-Scheduled, 1-Completed, 2-Cancelled
         public string CarBrand { get; set; }
+        public string CarModel { get; set; }
         public string UserName { get; set; }
 
         public static Booking ToBooking(BookingDto dto)

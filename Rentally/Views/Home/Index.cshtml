@@ -112,9 +112,9 @@
                                     <div class="d-info">
                                         <div class="d-text">
                                             <h4>@item.Brand  @item.Model</h4>
-                                            @* <div class="d-item_like">
+                                            <div class="d-item_like">
                                     <i class="fa fa-heart"></i><span>74</span>
-                                    </div> *@
+                                    </div>
                                             <div class="d-atr-group">
                                                 <span class="d-atr"><img src="images/icons/1-green.svg" alt="">@item.PassengerCount</span>
                                                 <span class="d-atr"><img src="images/icons/3-green.svg" alt="">@item.DoorCount</span>
@@ -122,7 +122,7 @@
                                             </div>
                                             <div class="d-price">
                                                 Bir günlük Kirayə <span>$@item.PricePerDay</span>
-                                                <a class="btn-main" href="02_dark-car-single.html">Kirayə et</a>
+                                                <a asp-action="SingleCreate" asp-controller="GlobalBooking" asp-route-id="@item.Id" class="btn-main">Kirayə et</a>
                                             </div>
                                         </div>
                                     </div>
@@ -288,8 +288,8 @@
                             </div>
                             <div class="post-text">
                                 <h4><a href="#"> <span>@item.Title</span></a></h4>
-                                <p>@item.Text</p>
-                                <a class="btn-line" href="#">Daha Çox</a>
+                                <p>@(item.Text.Length > 100 ? item.Text.Substring(0, 100) + "..." : item.Text)</p>
+                                <a class="btn-line" asp-route-id="@item.Id" asp-action="Details" asp-controller="GlobalNew">Daha Çox</a>
                             </div>
                         </div>
                     </div>

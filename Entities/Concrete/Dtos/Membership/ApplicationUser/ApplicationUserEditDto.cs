@@ -15,22 +15,27 @@ namespace Entities.Concrete.Dtos.Membership
         public string Name { get; set; }
         public string Surname { get; set; }
         public string ImageUrl { get; set; }
-        public ICollection<Favourite> Favourites { get; set; }
+        public string Password { get; set; }
+        public string UserName { get; set; }
+        public string Email { get; set; }
+        public int FavouriteId { get; set; }
         public ICollection<Booking> Bookings { get; set; }
 
-        public static ApplicationUser ToPosition(ApplicationUserEditDto dto)
+        public static ApplicationUser ToUser(ApplicationUserEditDto dto)
         {
-            ApplicationUser position = new ApplicationUser()
+            ApplicationUser user = new ApplicationUser()
             {
                 Id = dto.Id,
                 Name = dto.Name,
                 Surname = dto.Surname,
                 ImageUrl = dto.ImageUrl,
-                Favourites = dto.Favourites,
+                PasswordHash = dto.Password,
+                UserName = dto.UserName,
+                Email = dto.Email,
                 Bookings = dto.Bookings,
             };
 
-            return position;
+            return user;
         }
     }
 }

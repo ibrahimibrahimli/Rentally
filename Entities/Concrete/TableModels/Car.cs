@@ -6,7 +6,7 @@ namespace Entities.Concrete.TableModels
     {
         public Car()
         {
-            Favourites = new HashSet<Favourite>();
+            FavouriteItems = new HashSet<FavouriteItem>();
         }
         public string Brand { get; set; }
         public string Model { get; set; }
@@ -18,8 +18,8 @@ namespace Entities.Concrete.TableModels
         public decimal PricePerDay { get; set; }
         public string ImageUrl { get; set; }
         public bool IsHomePage { get; set; }
+        public ICollection<FavouriteItem> FavouriteItems { get; set; }
         public virtual CarCategory CarCategory { get; set; }
-        public ICollection<Favourite> Favourites { get; set; }
     }
 
 }

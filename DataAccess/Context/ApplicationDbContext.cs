@@ -33,6 +33,7 @@ namespace DataAccess.Context
         public DbSet<Car> Cars { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Favourite> Favorites { get; set; }
+        public DbSet<FavouriteItem> FavoriteItems { get; set; }
         public DbSet<Feature> Features {  get; set; }
         public DbSet<QA> QAs {  get; set; }
         public DbSet<New> News {  get; set; }

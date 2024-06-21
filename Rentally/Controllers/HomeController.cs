@@ -1,11 +1,12 @@
 ﻿using Business.Abstract;
 using Microsoft.AspNetCore.Mvc;
+using Rentally.WEB.Controllers;
 using Rentally.WEB.ViewModels;
 using System.Diagnostics;
 
 namespace Rentally.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ISliderService _sliderService;
         private readonly ICarService _carService;   

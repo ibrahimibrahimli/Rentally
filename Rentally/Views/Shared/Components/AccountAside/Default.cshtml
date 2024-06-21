@@ -1,0 +1,33 @@
+﻿@model AccountAsideViewModel 
+
+
+<div class="col-lg-3 mb30">
+    <div class="card padding30 rounded-5">
+        <div class="profile_avatar">
+            <div class="profile_img">
+                @if (Model.User.ImageUrl is not null)
+                {
+                    <img width="200px" height="200px" src="@Model.User.ImageUrl" alt="">
+                }
+                else
+                {
+                    <img src="~/images/profile/DefaultProfilePicture.png" alt="">
+                }
+
+            </div>
+            <div class="profile_name">
+                <h4>
+                    @Model.User.Name @Model.User.Surname
+                    <span class="profile_username text-gray">@Model.User.Email</span>
+                </h4>
+            </div>
+        </div>
+        <div class="spacer-20"></div>
+        <ul class="menu-col">
+            <li><a asp-action="Dashboard" asp-controller="Account" ><i class="fa fa-home"></i>İdarə Paneli</a></li>
+            <li><a asp-action="EditProfile" asp-controller="Account"><i class="fa fa-user"></i>Hesabım</a></li>
+            <li><a asp-action="Orders" asp-controller="Account"><i class="fa fa-calendar"></i>Sifarişlərim</a></li>
+            <li><a asp-action="LogOut" asp-controller="Account"><i class="fa fa-sign-out"></i>Çıxış et</a></li>
+        </ul>
+    </div>
+</div>

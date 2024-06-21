@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Rentally.WEB.Controllers
 {
     
-    public class GlobalContactController : Controller
+    public class GlobalContactController : BaseController
     {
         
         private readonly UserManager<ApplicationUser> _userManager;

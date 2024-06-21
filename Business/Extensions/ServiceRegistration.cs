@@ -4,6 +4,7 @@ using Business.Validations;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using Entities.Concrete.TableModels;
+using Entities.Concrete.TableModels.Membership;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -65,6 +66,8 @@ namespace Business.Extensions
             services.AddScoped<IRegionDal, RegionDal>();
             services.AddScoped<IRegionService, RegionManager>();
             services.AddScoped<IValidator<Region>, RegionValidation>();
+
+            services.AddScoped<IValidator<ApplicationUser>, ApplicationUserValidation>();
 
             return services;
         }

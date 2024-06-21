@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Rentally.WEB.Controllers
 {
-    public class GlobalCarController : Controller
+    public class GlobalCarController : BaseController
     {
         private readonly ICarService _carService;
         public GlobalCarController(ICarService carService)

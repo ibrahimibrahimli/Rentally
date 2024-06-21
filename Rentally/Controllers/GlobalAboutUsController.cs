@@ -4,7 +4,7 @@ using Rentally.WEB.ViewModels;
 
 namespace Rentally.WEB.Controllers
 {
-    public class GlobalAboutUsController : Controller
+    public class GlobalAboutUsController : BaseController
     {
         private readonly IAboutService _aboutService;
         private readonly ITeamBoardService _teamBoardService;

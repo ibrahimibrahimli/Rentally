@@ -667,7 +667,7 @@ header .header-col.mid .social-icons {
     float: right;
 }
 
-#mainmenu > li.has-child:after {
+/*#mainmenu > li.has-child:after {
     font-family: FontAwesome;
     content: "\f078";
     padding-left: 5px;
@@ -675,7 +675,7 @@ header .header-col.mid .social-icons {
     position: relative;
     top: -2px;
     color:#ffffff;
-}
+}*/
 
 .rtl #mainmenu li.has-child:after {x
     position: absolute;
@@ -17929,19 +17929,19 @@ img {
         opacity: 1;
     }
 
-    #mainmenu>li.menu-item-has-children>a.menu-item {
+   /* #mainmenu>li.menu-item-has-children>a.menu-item {
         position: relative;
         padding-right: 15px;
-    }
+    }*/
 
-    #mainmenu>li.menu-item-has-children>a.menu-item:after {
+/*    #mainmenu>li.menu-item-has-children>a.menu-item:after {
         content: "\f107";
         font-family: "FontAwesome";
         display: inline-block;
         position: absolute;
         top: 0;
         right: 0;
-    }
+    }*/
 
     #mainmenu li ul a.menu-item {
         width: 100%;

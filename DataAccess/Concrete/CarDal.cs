@@ -25,7 +25,6 @@ namespace DataAccess.Concrete
                          select new CarDto
                          {
                              Id = car.Id,
-                             Favourites = car.Favourites.ToList(),
                              Brand = car.Brand,
                              Model = car.Model,
                              CarCategoryId = car.CarCategoryId,

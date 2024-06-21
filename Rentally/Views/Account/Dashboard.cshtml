@@ -1,0 +1,240 @@
+﻿@model List<BookingDto>
+
+
+<!-- content begin -->
+<div class="no-bottom no-top zebra" id="content">
+    <div id="top"></div>
+
+    <!-- section begin -->
+    <section id="subheader" class="jarallax text-light">
+        <img src="/images/background/14.jpg" class="jarallax-img" alt="">
+        <div class="center-y relative text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>İdarə Paneli</h1>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+
+    <section id="section-cars" class="bg-gray-100">
+        <div class="container">
+            <div class="row">
+
+                @await Component.InvokeAsync("AccountAside")
+
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div  class="col-lg-3 col-6 mb25 order-sm-1">
+                            @{int upcomingCount = 0;}
+                            @foreach(var item in Model)
+                            {
+                                if(item.Status == 0)
+                                {
+                                    upcomingCount++;
+                                }
+                            }
+                            <div class="card padding30 rounded-5">
+                                <div class="symbol mb40">
+                                    <i class="fa id-color fa-2x fa-calendar-check-o"></i>
+                                </div>
+                                <span class="h1 mb0">@upcomingCount</span>
+                                <span class="text-gray">Gözləyən sifarişlər</span>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-6 mb25 order-sm-1">
+                            @{
+                                int acceptedCount = 0;
+                            }
+                            @foreach (var item in Model)
+                            {
+                                if (item.Status == 1)
+                                {
+                                    acceptedCount++;
+                                }
+                            }
+                            <div class="card padding30 rounded-5">
+                                <div class="symbol mb40">
+                                    <i class="fa id-color fa-2x fa-tags"></i>
+                                </div>
+                                <span class="h1 mb0">@acceptedCount</span>
+                                <span class="text-gray">Təsdiqlənmiş</span>
+                            </div>
+                        </div>
+
+                        <div  class="col-lg-3 col-6 mb25 order-sm-1">
+                            @{
+                                int cancelledCount = 0;
+                            }
+                            @foreach (var item in Model)
+                            {
+                                if (item.Status == 2)
+                                {
+                                    cancelledCount++;
+                                }
+                            }
+                            <div class="card padding30 rounded-5">
+                                <div class="symbol mb40">
+                                    <i class="fa id-color fa-2x fa-calendar-times-o"></i>
+                                </div>
+                                <span class="h1 mb0">@cancelledCount</span>
+                                <span class="text-gray">Ləğv Edilmişlər</span>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-6 mb25 order-sm-1">
+
+                            <div class="card padding30 rounded-5">
+                                <div class="symbol mb40">
+                                    <i class="fa id-color fa-2x fa-calendar"></i>
+                                </div>
+                                <span class="h1 mb0">@Model.Count</span>
+                                <span class="text-gray">Ümumi Sifariş Sayı</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card padding30 rounded-5 mb25">
+                        <h4>Mənim son sifarişlərim</h4>
+
+                        <table class="table de-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><span class="fs-12 text-gray">Sifariş ID-si</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Maşın Adı</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Başlama Yeri</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Dayanma Yeri</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Başlama Tarixi</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Dayanma Tarixi</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Vəziyyət</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model)
+                                {
+                                    var status = string.Empty;
+                                    if (item.Status == 0)
+                                    {
+                                        status = "bg-warning";
+                                    }
+                                    else if(item.Status == 1)
+                                    {
+                                        status = "bg-success";
+                                    }
+                                    else
+                                    {
+                                        status = "bg-danger";
+                                    }
+                                    <tr>
+                                        <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#@item.Id</div></td>
+                                        <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">@item.CarBrand-@item.CarModel</span></td>
+                                        <td><span class="d-lg-none d-sm-block">Pick Up Location</span>@item.PickUpLocation</td>
+                                        <td><span class="d-lg-none d-sm-block">Drop Off Location</span>@item.DropOffLocation</td>
+                                        <td><span class="d-lg-none d-sm-block">Pick Up Date</span>@item.PickUpDateTime.Year-@item.PickUpDateTime.Month-@item.PickUpDateTime.Day</td>
+                                        <td><span class="d-lg-none d-sm-block">Return Date</span>@item.DropOffDateTime.Year-@item.DropOffDateTime.Month-@item.DropOffDateTime.Day</td>
+                                        <td><div style="width:80px; text-align:center;" class="badge rounded-pill @status">@(item.Status == 0 ? "Gözləyir" : item.Status == 1 ? "Təsdiqlənib" : "Ləğv edilib"  )</div></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card padding30 rounded-5">
+                        <h4>My Favorites</h4>
+                        <div class="spacer-10"></div>
+                        <div class="de-item-list no-border mb30">
+                            <div class="d-img">
+                                <img src="images/cars/jeep-renegade.jpg" class="img-fluid" alt="">
+                            </div>
+                            <div class="d-info">
+                                <div class="d-text">
+                                    <h4>Jeep Renegade</h4>
+                                    <div class="d-atr-group">
+                                        <ul class="d-atr">
+                                            <li><span>Seats:</span>4</li>
+                                            <li><span>Luggage:</span>2</li>
+                                            <li><span>Doors:</span>4</li>
+                                            <li><span>Fuel:</span>Petrol</li>
+                                            <li><span>Horsepower:</span>500</li>
+                                            <li><span>Engine:</span>3000</li>
+                                            <li><span>Drive:</span>4x4</li>
+                                            <li><span>Type:</span>Hatchback</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-price">
+                                Daily rate from <span>$265</span>
+                                <a class="btn-main" href="car-single.html">Rent Now</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="de-item-list no-border mb30">
+                            <div class="d-img">
+                                <img src="images/cars/bmw-m5.jpg" class="img-fluid" alt="">
+                            </div>
+                            <div class="d-info">
+                                <div class="d-text">
+                                    <h4>BMW M2</h4>
+                                    <div class="d-atr-group">
+                                        <ul class="d-atr">
+                                            <li><span>Seats:</span>4</li>
+                                            <li><span>Luggage:</span>2</li>
+                                            <li><span>Doors:</span>4</li>
+                                            <li><span>Fuel:</span>Petrol</li>
+                                            <li><span>Horsepower:</span>500</li>
+                                            <li><span>Engine:</span>3000</li>
+                                            <li><span>Drive:</span>4x4</li>
+                                            <li><span>Type:</span>Hatchback</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-price">
+                                Daily rate from <span>$244</span>
+                                <a class="btn-main" href="car-single.html">Rent Now</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="de-item-list no-border mb30">
+                            <div class="d-img">
+                                <img src="images/cars/ferrari-enzo.jpg" class="img-fluid" alt="">
+                            </div>
+                            <div class="d-info">
+                                <div class="d-text">
+                                    <h4>Ferarri Enzo</h4>
+                                    <div class="d-atr-group">
+                                        <ul class="d-atr">
+                                            <li><span>Seats:</span>4</li>
+                                            <li><span>Luggage:</span>2</li>
+                                            <li><span>Doors:</span>4</li>
+                                            <li><span>Fuel:</span>Petrol</li>
+                                            <li><span>Horsepower:</span>500</li>
+                                            <li><span>Engine:</span>3000</li>
+                                            <li><span>Drive:</span>4x4</li>
+                                            <li><span>Type:</span>Hatchback</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-price">
+                                Daily rate from <span>$167</span>
+                                <a class="btn-main" href="car-single.html">Rent Now</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>

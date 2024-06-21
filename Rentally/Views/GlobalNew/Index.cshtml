@@ -33,7 +33,7 @@
                                     <span class="d-date">@item.CreatedDate.Day . @item.CreatedDate.Month . @item.CreatedDate.Year</span>
                                 </div>
                                 <h4><a href="news-single.html">@item.Title<span></span></a></h4>
-                                <p>@(item.Text.Length > 200 ? item.Text.Substring(0, 200) : item.Text)</p>
+                                <p>@(item.Text.Length > 100 ? item.Text.Substring(0, 100) + "..." : item.Text)</p>
                                 <a asp-route-id="@item.Id" asp-action="details" item-value="@item.Id" item-title="@item.Title" class="btn-main">Davamını Oxu</a>
                             </div>
                         </div>

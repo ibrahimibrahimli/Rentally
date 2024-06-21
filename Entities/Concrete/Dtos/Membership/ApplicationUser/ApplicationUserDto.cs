@@ -17,8 +17,8 @@ namespace Entities.Concrete.Dtos.Membership
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string ImageUrl { get; set; }
+        public int FavouriteId { get; set; }
         public  List<string> Roles { get; set; }
-        public ICollection<Favourite> Favourites { get; set; }
         public ICollection<Booking> Bookings { get; set; }
 
         public static ApplicationUser ToPosition(ApplicationUserDto dto)
@@ -32,7 +32,6 @@ namespace Entities.Concrete.Dtos.Membership
                 Email = dto.Email,
                 PhoneNumber = dto.PhoneNumber,
                 ImageUrl = dto.ImageUrl,
-                Favourites = dto.Favourites,
                 Bookings = dto.Bookings,
             };
 

@@ -1,0 +1,245 @@
+﻿@model BookingViewModel
+
+
+<!-- content begin -->
+<div class="no-bottom no-top zebra" id="content">
+    <div id="top"></div>
+
+    <!-- section begin -->
+    <section id="subheader" class="jarallax text-light">
+        <img src="/images/background/2.jpg" class="jarallax-img" alt="">
+        <div class="center-y relative text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>Vehicle Fleet</h1>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+
+    <section id="section-car-details">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div id="slider-carousel" class="owl-carousel">
+                        <div class="item">
+                            <img src="@Model.SingleCar.ImageUrl" alt="">
+                        </div>
+                        @* <div class="item">
+                        <img src="/images/car-single/2.jpg" alt="">
+                        </div>
+                        <div class="item">
+                        <img src="/images/car-single/3.jpg" alt="">
+                        </div>
+                        <div class="item">
+                        <img src="/images/car-single/4.jpg" alt="">
+                        </div> *@
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <h3>@Model.SingleCar.Brand @Model.SingleCar.Model - @Model.SingleCar.Year.Year</h3>
+
+                    @* will be description in here *@
+                    <p>
+                        The BMW M2 is the high-performance version of the
+                        2 Series 2-door coupé. The first generation
+                        of the M2 is the F87 coupé and is powered by turbocharged.
+                    </p>
+
+                    <div class="spacer-10"></div>
+
+                    <h4>Specifications</h4>
+                    <div class="de-spec">
+                        <div class="d-row">
+                            <span class="d-title">Body</span>
+                            <spam class="d-value">@Model.SingleCar.CarCategory</spam>
+                        </div>
+                        <div class="d-row">
+                            <span class="d-title">Seat</span>
+                            <spam class="d-value">@Model.SingleCar.PassengerCount Seats</spam>
+                        </div>
+                        <div class="d-row">
+                            <span class="d-title">Door</span>
+                            <spam class="d-value">@Model.SingleCar.DoorCount Doors</spam>
+                        </div>
+                        <div class="d-row">
+                            <span class="d-title">Luggage</span>
+                            <spam class="d-value">150</spam>
+                        </div>
+                        <div class="d-row">
+                            <span class="d-title">Fuel Type</span>
+                            <spam class="d-value">Hybird</spam>
+                        </div>
+                        <div class="d-row">
+                            <span class="d-title">Engine</span>
+                            <spam class="d-value">3000</spam>
+                        </div>
+                        <div class="d-row">
+                            <span class="d-title">Year</span>
+                            <spam class="d-value">@Model.SingleCar.Year.Year</spam>
+                        </div>
+                        <div class="d-row">
+                            <span class="d-title">Mileage</span>
+                            <spam class="d-value">200</spam>
+                        </div>
+                        <div class="d-row">
+                            <span class="d-title">Transmission</span>
+                            <spam class="d-value">Automatic</spam>
+                        </div>
+                        <div class="d-row">
+                            <span class="d-title">Drive</span>
+                            <spam class="d-value">4WD</spam>
+                        </div>
+                        <div class="d-row">
+                            <span class="d-title">Fuel Economy</span>
+                            <spam class="d-value">18.5</spam>
+                        </div>
+                        <div class="d-row">
+                            <span class="d-title">Exterior Color</span>
+                            <spam class="d-value">Blue Metalic</spam>
+                        </div>
+                        <div class="d-row">
+                            <span class="d-title">Interior Color</span>
+                            <spam class="d-value">Black</spam>
+                        </div>
+                    </div>
+
+                    <div class="spacer-single"></div>
+
+                    <h4>Features</h4>
+                    <ul class="ul-style-2">
+                        <li>Bluetooth</li>
+                        <li>Multimedia Player</li>
+                        <li>Central Lock</li>
+                        <li>Sunroof</li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="de-price text-center">
+                        Daily rate
+                        <h3>$@Model.SingleCar.PricePerDay</h3>
+                    </div>
+                    <div class="spacer-30"></div>
+                    <div class="de-box text-light mb25">
+                        <form id="contactForm" asp-action="Create" method="post" name="contactForm" id='contact_form'>
+                            <h4>Bu Maşını rezerv et</h4>
+                            <input asp-for="Bookings.CarID" value="@Model.SingleCar.Id"  style="visibility:hidden;"/>
+                            <div class="spacer-20"></div>
+
+                            <div class="row">
+                                <div class="col-lg-12 mb20">
+                                    <h5>Başlama yeri</h5>
+                                    <input asp-for="Bookings.PickUpLocation" type="text" name="Bookings.PickUpLocation" onfocus="geolocate()" placeholder="Enter your pickup location" id="autocomplete2" autocomplete="on" class="form-control">
+                                    <span asp-validation-for="Bookings.PickUpLocation" class="text-danger"></span>
+                                    <div class="jls-address-preview jls-address-preview--hidden">
+                                        <div class="jls-address-preview__header">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb20">
+                                    <h5>Dayanma yeri</h5>
+                                    <input asp-for="Bookings.DropOffLocation" type="text" name="Bookings.DropOffLocation" onfocus="geolocate()" placeholder="Enter your dropoff location" id="autocomplete2" autocomplete="on" class="form-control">
+                                    <span asp-validation-for="Bookings.DropOffLocation" class="text-danger"></span>
+                                    <div class="jls-address-preview jls-address-preview--hidden">
+                                        <div class="jls-address-preview__header">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb20">
+                                    <h5>Başlama Günü & Saatı</h5>
+                                    <div class="date-time-field">
+                                        <input asp-for="Bookings.PickUpDateTime" type"date" value="@DateTime.Now" class="form-control" id="answer" />
+
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 mb20">
+                                    <h5>Bitmə Günü & Saatı</h5>
+                                    <div class="date-time-field">
+                                        <input asp-for="Bookings.DropOffDateTime" type"date" value="@DateTime.Now" class="form-control" id="answer" />
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type='submit' id='send_message' value='Rezerv et' class="btn-main btn-fullwidth">
+
+                            <div class="clearfix"></div>
+
+                        </form>
+                    </div>
+
+                    <div class="de-box">
+                        <h4>Paylaş</h4>
+                        <div class="de-color-icons">
+                            <span><i class="fa fa-twitter fa-lg"></i></span>
+                            <span><i class="fa fa-facebook fa-lg"></i></span>
+                            <span><i class="fa fa-reddit fa-lg"></i></span>
+                            <span><i class="fa fa-linkedin fa-lg"></i></span>
+                            <span><i class="fa fa-pinterest fa-lg"></i></span>
+                            <span><i class="fa fa-stumbleupon fa-lg"></i></span>
+                            <span><i class="fa fa-delicious fa-lg"></i></span>
+                            <span><i class="fa fa-envelope fa-lg"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+<!-- content close -->
+    </div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).ready(function () {
+            $("#contactForm").on("submit", function (e) {
+                e.preventDefault();
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("Create", "GlobalBooking")',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        if (response.isSuccess) {
+                            Swal.fire({
+                                title: 'Message Status',
+                                text: 'Sifariş uğurla göndərildi, sifarişinizin nəticəsini hesabınızda "Sifarişlərim" bölməsindən izləyin',
+                                icon: 'success',
+                                confirmButtonText: 'Oldu'
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'Message Status',
+                                text: 'Sifariş göndərilmədi, bilinməyən bir xəta oldu',
+                                icon: 'error',
+                                confirmButtonText: 'Təkrar yoxlayın'
+                            });
+                        }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            title: 'Message Status',
+                            text: 'Sifariş göndərilmədi, bilinməyən bir xəta oldu',
+                            icon: 'error',
+                            confirmButtonText: 'Təkrar yoxlayın'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
+
+<script src="booking-form.js"></script>

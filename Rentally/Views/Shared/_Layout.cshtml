@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html lang="zxx">
 
 
@@ -20,6 +21,15 @@
     <link href="~/css/coloring.css" rel="stylesheet" type="text/css">
     <!-- color scheme -->
     <link id="colors" href="~/css/colors/scheme-01.css" rel="stylesheet" type="text/css">
+
+    <style>
+        .profile {
+            width: 45px;
+            height: 45px;
+            margin: 300px;
+            border-radius: 50px;
+        }
+    </style>
 </head>
 
 <body onload="initialize()" class="dark-scheme">
@@ -29,84 +39,7 @@
         <div id="de-preloader"></div>
         <!-- page preloader close -->
         <!-- header begin -->
-        <header class="transparent has-topbar">
-
-            <div class="container">
-
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="de-flex sm-pt10">
-                            <div class="de-flex-col">
-                                <div class="de-flex-col">
-                                    <!-- logo begin -->
-                                    <div id="logo">
-                                        <a asp-controller="Home" asp-action="Index">
-                                            <img class="logo-1" src="/images/logo-light.png" alt="">
-                                            <img class="logo-2" src="/images/logo-light.png" alt="">
-                                        </a>
-                                    </div>
-                                    <!-- logo close -->
-                                </div>
-                            </div>
-                            <div class="de-flex-col header-col-mid">
-                                <ul id="mainmenu">
-                                    <li>
-                                        <a asp-controller="Home" asp-action="Index" class="menu-item">Ana Səhifə</a>
-                                    </li>
-                                    <li>
-                                        <a asp-controller="GlobalCar" asp-action="Index" class="menu-item">Maşınlar</a>
-                                    </li>
-                                    <li> <a class="menu-item" asp-controller="GlobalBooking" asp-action="Index">Rezervasiya</a></li>
-                                    <li>
-                                        <a asp-controller="GlobalAboutUs" asp-action="Index">Haqqımızda</a>
-                                    </li>
-                                    <li><a asp-controller="GlobalContact" asp-action="Create" class="menu-item">Əlaqə</a></li>
-
-                                    <li><a asp-controller="GlobalNew" asp-action="Index" class="menu-item">Yeniliklər</a></li>
-
-                                    <li>
-                                        <a class="menu-item" href="account-dashboard.html">Hesabım</a>
-                                        <ul>
-                                            <li><a class="menu-item" href="account-dashboard.html">Dashboard</a></li>
-                                            <li><a class="menu-item" href="account-profile.html">My Profile</a></li>
-                                            <li><a class="menu-item" href="account-booking.html">My Orders</a></li>
-                                            <li><a class="menu-item" href="account-favorite.html">My Favorite Cars</a></li>
-                                        </ul>
-                                    </li>
-
-                                </ul>
-                            </div>
-                            <div class="de-flex-col">
-                                @if (User.Identity.IsAuthenticated)
-                                {
-                                    <div class="menu_side_area">
-                                        <a asp-controller="Account" asp-action="Logout" class="btn-main">Çıxış Et</a>
-                                        <span id="menu-btn"></span>
-                                    </div>
-
-                                    @if (User.IsInRole("Admin"))
-                                    {
-                                        <li style="list-style:none; margin-left:10px;" class="nav-item">
-                                            <a class="btn-main" asp-action="Index" asp-controller="Home" asp-area="Dashboard">Dashboard</a>
-                                        </li>
-                                    }
-
-                                }
-                                else{
-                                    <div class="menu_side_area">
-                                        <a asp-controller="Account" asp-action="Login" class="btn-main">Giriş Et</a>
-                                        <span id="menu-btn"></span>
-                                     
-                                    </div>
-                                }
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
+        @await Component.InvokeAsync("Navigation")
         <!-- header close -->
         @RenderBody()
 
@@ -191,7 +124,7 @@
     ================================================== -->
     <script src="~/js/plugins.js"></script>
     <script src="~/js/designesia.js"></script>
-    <script src="~/booking-form.js"></script>
+    <script src="~/js/booking-form.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgiM7ogCAA2Y5pgSk2KXZfxF5S_1jsptA&amp;libraries=places&amp;callback=initPlaces" async="" defer=""></script>
     @RenderSection("Scripts", false)
 </body>

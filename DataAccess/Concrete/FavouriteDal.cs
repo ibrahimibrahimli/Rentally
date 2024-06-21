@@ -14,6 +14,11 @@ namespace DataAccess.Concrete
         {
             _context = context;
         }
+
+        public List<Favourite> GetFavouritesWithUserIdAndCarID()
+        {
+            throw new NotImplementedException();
+        }
         //public List<Favourite> GetFavouritesWithUserIdAndCarID()
         //{
         //    var result = from favourite in _context.Favorites

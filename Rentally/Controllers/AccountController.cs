@@ -1,22 +1,37 @@
-﻿using Entities.Concrete.Dtos.Membership;
+﻿using Business.Abstract;
+using Business.Concrete;
+using Core.Extenstion;
+using Entities.Concrete.Dtos.Membership;
 using Entities.Concrete.TableModels.Membership;
+using Humanizer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Elfie.Extensions;
+using Rentally.WEB.ViewModels;
+using System.Security.Claims;
 
 namespace Rentally.WEB.Controllers
 {
-    public class AccountController : Controller
+    [Authorize]
+    public class AccountController : BaseController
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
+        private readonly IPasswordHasher<ApplicationUser> _passwordHasher;
+        private readonly IBookingService _bookingService;
+        private readonly IWebHostEnvironment _env;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<ApplicationRole> roleManager)
+
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<ApplicationRole> roleManager, IBookingService bookingService, IWebHostEnvironment webHostEnvironment, IPasswordHasher<ApplicationUser> passwordHasher)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
+            _bookingService = bookingService;
+            _env = webHostEnvironment;
+            _passwordHasher = passwordHasher;
         }
 
         [HttpGet]
@@ -45,11 +60,10 @@ namespace Rentally.WEB.Controllers
 
                 if (result.Succeeded)
                 {
+                   
                    return RedirectToAction("Index", "Home");
                 }
                     ViewBag.Message = "E-Poçt və ya şifrə yanlışdır";
-                
-
             }
             end:
             return View();
@@ -113,6 +127,90 @@ namespace Rentally.WEB.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Dashboard()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var bookings = _bookingService.GetBookingWithUserIdAndCarId().Data.Where(x => x.UserId == user.Id).ToList();
+            ViewData["User"] = user;
+            return View(bookings);
+        }
+
+        [HttpGet]
+
+        public async Task<IActionResult> EditProfile()
+        {
+            ApplicationUser user = await _userManager.GetUserAsync(User);
+            return View(user);
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> EditProfile(ApplicationUser user, IFormFile imageUrl, string currentPassword, string newPassword)
+        {
+            //Write ModelState
+
+            var existUser = await _userManager.FindByEmailAsync(user.Email);
+
+            existUser.UserName = user.UserName;
+            existUser.Surname = user.Surname;
+            existUser.Name = user.Name;
+            existUser.Email = user.Email;
+
+            if(imageUrl != null)
+            {
+               existUser.ImageUrl = PictureHelper.UploadImage(imageUrl, _env.WebRootPath);
+            }
+            
+
+
+            if(currentPassword is not null && newPassword is not null)
+            {
+                var passwordResult = VerifyHashedPassword(existUser, existUser.PasswordHash, currentPassword);
+
+                if (passwordResult)
+                {
+                    _userManager.ChangePasswordAsync(existUser, currentPassword, newPassword);
+
+                }
+                else
+                {
+                    ViewBag.Message = "Hazırki şifrə yanlış Daxil edilib";
+                }
+            }
+
+            
+            var result = await _userManager.UpdateAsync(existUser);
+
+            if (!result.Succeeded)
+            {
+                ViewBag.Message = "Gözlənilməyən xəta baş verdi";
+
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError(item.Code, item.Description);
+                }
+
+                return View(user);
+            }
+            return RedirectToAction("Dashboard");
+        }
+
+        public bool VerifyHashedPassword(ApplicationUser user, string hashedPassword, string providedPassword)
+        {
+            var verificationResult = _passwordHasher.VerifyHashedPassword(user, hashedPassword, providedPassword);
+            return verificationResult == PasswordVerificationResult.Success;
+        }
+
+        public async Task<IActionResult> Orders()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var bookings = _bookingService.GetBookingWithUserIdAndCarId().Data.Where(x => x.UserId == user.Id).ToList();
+            ViewData["User"] = user;
+            return View(bookings);
         }
     }
 }

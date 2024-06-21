@@ -1,0 +1,103 @@
+﻿@model NavigationViewModel
+
+<header class="transparent has-topbar">
+
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="de-flex sm-pt10">
+                    <div class="de-flex-col">
+                        <div class="de-flex-col">
+                            <!-- logo begin -->
+                            <div id="logo">
+                                <a asp-controller="Home" asp-action="Index">
+                                    <img class="logo-1" src="/images/logo-light.png" alt="">
+                                    <img class="logo-2" src="/images/logo-light.png" alt="">
+                                </a>
+                            </div>
+                            <!-- logo close -->
+                        </div>
+                    </div>
+                    <div class="de-flex-col header-col-mid">
+                        <ul id="mainmenu">
+                            <li>
+                                <a asp-controller="Home" asp-action="Index" class="menu-item">Ana Səhifə</a>
+                            </li>
+                            <li>
+                                <a asp-controller="GlobalCar" asp-action="Index" class="menu-item">Maşınlar</a>
+                            </li>
+                            <li>
+                                <a class="menu-item" asp-controller="GlobalBooking" asp-action="Index">Rezervasiya</a>
+                            </li>
+                            <li>
+                                <a asp-controller="GlobalAboutUs" asp-action="Index">Haqqımızda</a>
+                            </li>
+                            <li>
+                                <a asp-controller="GlobalContact" asp-action="Create" class="menu-item">Əlaqə</a>
+                            </li>
+                            <li>
+                                <a asp-controller="GlobalNew" asp-action="Index" class="menu-item">Yeniliklər</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="de-flex-col">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (Model.User.ImageUrl == null)
+                            {
+                                <ul id="mainmenu">
+                                    <li class="profile">
+                                        <a class="menu-item" asp-action="Dashboard" asp-controller="Account" style="display:flex; align-content:center; justify-content:center; padding:0;">
+                                            <img style="width:45px;border-radius:100%; background-repeat:no-repeat" src="~/images/profile/DefaultProfilePicture.png" />
+                                        </a>
+                                        <ul style="left:-100px">
+                                            <li><a class="menu-item" asp-action="Dashboard" asp-controller="Account">İdarə Paneli</a></li>
+                                            <li><a class="menu-item" asp-action="EditProfile" asp-controller="Account">Mənim hesabım</a></li>
+                                            <li><a class="menu-item" asp-action="Orders" asp-controller="Account">Sifarişlərim</a></li>
+                                            <li><a asp-controller="Account" asp-action="Logout" class="menu-item">Çıxış Et</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            }
+                            else
+                            {
+                                <ul id="mainmenu">
+                                    <li class="profile">
+                                        <a class="menu-item" asp-action="Dashboard" asp-controller="Account" style="display:flex; align-content:center; justify-content:center; padding:0;">
+                                            <img style="width:45px; border-radius:100%; background-repeat:no-repeat" src="@Model.User.ImageUrl" />
+                                        </a>
+                                        <ul style="left:-100px">
+                                            <li><a class="menu-item" href="account-dashboard.html">İdarə Paneli</a></li>
+                                            <li><a class="menu-item" href="account-profile.html">Hesabım</a></li>
+                                            <li><a class="menu-item" href="account-booking.html">Sifarişlərim</a></li>
+                                            <li><a asp-controller="Account" asp-action="Logout" class="menu-item">Çıxış Et</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            }
+
+                            @if (User.IsInRole("Admin"))
+                            {
+                                <li style="list-style:none; margin-left:10px;" class="nav-item">
+                                    <a class="btn-main" asp-action="Index" asp-controller="Home" asp-area="Dashboard">Dashboard</a>
+                                </li>
+                            }
+
+                        }
+                        else
+                        {
+                            <div class="menu_side_area">
+                                <a asp-controller="Account" asp-action="Login" class="btn-main">Giriş Et</a>
+                                <span id="menu-btn"></span>
+
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

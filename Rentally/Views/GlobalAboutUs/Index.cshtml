@@ -77,13 +77,13 @@
 
                     @foreach (var item in Model.TeamBoards)
                     {
-                        <div class="col-lg-3 col-md-6 col-sm-6 mb30">
+                        <div  class="col-lg-3 col-md-6 col-sm-6 mb30">
                             <div class="f-profile text-center">
-                                <div class="fp-wrap f-invert">
+                            <div style="width: 301px; height: 301px;" class="fp-wrap f-invert">
                                     <div class="fpw-overlay">
                                         <div class="fpwo-wrap">
                                             <div class="fpwow-icons">
-                                                <a href="@item.FacebookUrl''"><i class="fa fa-facebook fa-lg"></i></a>
+                                                <a href="@item.FacebookUrl"><i class="fa fa-facebook fa-lg"></i></a>
                                                 <a href="@item.TwitterUrl"><i class="fa fa-twitter fa-lg"></i></a>
                                                 <a href="@item.LinkedinUrl"><i class="fa fa-linkedin fa-lg"></i></a>
                                                 <a href="@item.PinterestUrl"><i class="fa fa-pinterest fa-lg"></i></a>

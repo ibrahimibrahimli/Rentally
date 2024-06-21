@@ -1,5 +1,11 @@
-﻿using Core.Entities.Abstract;
+﻿using Core.DataAccess.Abstract;
+using Core.Entities.Abstract;
 using Entities.Concrete.TableModels.Membership;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Entities.Concrete.TableModels
 {
@@ -7,11 +13,11 @@ namespace Entities.Concrete.TableModels
     {
         public Favourite()
         {
-            Cars = new HashSet<Car>();
+            FavouriteItems = new HashSet<FavouriteItem>();
         }
-        //-------------------------
         public int UserId { get; set; }
+        public int FavouriteItemsId { get; set; }
+        public ICollection<FavouriteItem> FavouriteItems { get; set; }
         public virtual ApplicationUser User { get; set; }
-        public ICollection<Car> Cars { get; set; }
     }
 }

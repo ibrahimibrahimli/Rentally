@@ -67,7 +67,7 @@
                                 <div class="col-lg-6">
                                     <label asp-for="@Model.Bookings.PickUpDateTime" class="control-label">Başlanğıc tarixi</label>
                                     <div class="date-time-field">
-                                        <input asp-for="@Model.Bookings.PickUpDateTime" class="form-control" id="answer" name="Bookings.PickUpDateTime" />
+                                        <input asp-for="@Model.Bookings.PickUpDateTime"  value="@DateTime.Now" class="form-control" id="answer" name="Bookings.PickUpDateTime" />
                                         <span asp-validation-for="@Model.Bookings.PickUpDateTime" class="text-danger"></span>
                                         
                                     </div>
@@ -76,7 +76,7 @@
                                 <div class="col-lg-6">
                                     <label asp-for="@Model.Bookings.DropOffDateTime" class="control-label">Bitiş tarixi</label>
                                     <div class="date-time-field">
-                                        <input asp-for="@Model.Bookings.DropOffDateTime" class="form-control" id="answer" name="Bookings.DropOffDateTime" />
+                                        <input asp-for="@Model.Bookings.DropOffDateTime" value="@DateTime.Now.AddDays" class="form-control" id="answer" name="Bookings.DropOffDateTime" />
                                         <span asp-validation-for="@Model.Bookings.DropOffDateTime" class="text-danger"></span>
                                         
                                     </div>

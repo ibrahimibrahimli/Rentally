@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Rentally.WEB.Controllers
 {
-    public class GlobalNewController : Controller
+    public class GlobalNewController : BaseController
     {
         private readonly INewService _newService;
         private readonly ITestimonialService _testimonialService;

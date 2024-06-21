@@ -1,0 +1,143 @@
+﻿@model List<BookingDto>
+
+<!-- content begin -->
+<div class="no-bottom no-top zebra" id="content">
+    <div id="top"></div>
+
+    <!-- section begin -->
+    <section id="subheader" class="jarallax text-light">
+        <img src="~/images/background/14.jpg" class="jarallax-img" alt="">
+        <div class="center-y relative text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h1>Sifarişlərim</h1>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- section close -->
+
+    <section id="section-settings" class="bg-gray-100">
+        <div class="container">
+            <div class="row">
+
+                @await Component.InvokeAsync("AccountAside")
+
+                <div class="col-lg-9">
+
+                    <div class="card padding30 rounded-5 mb25">
+                        <h4>Gözləyən Sifarişlər</h4>
+
+                        <table class="table de-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><span class="fs-12 text-gray">Sifariş ID-si</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Maşın Adı</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Başlama Yeri</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Dayanma Yeri</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Başlama Tarixi</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Dayanma Tarixi</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Vəziyyət</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model)
+                                {
+                                    if(item.Status == 0)
+                                    {
+                                        <tr>
+                                            <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#@item.Id</div></td>
+                                            <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">@item.CarBrand-@item.CarModel</span></td>
+                                            <td><span class="d-lg-none d-sm-block">Pick Up Location</span>@item.PickUpLocation</td>
+                                            <td><span class="d-lg-none d-sm-block">Drop Off Location</span>@item.DropOffLocation</td>
+                                            <td><span class="d-lg-none d-sm-block">Pick Up Date</span>@item.PickUpDateTime.Day-@item.PickUpDateTime.Month-@item.PickUpDateTime.Year</td>
+                                            <td><span class="d-lg-none d-sm-block">Return Date</span>@item.DropOffDateTime.Day-@item.DropOffDateTime.Month-@item.DropOffDateTime.Year</td>
+                                            <td><div style="width:80px; text-align:center;" class="badge rounded-pill bg-warning">Gözləyir</div></td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card padding30 rounded-5 mb25">
+                        <h4>Tamamlanan Sifarişlər</h4>
+
+                        <table class="table de-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><span class="fs-12 text-gray">Sifariş ID-si</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Maşın Adı</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Başlama Yeri</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Dayanma Yeri</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Başlama Tarixi</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Dayanma Tarixi</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Vəziyyət</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.Status == 1)
+                                    {
+                                        <tr>
+                                            <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#@item.Id</div></td>
+                                            <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">@item.CarBrand-@item.CarModel</span></td>
+                                            <td><span class="d-lg-none d-sm-block">Pick Up Location</span>@item.PickUpLocation</td>
+                                            <td><span class="d-lg-none d-sm-block">Drop Off Location</span>@item.DropOffLocation</td>
+                                            <td><span class="d-lg-none d-sm-block">Pick Up Date</span>@item.PickUpDateTime.Day-@item.PickUpDateTime.Month-@item.PickUpDateTime.Year</td>
+                                            <td><span class="d-lg-none d-sm-block">Return Date</span>@item.DropOffDateTime.Day-@item.DropOffDateTime.Month-@item.DropOffDateTime.Year</td>
+                                            <td><div style="width:80px; text-align:center;" class="badge rounded-pill bg-success">Tamamlanıb</div></td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="card padding30 rounded-5 mb25">
+                        <h4>Ləğv edilmiş Sifarişlər</h4>
+
+                        <table class="table de-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col"><span class="fs-12 text-gray">Sifariş ID-si</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Maşın Adı</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Başlama Yeri</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Dayanma Yeri</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Başlama Tarixi</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Dayanma Tarixi</span></th>
+                                    <th scope="col"><span class="fs-12 text-gray">Vəziyyət</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    if (item.Status == 2)
+                                    {
+                                        <tr>
+                                            <td><span class="d-lg-none d-sm-block">Order ID</span><div class="badge bg-gray-100 text-dark">#@item.Id</div></td>
+                                            <td><span class="d-lg-none d-sm-block">Car Name</span><span class="bold">@item.CarBrand-@item.CarModel</span></td>
+                                            <td><span class="d-lg-none d-sm-block">Pick Up Location</span>@item.PickUpLocation</td>
+                                            <td><span class="d-lg-none d-sm-block">Drop Off Location</span>@item.DropOffLocation</td>
+                                            <td><span class="d-lg-none d-sm-block">Pick Up Date</span>@item.PickUpDateTime.Day-@item.PickUpDateTime.Month-@item.PickUpDateTime.Year</td>
+                                            <td><span class="d-lg-none d-sm-block">Return Date</span>@item.DropOffDateTime.Day-@item.DropOffDateTime.Month-@item.DropOffDateTime.Year</td>
+                                            <td><div style="width:80px; text-align:center;" class="badge rounded-pill bg-danger">Ləğv edilib</div></td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+
+

@@ -29,6 +29,8 @@ namespace DataAccess.Concrete
                              DropOffLocation = booking.DropOffLocation,
                              Status = booking.Status,
                              CarBrand = car.Brand,
+                             CarModel = car.Model,
+
                              UserName = user.Name,
                          };
 
