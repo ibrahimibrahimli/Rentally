@@ -31,16 +31,16 @@
 
 <body>
     <div id="wrapper" >
-
+        @await Component.InvokeAsync("Navigation")
         <div id="de-preloader"></div>
         <!-- content begin -->
-        <div style="background-color: #121212;" class="no-bottom no-top" id="content">
+        <div style="background-color: #121212; position:relative;" class="no-bottom no-top" id="content">
             <div id="top"></div>
             
-                @* <img src="images/background/2.jpg" class="jarallax-img" alt=""> *@
+                <img src="~/images/background/2.jpg" style="position:absolute;" class="jarallax-img" alt="">
 
-                <div class="v-center">
-                    <div class="container">
+                <div class="v-center" ">
+                <div class="container container_login" style="position:absolute;>
                         <div class="row align-items-center">
                             <div class="col-lg-4 offset-lg-4">
                             @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
@@ -65,14 +65,9 @@
                                             <input type="submit" id="send_message" value="Daxil ol" class="btn-main btn-fullwidth rounded-3" />
                                         </div>
                                     </form>
-                                    <div class="row g-2">
+                                    <div class="row g-2" style="display:flex; justify-content:center;">
                                     <p style="margin-top:20px; text-align:center; ">Hesabın yoxdur? <a class="small" asp-action="register">Hesab yarat</a></p>
-                                    @* <div class="col-lg-6">
-                                            <a class="btn-sc btn-fullwidth mb10" href="#"><img src="images/svg/google_icon.svg" alt="">Google</a>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <a class="btn-sc btn-fullwidth mb10" href="#"><img src="images/svg/facebook_icon.svg" alt="">Facebook</a>
-                                        </div> *@
+                                  
                                     </div>
                                 </div>
                             </div>

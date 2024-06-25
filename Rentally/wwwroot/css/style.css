@@ -146,6 +146,10 @@ header.header-s1 {
     top: 0;
 }
 
+.container_login{
+    left : 70px;
+}
+
 header .info {
     display: none;
     color: #fff;

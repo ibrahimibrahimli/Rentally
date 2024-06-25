@@ -29,23 +29,23 @@
 
 <body style="background-color: #121212;">
     <div id="wrapper">
-       
+        @await Component.InvokeAsync("Navigation")
         <div id="de-preloader"></div>
-       @*      <!-- section begin -->
+            <!-- section begin -->
             <section id="subheader" class="jarallax text-light">
-                <img src="images/background/subheader.jpg" class="jarallax-img" alt="">
+                <img src="~/images/background/subheader.jpg" class="jarallax-img" alt="">
                     <div class="center-y relative text-center">
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-									<h1>Register</h1>
+									<h1>Qeydiyyat</h1>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                     </div>
             </section>
-            <!-- section close --> *@
+            <!-- section close -->
 
 
         <section  aria-label="section">
@@ -102,7 +102,7 @@
                                     <div class="col-md-6">
                                         <div class="field-set">
                                             <label>Telefon:</label>
-                                            <input style="color:#fff;" asp-for="PhoneNumber" type="number" name='PhoneNumber' id="PhoneNumber" class="form-control">
+                                            <input style="color:#fff;" asp-for="PhoneNumber" type="text" name='PhoneNumber' id="PhoneNumber" class="form-control">
                                         </div>
                                     </div>
 
