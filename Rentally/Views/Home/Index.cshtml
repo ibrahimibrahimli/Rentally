@@ -13,67 +13,74 @@
         <!-- Inner -->
         <div class="carousel-inner position-relative">
             <!-- Single item -->
-            <div class="carousel-item active jarallax">
-                <img src="@Model.Sliders[0].ImageUrl" class="jarallax-img" alt="">
-                <div class="mask">
-                    <div class="no-top no-bottom">
-                        <div class="h-100 v-center">
-                            <div class="container">
-                                <div class="row gx-5 align-items-center">
-                                    <div class="col-lg-6 offset-lg-3 text-center mb-sm-30">
-                                        <h1 class="s3 mb-3 wow fadeInUp">@Model.Sliders[0].Title</h1>
-                                        <p class="lead wow fadeInUp" data-wow-delay=".3s">@Model.Sliders[0].Description</p>
-                                        <div class="spacer-10"></div>
-                                        <a asp-controller="GlobalCar" asp-action="Index" class="btn-line mb10 wow fadeInUp" data-wow-delay=".6s">Kəşfet</a>
+
+            @if(Model.Sliders.Count > 0)
+            {
+                <div class="carousel-item active jarallax">
+                    <img src="@Model.Sliders[0].ImageUrl" class="jarallax-img" alt="">
+                    <div class="mask">
+                        <div class="no-top no-bottom">
+                            <div class="h-100 v-center">
+                                <div class="container">
+                                    <div class="row gx-5 align-items-center">
+                                        <div class="col-lg-6 offset-lg-3 text-center mb-sm-30">
+                                            <h1 class="s3 mb-3 wow fadeInUp">@Model.Sliders[0].Title</h1>
+                                            <p class="lead wow fadeInUp" data-wow-delay=".3s">@Model.Sliders[0].Description</p>
+                                            <div class="spacer-10"></div>
+                                            <a asp-controller="GlobalCar" asp-action="Index" class="btn-line mb10 wow fadeInUp" data-wow-delay=".6s">Kəşfet</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+                <div class="carousel-item jarallax">
+                    <img src="@Model.Sliders[1].ImageUrl" class="jarallax-img" alt="">
+                    <div class="mask">
+                        <div class="no-top no-bottom">
+                            <div class="h-100 v-center">
+                                <div class="container">
+                                    <div class="row gx-5 align-items-center">
+                                        <div class="col-lg-6 offset-lg-3 text-center mb-sm-30">
+                                            <h1 class="s3 mb-3 wow fadeInUp">@Model.Sliders[1].Title</h1>
+                                            <p class="lead wow fadeInUp" data-wow-delay=".3s">@Model.Sliders[1].Description</p>
+                                            <div class="spacer-10"></div>
+                                            <a asp-controller="GlobalCar" asp-action="Index" class="btn-line mb10 wow fadeInUp" data-wow-delay=".6s">Kəşfet</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item jarallax">
+                    <img src="@Model.Sliders[2].ImageUrl" class="jarallax-img" alt="">
+                    <div class="mask">
+                        <div class="no-top no-bottom">
+                            <div class="h-100 v-center">
+                                <div class="container">
+                                    <div class="row gx-5 align-items-center">
+                                        <div class="col-lg-6 offset-lg-3 text-center mb-sm-30">
+                                            <h1 class="s3 mb-3 wow fadeInUp">@Model.Sliders[2].Title</h1>
+                                            <p class="lead wow fadeInUp" data-wow-delay=".3s">@Model.Sliders[2].Description</p>
+                                            <div class="spacer-10"></div>
+                                            <a asp-controller="GlobalCar" asp-action="Index" class="btn-line mb10 wow fadeInUp" data-wow-delay=".6s">Kəşfet</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            
 
             <!-- Single item -->
-            <div class="carousel-item jarallax">
-                <img src="@Model.Sliders[1].ImageUrl" class="jarallax-img" alt="">
-                <div class="mask">
-                    <div class="no-top no-bottom">
-                        <div class="h-100 v-center">
-                            <div class="container">
-                                <div class="row gx-5 align-items-center">
-                                    <div class="col-lg-6 offset-lg-3 text-center mb-sm-30">
-                                        <h1 class="s3 mb-3 wow fadeInUp">@Model.Sliders[1].Title</h1>
-                                        <p class="lead wow fadeInUp" data-wow-delay=".3s">@Model.Sliders[1].Description</p>
-                                        <div class="spacer-10"></div>
-                                        <a asp-controller="GlobalCar" asp-action="Index" class="btn-line mb10 wow fadeInUp" data-wow-delay=".6s">Kəşfet</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
 
             <!-- Single item -->
-            <div class="carousel-item jarallax">
-                <img src="@Model.Sliders[2].ImageUrl" class="jarallax-img" alt="">
-                <div class="mask">
-                    <div class="no-top no-bottom">
-                        <div class="h-100 v-center">
-                            <div class="container">
-                                <div class="row gx-5 align-items-center">
-                                    <div class="col-lg-6 offset-lg-3 text-center mb-sm-30">
-                                        <h1 class="s3 mb-3 wow fadeInUp">@Model.Sliders[2].Title</h1>
-                                        <p class="lead wow fadeInUp" data-wow-delay=".3s">@Model.Sliders[2].Description</p>
-                                        <div class="spacer-10"></div>
-                                        <a asp-controller="GlobalCar" asp-action="Index" class="btn-line mb10 wow fadeInUp" data-wow-delay=".6s">Kəşfet</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
 
         </div>
         <!-- Inner -->

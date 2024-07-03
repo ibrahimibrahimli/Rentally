@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Concrete.TableModels;
 using Microsoft.AspNetCore.Mvc;
 using Rentally.WEB.Controllers;
 using Rentally.WEB.ViewModels;
@@ -39,7 +40,7 @@ namespace Rentally.Controllers
 
             HomeViewModel viewModel = new()
             {
-                Sliders = sliderData,
+                Sliders = sliderData ?? new List<Slider>(),
                 Cars = carData,
                 Abouts = aboutData,
                 Features = featureData,

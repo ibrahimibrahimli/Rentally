@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240608151722_updatedGlobalBooking")]
-    partial class updatedGlobalBooking
+    [Migration("20240702105504_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,21 +24,6 @@ namespace DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("CarFavourite", b =>
-                {
-                    b.Property<int>("CarsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("FavouritesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("CarsId", "FavouritesId");
-
-                    b.HasIndex("FavouritesId");
-
-                    b.ToTable("Favourites_Cars", (string)null);
-                });
 
             modelBuilder.Entity("Entities.Concrete.TableModels.About", b =>
                 {
@@ -146,12 +131,11 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 10000L);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Brand")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CarCategoryId")
                         .HasColumnType("int");
@@ -173,21 +157,17 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsHomePage")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                        .HasColumnType("bit");
 
                     b.Property<string>("Model")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PassengerCount")
                         .HasColumnType("int");
 
                     b.Property<decimal>("PricePerDay")
-                        .HasPrecision(7, 2)
-                        .HasColumnType("decimal(7,2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -197,15 +177,9 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Brand");
-
                     b.HasIndex("CarCategoryId");
 
-                    b.HasIndex("Brand", "Model", "Year", "Deleted")
-                        .IsUnique()
-                        .HasDatabaseName("idx_Brand_Deleted");
-
-                    b.ToTable("Cars", (string)null);
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("Entities.Concrete.TableModels.CarCategory", b =>
@@ -299,13 +273,13 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 10000L);
 
-                    b.Property<int?>("ApplicationUserId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Deleted")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FavouriteItemsId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -316,12 +290,45 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
                     b.ToTable("Favourites", (string)null);
+                });
+
+            modelBuilder.Entity("Entities.Concrete.TableModels.FavouriteItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 10000L);
+
+                    b.Property<int>("CarId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Deleted")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FavouriteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CarId");
+
+                    b.HasIndex("FavouriteId");
+
+                    b.ToTable("FavouriteItems", (string)null);
                 });
 
             modelBuilder.Entity("Entities.Concrete.TableModels.Feature", b =>
@@ -870,21 +877,6 @@ namespace DataAccess.Migrations
                     b.ToTable("Testimonials", (string)null);
                 });
 
-            modelBuilder.Entity("CarFavourite", b =>
-                {
-                    b.HasOne("Entities.Concrete.TableModels.Car", null)
-                        .WithMany()
-                        .HasForeignKey("CarsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Entities.Concrete.TableModels.Favourite", null)
-                        .WithMany()
-                        .HasForeignKey("FavouritesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Entities.Concrete.TableModels.Booking", b =>
                 {
                     b.HasOne("Entities.Concrete.TableModels.Car", "Car")
@@ -917,17 +909,32 @@ namespace DataAccess.Migrations
 
             modelBuilder.Entity("Entities.Concrete.TableModels.Favourite", b =>
                 {
-                    b.HasOne("Entities.Concrete.TableModels.Membership.ApplicationUser", null)
-                        .WithMany("Favourites")
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("Entities.Concrete.TableModels.Membership.ApplicationUser", "User")
-                        .WithOne()
-                        .HasForeignKey("Entities.Concrete.TableModels.Favourite", "UserId")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.TableModels.FavouriteItem", b =>
+                {
+                    b.HasOne("Entities.Concrete.TableModels.Car", "Car")
+                        .WithMany("FavouriteItems")
+                        .HasForeignKey("CarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Concrete.TableModels.Favourite", "Favourite")
+                        .WithMany("FavouriteItems")
+                        .HasForeignKey("FavouriteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Car");
+
+                    b.Navigation("Favourite");
                 });
 
             modelBuilder.Entity("Entities.Concrete.TableModels.Membership.ApplicationRoleClaim", b =>
@@ -992,16 +999,24 @@ namespace DataAccess.Migrations
                     b.Navigation("Position");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.TableModels.Car", b =>
+                {
+                    b.Navigation("FavouriteItems");
+                });
+
             modelBuilder.Entity("Entities.Concrete.TableModels.CarCategory", b =>
                 {
                     b.Navigation("Cars");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.TableModels.Favourite", b =>
+                {
+                    b.Navigation("FavouriteItems");
+                });
+
             modelBuilder.Entity("Entities.Concrete.TableModels.Membership.ApplicationUser", b =>
                 {
                     b.Navigation("Bookings");
-
-                    b.Navigation("Favourites");
                 });
 
             modelBuilder.Entity("Entities.Concrete.TableModels.Position", b =>

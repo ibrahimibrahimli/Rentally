@@ -16,11 +16,17 @@ namespace Rentally.WEB.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var user = await _userManager.GetUserAsync((System.Security.Claims.ClaimsPrincipal)User);
-            return View(new NavigationViewModel()
+            _ = new ApplicationUser();
+            if (User.Identity.IsAuthenticated)
             {
-                User = user
-            });
+                ApplicationUser user = await _userManager.GetUserAsync((System.Security.Claims.ClaimsPrincipal)User);
+                return View(new NavigationViewModel()
+                {
+                    User = user
+                });
+            }
+            return View(new NavigationViewModel() { User = null});
+
         }
     }
 }

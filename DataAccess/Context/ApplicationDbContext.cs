@@ -2,23 +2,20 @@
 using Entities.Concrete.TableModels.Membership;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.Context
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int, ApplicationUserClaim,ApplicationUserRole,ApplicationUserLogin, ApplicationRoleClaim, ApplicationUserToken>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int, ApplicationUserClaim, ApplicationUserRole, ApplicationUserLogin, ApplicationRoleClaim, ApplicationUserToken>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+
+            //optionsBuilder.UseSqlServer(@"Data Source = LAPTOP-JBUKPKDJ;
+            //                             Initial Catalog = RentallyDataBase1;
+            //                             Integrated Security= true;Encrypt = false;");
             
-            optionsBuilder.UseSqlServer(@"Data Source = LAPTOP-JBUKPKDJ;
-                                         Initial Catalog = RentallyDataBase;
-                                         Integrated Security= true;Encrypt = false;");
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,13 +31,15 @@ namespace DataAccess.Context
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Favourite> Favorites { get; set; }
         public DbSet<FavouriteItem> FavoriteItems { get; set; }
-        public DbSet<Feature> Features {  get; set; }
-        public DbSet<QA> QAs {  get; set; }
-        public DbSet<New> News {  get; set; }
+        public DbSet<Feature> Features { get; set; }
+        public DbSet<QA> QAs { get; set; }
+        public DbSet<New> News { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<TeamBoard> TeamBoards { get; set; }
-        public DbSet<Testimonial> Testimonials { get; set; }    
-        public DbSet<Region> Regions { get; set; }    
+        public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<Region> Regions { get; set; }
     }
 }
+//RentalAdmin!@123  RentalAdmin
+//RentalDb

@@ -1,15 +1,10 @@
 ﻿using Business.Abstract;
-using Business.Concrete;
 using Core.Extenstion;
 using Entities.Concrete.Dtos.Membership;
 using Entities.Concrete.TableModels.Membership;
-using Humanizer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.Elfie.Extensions;
-using Rentally.WEB.ViewModels;
-using System.Security.Claims;
 
 namespace Rentally.WEB.Controllers
 {

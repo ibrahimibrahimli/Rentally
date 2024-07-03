@@ -32,7 +32,7 @@
                                 <a class="menu-item" asp-controller="GlobalBooking" asp-action="Index">Rezervasiya</a>
                             </li>
                             <li>
-                                <a asp-controller="GlobalAboutUs" asp-action="Index">Haqqımızda</a>
+                                <a class="menu-item" asp-controller="GlobalAboutUs" asp-action="Index">Haqqımızda</a>
                             </li>
                             <li>
                                 <a asp-controller="GlobalContact" asp-action="Create" class="menu-item">Əlaqə</a>
@@ -43,9 +43,9 @@
                         </ul>
                     </div>
                     <div class="de-flex-col">
-                        @if (User.Identity.IsAuthenticated)
+                        @if (Model.User is not null)
                         {
-                            if (Model.User.ImageUrl == null)
+                            if (Model.User.ImageUrl is null)
                             {
                                 <ul id="mainmenu">
                                     <li class="profile">
@@ -53,8 +53,8 @@
                                             <img style="width:45px;border-radius:100%; background-repeat:no-repeat" src="~/images/profile/DefaultProfilePicture.png" />
                                         </a>
                                         <ul style="left:-100px">
-                                            <li><a class="menu-item" asp-action="Dashboard" asp-controller="Account">İdarə Paneli</a></li>
-                                            <li><a class="menu-item" asp-action="EditProfile" asp-controller="Account">Mənim hesabım</a></li>
+                                            <li><a class="menu-item" asp-action="Dashboard" asp-controller="Account">Hesabım</a></li>
+                                            <li><a class="menu-item" asp-action="EditProfile" asp-controller="Account">İdarə Paneli</a></li>
                                             <li><a class="menu-item" asp-action="Orders" asp-controller="Account">Sifarişlərim</a></li>
                                             <li><a asp-controller="Account" asp-action="Logout" class="menu-item">Çıxış Et</a></li>
                                         </ul>
@@ -69,8 +69,8 @@
                                             <img style="width:45px; border-radius:100%; background-repeat:no-repeat" src="@Model.User.ImageUrl" />
                                         </a>
                                         <ul style="left:-100px">
-                                            <li><a class="menu-item" asp-action="Dashboard" asp-controller="Account">İdarə Paneli</a></li>
-                                            <li><a class="menu-item" asp-action="EditProfile" asp-controller="Account">Mənim hesabım</a></li>
+                                            <li><a class="menu-item" asp-action="Dashboard" asp-controller="Account">Hesabım</a></li>
+                                            <li><a class="menu-item" asp-action="EditProfile" asp-controller="Account">İdarə Paneli</a></li>
                                             <li><a class="menu-item" asp-action="Orders" asp-controller="Account">Sifarişlərim</a></li>
                                             <li><a asp-controller="Account" asp-action="Logout" class="menu-item">Çıxış Et</a></li>
                                         </ul>

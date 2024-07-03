@@ -1,5 +1,6 @@
 C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Release\net8.0\appsettings.Development.json
 C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Release\net8.0\appsettings.json
+C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Release\net8.0\libman.json
 C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Release\net8.0\Rentally.WEB.staticwebassets.runtime.json
 C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Release\net8.0\Rentally.WEB.exe
 C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Release\net8.0\Rentally.WEB.deps.json
@@ -267,4 +268,3 @@ C:\Users\Lenovo\source\repos\Rentally\Rentally\obj\Release\net8.0\refint\Rentall
 C:\Users\Lenovo\source\repos\Rentally\Rentally\obj\Release\net8.0\Rentally.WEB.pdb
 C:\Users\Lenovo\source\repos\Rentally\Rentally\obj\Release\net8.0\Rentally.WEB.genruntimeconfig.cache
 C:\Users\Lenovo\source\repos\Rentally\Rentally\obj\Release\net8.0\ref\Rentally.WEB.dll
-C:\Users\Lenovo\source\repos\Rentally\Rentally\bin\Release\net8.0\libman.json
