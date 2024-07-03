@@ -1,7 +1,7 @@
 Salam hər kəsə!!
 Rentaly istifadə edən avtomobil kirayə edə biləcəkləri bir veb saytdır.
-Saytda İstifadəçi qeydiyyatı, hesab hesabının tənzimlənməsi(Profil şəkli əlavə etmə və dəyişmə, dəyişmə, rezervasiya edilmiş avtomobilləri 3 kateqoriya üzrə: 1.tamamlanmış, 2.Cavab gözlənilən, 3. Ləğv edilmiş sifarişlər olaraq izlənməsi) əlavə edilib. əlavə yardım bölməsindən dəstək xidməti ilə əlaqə saxlayıb geri dönüş edə bilərsiniz.
-Saytda istifadəçi rollama sistemindən istifadə olunub, Saytın hər bir səhifəsinin admin panelindən asılı olaraq tənzimlənə bilər.
+Saytda İstifadəçi qeydiyyatı, hesab hesabının tənzimlənməsi(Profil şəkli əlavə etmə və dəyişmə, dəyişmə, rezervasiya edilmiş avtomobilləri 3 kateqoriya üzrə: 1.Tamamlanmış, 2.Cavab gözlənilən, 3. Ləğv edilmiş sifarişlər olaraq izlənməsi) əlavə edilib. Yardım bölməsindən dəstək xidməti ilə əlaqə saxlayıb geri dönüş edə bilərsiniz.
+Saytda istifadəçi rollama sistemindən istifadə olunub, Saytın hər bir səhifəsinin admin panel tərəfindən tamamilə tənzimlənə bilər.
 Sayta canlı olaraq baxmaq üçün : www.cbclub.tech ünvanına keçid edin :)
 dev.ibrahimlii@gmail.com üzərindən geri dönüşləriniz mənim üçün çox önəmlidir. Sayqılarla
 
