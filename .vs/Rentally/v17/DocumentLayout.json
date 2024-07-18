@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|c:\\users\\lenovo\\source\\repos\\rentally\\rentally\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|solutionrelative:rentally\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|c:\\users\\lenovo\\source\\repos\\rentally\\rentally\\areas\\dashboard\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|solutionrelative:rentally\\areas\\dashboard\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435BBEC3-D4FB-40DE-A1F1-85E7C3A9E58E}|Entities\\Entities.csproj|c:\\users\\lenovo\\source\\repos\\rentally\\entities\\concrete\\tablemodels\\membership\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{435BBEC3-D4FB-40DE-A1F1-85E7C3A9E58E}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\tablemodels\\membership\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Entities\\Concrete\\TableModels\\Membership\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "Entities\\Concrete\\TableModels\\Membership\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Entities\\Concrete\\TableModels\\Membership\\ApplicationUser.cs",
+              "RelativeToolTip": "Entities\\Concrete\\TableModels\\Membership\\ApplicationUser.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-16T13:36:04.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Views\\Account\\Register.cshtml",
-              "RelativeDocumentMoniker": "Rentally\\Views\\Account\\Register.cshtml",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Views\\Account\\Register.cshtml",
-              "RelativeToolTip": "Rentally\\Views\\Account\\Register.cshtml",
-              "ViewState": "AQIAAGkAAAAAAAAAAAAAACYAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-25T08:08:47.118Z",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Areas\\Dashboard\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Rentally\\Areas\\Dashboard\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Areas\\Dashboard\\Controllers\\AccountController.cs*",
+              "RelativeToolTip": "Rentally\\Areas\\Dashboard\\Controllers\\AccountController.cs*",
+              "ViewState": "AQIAACcAAAAAAAAAAAAYwDMAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-16T13:36:40.158Z",
               "EditorCaption": ""
             }
           ]
