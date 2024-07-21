@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Rentally.WEB")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+78d2ea81f5b2b408ce2c217b5c7bc1a1d9eba058")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9e517ba5a950980c731e26bc5aba49c377dbc34")]
 [assembly: System.Reflection.AssemblyProductAttribute("Rentally.WEB")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Rentally.WEB")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -11,7 +11,7 @@
         "projectName": "Business",
         "projectPath": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Business\\Business.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Business\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -177,7 +177,7 @@
         "projectName": "DataAccess",
         "projectPath": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\DataAccess\\DataAccess.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -256,7 +256,7 @@
         "projectName": "Entities",
         "projectPath": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -330,7 +330,7 @@
         "projectName": "Rentally.WEB",
         "projectPath": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\Rentally.WEB.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",

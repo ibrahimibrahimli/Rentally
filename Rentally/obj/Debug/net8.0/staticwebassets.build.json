@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "U+V7k2Dqb7dQLmn+vh7IjDOF76MpTOisMJM0cHMtf/A=",
+  "Hash": "PbPIZZhmKYpq6/xUmVpyHhEnTrtvZ/jSa92DObbCd/8=",
   "Source": "Rentally.WEB",
   "BasePath": "_content/Rentally.WEB",
   "Mode": "Default",
@@ -38642,6 +38642,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\cb286fcb-28d6-4d77-9542-f7f51565d63cWhatsApp Image 2024-06-11 at 13.21.31_67ccf797.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\images\\d0d03e2f-c47c-4265-ab10-3f9614266454WhatsApp Image 2024-06-11 at 13.21.31_67ccf797.jpg",
+      "SourceId": "Rentally.WEB",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\",
+      "BasePath": "_content/Rentally.WEB",
+      "RelativePath": "images/d0d03e2f-c47c-4265-ab10-3f9614266454WhatsApp Image 2024-06-11 at 13.21.31_67ccf797.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\d0d03e2f-c47c-4265-ab10-3f9614266454WhatsApp Image 2024-06-11 at 13.21.31_67ccf797.jpg"
     },
     {
       "Identity": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\images\\d1bf6773-b155-4019-92d2-f92db26cf0563.png",

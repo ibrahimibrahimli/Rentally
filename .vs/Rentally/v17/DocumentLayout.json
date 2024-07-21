@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|c:\\users\\lenovo\\source\\repos\\rentally\\rentally\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|solutionrelative:rentally\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|c:\\users\\lenovo\\source\\repos\\rentally\\rentally\\areas\\dashboard\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|solutionrelative:rentally\\areas\\dashboard\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -18,11 +22,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Entities\\Concrete\\TableModels\\Membership\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "Entities\\Concrete\\TableModels\\Membership\\ApplicationUser.cs",
@@ -30,20 +34,32 @@
               "RelativeToolTip": "Entities\\Concrete\\TableModels\\Membership\\ApplicationUser.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T13:36:04.758Z",
+              "WhenOpened": "2024-07-16T13:36:04.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Areas\\Dashboard\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Rentally\\Areas\\Dashboard\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Areas\\Dashboard\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Rentally\\Areas\\Dashboard\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAYwD4AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-16T13:36:40.158Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Areas\\Dashboard\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Rentally\\Areas\\Dashboard\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Areas\\Dashboard\\Controllers\\AccountController.cs*",
-              "RelativeToolTip": "Rentally\\Areas\\Dashboard\\Controllers\\AccountController.cs*",
-              "ViewState": "AQIAACcAAAAAAAAAAAAYwDMAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-16T13:36:40.158Z",
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Rentally\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Rentally\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAuwC0AAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-21T11:49:45.438Z",
               "EditorCaption": ""
             }
           ]
