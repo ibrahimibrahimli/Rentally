@@ -12,7 +12,7 @@ namespace Core.DataAccess.Concrete
         where TContext : DbContext, new()
     {
         public void Add(TEntity entity)
-        {
+        {   
             using (TContext context = new TContext())
             {
                 var addedEntity = context.Entry(entity);

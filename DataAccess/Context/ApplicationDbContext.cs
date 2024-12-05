@@ -12,7 +12,7 @@ namespace DataAccess.Context
         {
 
             //optionsBuilder.UseSqlServer(@"Data Source = LAPTOP-JBUKPKDJ;
-            //                             Initial Catalog = RentallyDataBase1;
+            //                             Initial Catalog = RentallyDataBase;
             //                             Integrated Security= true;Encrypt = false;");
 
             optionsBuilder.UseSqlServer("Data Source=45.42.197.224\\MSSQLSERVER2022;Initial Catalog=RentalyDb;User Id=RentalAdmin;Password=Ibrahim217@;Encrypt = false;");

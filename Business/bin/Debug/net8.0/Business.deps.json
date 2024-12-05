@@ -714,7 +714,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.4"
         },
         "runtime": {
-          "Core.dll": {}
+          "Core.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "DataAccess/1.0.0": {
@@ -724,7 +727,10 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.5"
         },
         "runtime": {
-          "DataAccess.dll": {}
+          "DataAccess.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Entities/1.0.0": {
@@ -734,7 +740,10 @@
           "Microsoft.Extensions.Identity.Stores": "8.0.5"
         },
         "runtime": {
-          "Entities.dll": {}
+          "Entities.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

@@ -20,11 +20,11 @@ namespace Business.Concrete
         }
         public IResult Add(AboutCreateDto dto)
         {
-            var model = AboutCreateDto.ToAbout(dto);
+            About model = AboutCreateDto.ToAbout(dto);
             var validator = _validator.Validate(model);
 
             string errorMessage = "";
-            foreach(var error in validator.Errors)
+            foreach(var error in validator.Errors)                                  
             {
                 errorMessage = error.ErrorMessage;
             }

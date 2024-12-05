@@ -27,7 +27,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
         {
             return View();
         }
-
+        
         [HttpPost]
         public IActionResult Create(SliderCreateDto dto, IFormFile ImageUrl)
         {
@@ -57,7 +57,7 @@ namespace Rentally.WEB.Areas.Dashboard.Controllers
             if (!result.IsSuccess)
             {
                 ModelState.AddModelError("", result.Message);
-
+                    
                 return View(dto);
             }
             return RedirectToAction("Index");
