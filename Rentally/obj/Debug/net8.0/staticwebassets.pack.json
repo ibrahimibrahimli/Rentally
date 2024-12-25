@@ -2,7 +2,7 @@
   "Files": [
     {
       "Id": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Rentally.WEB.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Rentally.WEB.bundle.scp.css"
+      "PackagePath": "staticwebassets\\Rentally.WEB.qfe77sob2x.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\admin\\css\\sb-admin-2.css",
@@ -8815,6 +8815,10 @@
     {
       "Id": "C:\\Users\\Lenovo\\source\\repos\\Rentally\\Rentally\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Rentally.WEB.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Rentally.WEB.Microsoft.AspNetCore.StaticWebAssets.props",

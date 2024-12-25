@@ -3,12 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|c:\\users\\lenovo\\source\\repos\\rentally\\rentally\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|solutionrelative:rentally\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|c:\\users\\lenovo\\source\\repos\\rentally\\rentally\\views\\globalcontact\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|solutionrelative:rentally\\views\\globalcontact\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|c:\\users\\lenovo\\source\\repos\\rentally\\rentally\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|solutionrelative:rentally\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|c:\\users\\lenovo\\source\\repos\\rentally\\rentally\\views\\globalnew\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|solutionrelative:rentally\\views\\globalnew\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|c:\\users\\lenovo\\source\\repos\\rentally\\rentally\\controllers\\globalcontactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|solutionrelative:rentally\\controllers\\globalcontactcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|c:\\users\\lenovo\\source\\repos\\rentally\\rentally\\controllers\\globalnewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3880CE3-AF75-4D71-BC84-E633140FAC0B}|Rentally\\Rentally.WEB.csproj|solutionrelative:rentally\\controllers\\globalnewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{435BBEC3-D4FB-40DE-A1F1-85E7C3A9E58E}|Entities\\Entities.csproj|c:\\users\\lenovo\\source\\repos\\rentally\\entities\\concrete\\tablemodels\\new.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{435BBEC3-D4FB-40DE-A1F1-85E7C3A9E58E}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\tablemodels\\new.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,27 +42,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Rentally\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Rentally\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAASwB4AAAAeAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "New.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Entities\\Concrete\\TableModels\\New.cs",
+              "RelativeDocumentMoniker": "Entities\\Concrete\\TableModels\\New.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Entities\\Concrete\\TableModels\\New.cs",
+              "RelativeToolTip": "Entities\\Concrete\\TableModels\\New.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T19:28:40.201Z"
+              "WhenOpened": "2024-12-21T20:18:33.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GlobalNewController.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Controllers\\GlobalNewController.cs",
+              "RelativeDocumentMoniker": "Rentally\\Controllers\\GlobalNewController.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Controllers\\GlobalNewController.cs",
+              "RelativeToolTip": "Rentally\\Controllers\\GlobalNewController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-21T20:18:52.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Views\\GlobalNew\\Index.cshtml",
+              "RelativeDocumentMoniker": "Rentally\\Views\\GlobalNew\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Views\\GlobalNew\\Index.cshtml",
+              "RelativeToolTip": "Rentally\\Views\\GlobalNew\\Index.cshtml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-21T20:19:08.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GlobalContactController.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Controllers\\GlobalContactController.cs",
+              "RelativeDocumentMoniker": "Rentally\\Controllers\\GlobalContactController.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Controllers\\GlobalContactController.cs",
+              "RelativeToolTip": "Rentally\\Controllers\\GlobalContactController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwB8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-21T20:19:57.542Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Rentally\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Rentally\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Views\\GlobalContact\\Create.cshtml",
+              "RelativeDocumentMoniker": "Rentally\\Views\\GlobalContact\\Create.cshtml",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\Repos\\Rentally\\Rentally\\Views\\GlobalContact\\Create.cshtml",
+              "RelativeToolTip": "Rentally\\Views\\GlobalContact\\Create.cshtml",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAAAF8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-02T21:09:20.533Z",
+              "WhenOpened": "2024-12-21T20:20:32.856Z",
               "EditorCaption": ""
             }
           ]

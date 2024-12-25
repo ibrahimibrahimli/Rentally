@@ -46,7 +46,7 @@ namespace Rentally.WEB.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(BookingViewModel model) 
         {
-            var user = await _userManager.GetUserAsync (User);
+            var user = await _userManager.GetUserAsync(User);
             model.Bookings.UserId = user.Id;
 
             var result = _bookingService.Add(model.Bookings);
